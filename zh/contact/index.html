@@ -210,55 +210,39 @@
                     <span class="error-message" role="alert"></span>
                   </div>
 
-                  <!-- Phone Field -->
+                  <!-- Service Type Field -->
                   <div class="form-group">
-                    <label for="contact-phone-zh" class="form-label">电话</label>
-                    <input 
-                      type="tel" 
-                      id="contact-phone-zh" 
-                      name="phone" 
-                      class="form-input"
-                      autocomplete="tel"
+                    <label for="contact-service-type-zh" class="form-label">服务类型 <span class="required">*</span></label>
+                    <select 
+                      id="contact-service-type-zh" 
+                      name="service_type" 
+                      class="form-select" 
+                      required 
+                      aria-required="true"
                     >
+                      <option value="">请选择服务类型</option>
+                      <option value="marketing">市场营销</option>
+                      <option value="sourcing">采购</option>
+                      <option value="regulatory-affairs">注册事务</option>
+                      <option value="business-consultancy">商务咨询</option>
+                      <option value="distribution">分布</option>
+                      <option value="investment">投资</option>
+                      <option value="others">其他</option>
+                    </select>
                     <span class="error-message" role="alert"></span>
                   </div>
 
-                  <!-- Company Field -->
+                  <!-- Service Description Field -->
                   <div class="form-group">
-                    <label for="contact-company-zh" class="form-label">公司</label>
-                    <input 
-                      type="text" 
-                      id="contact-company-zh" 
-                      name="company" 
-                      class="form-input"
-                      autocomplete="organization"
-                    >
-                    <span class="error-message" role="alert"></span>
-                  </div>
-
-                  <!-- Subject Field -->
-                  <div class="form-group">
-                    <label for="contact-subject-zh" class="form-label">主题</label>
-                    <input 
-                      type="text" 
-                      id="contact-subject-zh" 
-                      name="subject" 
-                      class="form-input"
-                    >
-                    <span class="error-message" role="alert"></span>
-                  </div>
-
-                  <!-- Message Field -->
-                  <div class="form-group">
-                    <label for="contact-message-zh" class="form-label">留言 <span class="required">*</span></label>
+                    <label for="contact-service-description-zh" class="form-label">服务说明 <span class="required">*</span></label>
                     <textarea 
-                      id="contact-message-zh" 
-                      name="message" 
+                      id="contact-service-description-zh" 
+                      name="service_description" 
                       class="form-textarea" 
                       rows="6" 
                       required 
                       aria-required="true"
-                      placeholder="请告诉我们您的业务需求以及我们如何为您提供帮助..."
+                      placeholder="请详细说明您需要的服务以及我们如何为您提供帮助..."
                     ></textarea>
                     <span class="error-message" role="alert"></span>
                   </div>
@@ -291,6 +275,36 @@
                 </form>
               </div>
             </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Links Section -->
+    <section class="related-links-section">
+      <div class="related-links-container">
+        <h2>相关链接</h2>
+        <div class="related-links-grid">
+          <div class="related-link-item">
+            <img src="/assets/images/related/precilens-logo.png" alt="Precilens" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/ghn-pharma-logo.png" alt="GHN Pharma" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/aminoclipse-logo.png" alt="Aminoclipse" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/arthroguard-logo.png" alt="Arthroguard300" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/argile-du-velay-logo.png" alt="Argile du Velay" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy">
+          </div>
+          <div class="related-link-item">
+            <img src="/assets/images/related/francine-logo.png" alt="Francine Feminine" loading="lazy">
           </div>
         </div>
       </div>
@@ -367,7 +381,7 @@
     <div class="footer-bottom">
       <div class="footer-bottom-container">
         <div class="copyright">
-          <p>Copyright © 2024 Innoledge</p>
+          <p>Copyright © 2025 Innoledge</p>
         </div>
         <div class="powered-by">
           <p>Powered by TR Digital Services</p>

@@ -10,7 +10,7 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://innoledge.com/fr/contact/">
+  <meta property="og:url" content="https://innoledge.com/fr/contactez-nous/">
   <meta property="og:title" content="Contactez-Nous – Innoledge">
   <meta property="og:description" content="Contactez Innoledge International Ltd. pour des services de conseil en affaires, marketing, sourcing, investissement, affaires réglementaires et distribution en Asie.">
   <meta property="og:image" content="https://innoledge.com/assets/images/innoledge-logo.png">
@@ -19,14 +19,14 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="https://innoledge.com/fr/contact/">
+  <meta name="twitter:url" content="https://innoledge.com/fr/contactez-nous/">
   <meta name="twitter:title" content="Contactez-Nous – Innoledge">
   <meta name="twitter:description" content="Contactez Innoledge International Ltd. pour des services de conseil en affaires, marketing, sourcing, investissement, affaires réglementaires et distribution en Asie.">
   <meta name="twitter:image" content="https://innoledge.com/assets/images/innoledge-logo.png">
 
   <!-- Language alternates -->
   <link rel="alternate" href="/en/contact/" hreflang="en">
-  <link rel="alternate" href="/fr/contact/" hreflang="fr">
+  <link rel="alternate" href="/fr/contactez-nous/" hreflang="fr">
   <link rel="alternate" href="/zh/contact/" hreflang="zh">
 
   <!-- Favicon -->
@@ -66,10 +66,10 @@
               <a href="/fr/portfolio/">Portfolio</a>
             </li>
             <li class="menu-item">
-              <a href="/fr/about/">Qui Sommes-Nous</a>
+              <a href="/fr/qui-sommes-nous/">Qui Sommes-Nous</a>
             </li>
             <li class="menu-item current-menu-item">
-              <a href="/fr/contact/">Contactez-Nous</a>
+              <a href="/fr/contactez-nous/">Contactez-Nous</a>
             </li>
           </ul>
         </div>
@@ -87,7 +87,7 @@
               <img src="/assets/images/flags/en.svg" alt="" width="20" height="15">
               <span>English</span>
             </a>
-            <a href="/fr/contact/" class="lang-option current" role="menuitem" hreflang="fr">
+            <a href="/fr/contactez-nous/" class="lang-option current" role="menuitem" hreflang="fr">
               <img src="/assets/images/flags/fr.svg" alt="" width="20" height="15">
               <span>Français</span>
             </a>
@@ -178,7 +178,7 @@
                   <!-- Hidden fields for Formspree -->
                   <input type="hidden" name="_subject" value="Nouveau contact depuis Innoledge (Français)">
                   <input type="hidden" name="_language" value="fr">
-                  <input type="hidden" name="_next" value="/fr/contact/merci/">
+                  <input type="hidden" name="_next" value="/fr/contactez-nous/merci/">
                   
                   <!-- Name Field -->
                   <div class="form-group">
@@ -236,21 +236,29 @@
                     <span class="error-message" role="alert"></span>
                   </div>
 
-                  <!-- Subject Field -->
+                  <!-- Service Type Field -->
                   <div class="form-group">
-                    <label for="contact-subject-fr" class="form-label">Sujet</label>
-                    <input 
-                      type="text" 
-                      id="contact-subject-fr" 
-                      name="subject" 
-                      class="form-input"
+                    <label for="contact-service-fr" class="form-label">Type de Service</label>
+                    <select 
+                      id="contact-service-fr" 
+                      name="service_type" 
+                      class="form-select"
                     >
+                      <option value="">Sélectionnez un service</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="sourcing">Sourcing</option>
+                      <option value="investissement">Investissement</option>
+                      <option value="affaires-reglementaires">Affaires Réglementaires</option>
+                      <option value="business-consultant">Business Consultant</option>
+                      <option value="distribution">Distribution</option>
+                      <option value="autre">Autre</option>
+                    </select>
                     <span class="error-message" role="alert"></span>
                   </div>
 
                   <!-- Message Field -->
                   <div class="form-group">
-                    <label for="contact-message-fr" class="form-label">Message <span class="required">*</span></label>
+                    <label for="contact-message-fr" class="form-label">Description du Service <span class="required">*</span></label>
                     <textarea 
                       id="contact-message-fr" 
                       name="message" 
@@ -258,7 +266,7 @@
                       rows="6" 
                       required 
                       aria-required="true"
-                      placeholder="Parlez-nous de vos besoins commerciaux et de la façon dont nous pouvons vous aider..."
+                      placeholder="Décrivez vos besoins et comment nous pouvons vous aider..."
                     ></textarea>
                     <span class="error-message" role="alert"></span>
                   </div>
@@ -291,6 +299,36 @@
                 </form>
               </div>
             </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Links Section -->
+    <section class="related-links">
+      <div class="related-links-container">
+        <h2>Nos Partenaires</h2>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/ghn-logo.png" alt="GHN Pharma" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Aminoclipse" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" width="120" height="60">
+          </div>
+          <div class="partner-logo">
+            <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" width="120" height="60">
           </div>
         </div>
       </div>
@@ -341,8 +379,8 @@
             <li><a href="/fr/">Page d'accueil</a></li>
             <li><a href="/fr/services/">Services</a></li>
             <li><a href="/fr/portfolio/">Portfolio</a></li>
-            <li><a href="/fr/about/">Qui Sommes-Nous</a></li>
-            <li><a href="/fr/contact/">Contactez-Nous</a></li>
+            <li><a href="/fr/qui-sommes-nous/">Qui Sommes-Nous</a></li>
+            <li><a href="/fr/contactez-nous/">Contactez-Nous</a></li>
           </ul>
         </nav>
       </div>
