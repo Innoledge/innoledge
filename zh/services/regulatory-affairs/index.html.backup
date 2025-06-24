@@ -18,9 +18,9 @@
   <meta property="og:site_name" content="Innoledge">
 
   <!-- Language alternates -->
-  <link rel="alternate" href="../../../services/regulatory-affairs/" hreflang="en">
+  <link rel="alternate" href="../en/services/regulatory-affairs/" hreflang="en">
   <link rel="alternate" href="../fr/services/affaires-reglementaires/" hreflang="fr">
-  <link rel="alternate" href="./" hreflang="zh">
+  <link rel="alternate" href="../zh/services/regulatory-affairs/" hreflang="zh">
 
   <!-- Favicon -->
   <link rel="icon" href="../../assets/images/favicon.ico">
@@ -41,8 +41,8 @@
       <div class="nav-container">
         <!-- Logo -->
         <div class="site-logo">
-          <a href="../../" aria-label="Innoledge 主页">
-            <img src="../../../assets/images/innoledge-logo.png" alt="Innoledge" width="222" height="96">
+          <a href="../zh/" aria-label="Innoledge 主页">
+            <img src="../../assets/images/innoledge-logo.png" alt="Innoledge" width="222" height="96">
           </a>
         </div>
 
@@ -50,19 +50,19 @@
         <div class="nav-menu">
           <ul class="menu-items">
             <li class="menu-item">
-              <a href="../../">主页</a>
+              <a href="../zh/">主页</a>
             </li>
             <li class="menu-item current-menu-item">
-              <a href="../">服务</a>
+              <a href="../zh/services/">服务</a>
             </li>
             <li class="menu-item">
-              <a href="../../portfolio/">我们的产品</a>
+              <a href="../zh/portfolio/">我们的产品</a>
             </li>
             <li class="menu-item">
-              <a href="../../about/">公司简介</a>
+              <a href="../zh/about/">公司简介</a>
             </li>
             <li class="menu-item">
-              <a href="../../contact/">联系我们</a>
+              <a href="../zh/contact/">联系我们</a>
             </li>
           </ul>
         </div>
@@ -76,16 +76,16 @@
             </svg>
           </button>
           <div class="lang-dropdown" role="menu">
-            <a href="../../../services/regulatory-affairs/" class="lang-option" role="menuitem" hreflang="en">
-              <img src="../../../assets/images/flags/en.svg" alt="" width="20" height="15">
+            <a href="../en/services/regulatory-affairs/" class="lang-option" role="menuitem" hreflang="en">
+              <img src="../../assets/images/flags/en.svg" alt="" width="20" height="15">
               <span>English</span>
             </a>
             <a href="../fr/services/affaires-reglementaires/" class="lang-option" role="menuitem" hreflang="fr">
-              <img src="../../../assets/images/flags/fr.svg" alt="" width="20" height="15">
+              <img src="../../assets/images/flags/fr.svg" alt="" width="20" height="15">
               <span>Français</span>
             </a>
-            <a href="./" class="lang-option current" role="menuitem" hreflang="zh">
-              <img src="../../../assets/images/flags/zh.svg" alt="" width="20" height="15">
+            <a href="../zh/services/regulatory-affairs/" class="lang-option current" role="menuitem" hreflang="zh">
+              <img src="../../assets/images/flags/zh.svg" alt="" width="20" height="15">
               <span>中文</span>
             </a>
           </div>
@@ -109,10 +109,10 @@
         <nav class="breadcrumb" aria-label="面包屑导航">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
-              <a href="../../">主页</a>
+              <a href="../zh/">主页</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="../">服务</a>
+              <a href="../zh/services/">服务</a>
             </li>
             <li class="breadcrumb-item current" aria-current="page">
               注册事务
@@ -153,7 +153,7 @@
           <!-- Main Content -->
           <div class="service-main">
             <div class="service-intro">
-              <img src="../../../assets/images/services/regulatory-affairs-edited.jpg" alt="注册事务服务" loading="eager" class="service-hero-image">
+              <img src="../../assets/images/services/regulatory-affairs-edited.jpg" alt="注册事务服务" loading="eager" class="service-hero-image">
             </div>
 
             
@@ -195,8 +195,8 @@
               <h3 style="color: #2c3e50; margin-bottom: 1rem;">准备好导航亚洲法规环境了吗？</h3>
               <p style="margin-bottom: 1.5rem; color: #5a6c7d;">我们在15+年中国和日本注册事务经验可以帮助您高效获得产品注册。从药品到化妆品，我们处理复杂的法规要求，让您专注于业务增长。</p>
               <div class="cta-actions">
-                <a href="../../contact/" class="btn btn-primary" style="margin-right: 1rem;">获取免费咨询</a>
-                <a href="../../portfolio/" class="btn btn-secondary">查看成功案例</a>
+                <a href="../zh/contact/" class="btn btn-primary" style="margin-right: 1rem;">获取免费咨询</a>
+                <a href="../zh/portfolio/" class="btn btn-secondary">查看成功案例</a>
               </div>
             </div>
           </div>
@@ -208,22 +208,22 @@
               <nav class="services-nav">
                 <ul>
                   <li>
-                    <a href="../marketing/">市场营销</a>
+                    <a href="../zh/services/marketing/">市场营销</a>
                   </li>
                   <li>
-                    <a href="../sourcing/">采购</a>
+                    <a href="../zh/services/sourcing/">采购</a>
                   </li>
                   <li>
-                    <a href="../investment/">投资</a>
+                    <a href="../zh/services/investment/">投资</a>
                   </li>
                   <li class="current-service">
-                    <a href="./">注册事务</a>
+                    <a href="../zh/services/regulatory-affairs/">注册事务</a>
                   </li>
                   <li>
-                    <a href="../business-consultancy/">商务咨询</a>
+                    <a href="../zh/services/business-consultancy/">商务咨询</a>
                   </li>
                   <li>
-                    <a href="../distribution/">分布</a>
+                    <a href="../zh/services/distribution/">分布</a>
                   </li>
                 </ul>
               </nav>
@@ -248,7 +248,7 @@
             <div class="contact-info-sidebar">
               <h3>开始合作</h3>
               <p>准备讨论您的注册事务需求？</p>
-              <a href="../../contact/" class="btn btn-primary">联系我们的团队</a>
+              <a href="../zh/contact/" class="btn btn-primary">联系我们的团队</a>
             </div>
           </div>
         </div>
@@ -261,7 +261,7 @@
       <!-- Company Info -->
       <div class="footer-section company-info">
         <div class="footer-logo">
-          <img src="../../../assets/images/innoledge-logo.png" alt="Innoledge" width="180" height="78">
+          <img src="../../assets/images/innoledge-logo.png" alt="Innoledge" width="180" height="78">
         </div>
         <div class="company-details">
           <h3>乐奇国际有限公司</h3>
@@ -297,11 +297,11 @@
         <h4>快速链接</h4>
         <nav class="footer-nav">
           <ul>
-            <li><a href="../../">主页</a></li>
-            <li><a href="../">服务</a></li>
-            <li><a href="../../portfolio/">我们的产品</a></li>
-            <li><a href="../../about/">公司简介</a></li>
-            <li><a href="../../contact/">联系我们</a></li>
+            <li><a href="../zh/">主页</a></li>
+            <li><a href="../zh/services/">服务</a></li>
+            <li><a href="../zh/portfolio/">我们的产品</a></li>
+            <li><a href="../zh/about/">公司简介</a></li>
+            <li><a href="../zh/contact/">联系我们</a></li>
           </ul>
         </nav>
       </div>
@@ -311,12 +311,12 @@
         <h4>服务</h4>
         <nav class="services-nav">
           <ul>
-            <li><a href="../marketing/">市场营销</a></li>
-            <li><a href="../sourcing/">采购</a></li>
-            <li><a href="../investment/">投资</a></li>
-            <li><a href="./">注册事务</a></li>
-            <li><a href="../business-consultancy/">商务咨询</a></li>
-            <li><a href="../distribution/">分布</a></li>
+            <li><a href="../zh/services/marketing/">市场营销</a></li>
+            <li><a href="../zh/services/sourcing/">采购</a></li>
+            <li><a href="../zh/services/investment/">投资</a></li>
+            <li><a href="../zh/services/regulatory-affairs/">注册事务</a></li>
+            <li><a href="../zh/services/business-consultancy/">商务咨询</a></li>
+            <li><a href="../zh/services/distribution/">分布</a></li>
           </ul>
         </nav>
       </div>
@@ -336,7 +336,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="../../../assets/js/main.js"></script>
-  <script src="../../../assets/js/language-switcher.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/language-switcher.js"></script>
 </body>
 </html>

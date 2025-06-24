@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="zh" dir="ltr">
 <head>
-  <title>Conseil en Affaires – Innoledge</title>
+  <title>商务咨询 – Innoledge</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Innoledge International fournit des services complets de conseil en affaires pour aider les investisseurs, partenaires de joint-venture et entrepreneurs à développer des stratégies commerciales réussies en Asie tout en s'adaptant aux cultures et sensibilités locales.">
+  <meta name="description" content="乐奇国际有限公司提供全面的商务咨询服务，帮助投资者、合资企业伙伴和企业家在亚洲发展成功的商业策略，同时适应当地文化和敏感性。">
   <meta name="robots" content="max-image-preview:large">
   <meta name="generator" content="Static Site Generator">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://innoledge.com/fr/services/business-consultant/">
-  <meta property="og:title" content="Conseil en Affaires – Innoledge">
-  <meta property="og:description" content="Innoledge International fournit des services complets de conseil en affaires pour aider les investisseurs, partenaires de joint-venture et entrepreneurs à développer des stratégies commerciales réussies en Asie tout en s'adaptant aux cultures et sensibilités locales.">
+  <meta property="og:url" content="https://innoledge.com/zh/services/business-consultancy/">
+  <meta property="og:title" content="商务咨询 – Innoledge">
+  <meta property="og:description" content="乐奇国际有限公司提供全面的商务咨询服务，帮助投资者、合资企业伙伴和企业家在亚洲发展成功的商业策略，同时适应当地文化和敏感性。">
   <meta property="og:image" content="https://innoledge.com/assets/images/innoledge-logo.png">
-  <meta property="og:locale" content="fr-FR">
+  <meta property="og:locale" content="zh-HK">
   <meta property="og:site_name" content="Innoledge">
 
   <!-- Language alternates -->
-  <link rel="alternate" href="../../../en/services/business-consultancy/" hreflang="en">
-  <link rel="alternate" href="../../services/business-consultant/" hreflang="fr">
-  <link rel="alternate" href="../../../zh/services/business-consultancy/" hreflang="zh">
+  <link rel="alternate" href="../en/services/business-consultancy/" hreflang="en">
+  <link rel="alternate" href="../fr/services/business-consultant/" hreflang="fr">
+  <link rel="alternate" href="../zh/services/business-consultancy/" hreflang="zh">
 
   <!-- Favicon -->
   <link rel="icon" href="../../assets/images/favicon.ico">
@@ -37,11 +37,11 @@
 </head>
 <body class="service-page">
   <header class="site-header">
-    <nav class="main-navigation" role="navigation" aria-label="Navigation principale">
+    <nav class="main-navigation" role="navigation" aria-label="主要导航">
       <div class="nav-container">
         <!-- Logo -->
         <div class="site-logo">
-          <a href="../../" aria-label="Page d'accueil Innoledge">
+          <a href="../zh/" aria-label="Innoledge 主页">
             <img src="../../assets/images/innoledge-logo.png" alt="Innoledge" width="222" height="96">
           </a>
         </div>
@@ -50,41 +50,41 @@
         <div class="nav-menu">
           <ul class="menu-items">
             <li class="menu-item">
-              <a href="../../">Page d'accueil</a>
+              <a href="../zh/">主页</a>
             </li>
             <li class="menu-item current-menu-item">
-              <a href="../../services/">Services</a>
+              <a href="../zh/services/">服务</a>
             </li>
             <li class="menu-item">
-              <a href="../../portfolio/">Portfolio</a>
+              <a href="../zh/portfolio/">我们的产品</a>
             </li>
             <li class="menu-item">
-              <a href="../../qui-sommes-nous/">Qui Sommes-Nous</a>
+              <a href="../zh/about/">公司简介</a>
             </li>
             <li class="menu-item">
-              <a href="../../contactez-nous/">Contactez-Nous</a>
+              <a href="../zh/contact/">联系我们</a>
             </li>
           </ul>
         </div>
 
         <!-- Language Switcher -->
         <div class="language-switcher">
-          <button class="lang-toggle" aria-label="Options de langue" aria-expanded="false" aria-haspopup="true">
-            <span class="current-lang">FR</span>
+          <button class="lang-toggle" aria-label="语言选项" aria-expanded="false" aria-haspopup="true">
+            <span class="current-lang">中文</span>
             <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
               <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
           <div class="lang-dropdown" role="menu">
-            <a href="../../../en/services/business-consultancy/" class="lang-option" role="menuitem" hreflang="en">
+            <a href="../en/services/business-consultancy/" class="lang-option" role="menuitem" hreflang="en">
               <img src="../../assets/images/flags/en.svg" alt="" width="20" height="15">
               <span>English</span>
             </a>
-            <a href="../../services/business-consultant/" class="lang-option current" role="menuitem" hreflang="fr">
+            <a href="../fr/services/business-consultant/" class="lang-option" role="menuitem" hreflang="fr">
               <img src="../../assets/images/flags/fr.svg" alt="" width="20" height="15">
               <span>Français</span>
             </a>
-            <a href="../../../zh/services/business-consultancy/" class="lang-option" role="menuitem" hreflang="zh">
+            <a href="../zh/services/business-consultancy/" class="lang-option current" role="menuitem" hreflang="zh">
               <img src="../../assets/images/flags/zh.svg" alt="" width="20" height="15">
               <span>中文</span>
             </a>
@@ -92,7 +92,7 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-toggle" aria-label="Basculer le menu mobile" aria-expanded="false">
+        <button class="mobile-menu-toggle" aria-label="切换移动菜单" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -105,17 +105,17 @@
     <!-- Page Header -->
     <section class="page-header">
       <div class="page-header-container">
-        <h1 class="page-title">Conseil en Affaires</h1>
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <h1 class="page-title">商务咨询</h1>
+        <nav class="breadcrumb" aria-label="面包屑导航">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
-              <a href="../../">Page d'accueil</a>
+              <a href="../zh/">主页</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="../../services/">Services</a>
+              <a href="../zh/services/">服务</a>
             </li>
             <li class="breadcrumb-item current" aria-current="page">
-              Conseil en Affaires
+              商务咨询
             </li>
           </ol>
         </nav>
@@ -134,10 +134,10 @@
               </svg>
             </div>
             <div class="alert-text">
-              <strong>Conseil d'Expert en Affaires :</strong> Avec plus de 30 ans d'expérience sur les marchés asiatiques, nos services de conseil fournissent des solutions stratégiques adaptées à vos besoins commerciaux. Contactez-nous pour une consultation gratuite.
+              <strong>专业商务指导：</strong>凭借30多年在亚洲市场的经验，我们的咨询服务为您的业务需求提供量身定制的战略解决方案。联系我们获取免费咨询。
             </div>
             <div class="alert-actions">
-              <a href="../../contactez-nous/" class="alert-btn">Commencer</a>
+              <a href="../zh/contact/" class="alert-btn">开始合作</a>
             </div>
           </div>
         </div>
@@ -146,45 +146,45 @@
           <!-- Main Content -->
           <div class="service-main">
             <div class="service-intro">
-              <img src="../../assets/images/services/business-consultancy-edited.jpg" alt="Services Conseil en Affaires" loading="eager" class="service-hero-image">
+              <img src="../../assets/images/services/business-consultancy-edited.jpg" alt="商务咨询服务" loading="eager" class="service-hero-image">
             </div>
 
             
             <div class="service-section">
-              <h2>Solutions à Tous Problèmes</h2>
+              <h2>任何问题的解决方案</h2>
               <div class="service-content-block">
-                <p class="intro-text"><strong>SOLUTIONS AUX PROBLÈMES, "TOUS LES PROBLÈMES".</strong> C'est le service qu'INNOLEDGE INTERNATIONAL offre aux investisseurs, partenaires de joint-venture et entrepreneurs pour développer les affaires en Asie et avec l'Asie.</p>
-                <p>Parce que la mondialisation qui facilite beaucoup la communication internationale n'implique pas le changement des cultures locales, il y a une adaptation essentielle aux sensibilités locales de tout modèle commercial importé !</p>
+                <p class="intro-text"><strong>问题解决方案，"任何问题"。</strong>这是乐奇国际有限公司为投资者、合资企业伙伴和企业家在亚洲和与亚洲发展业务提供的服务。</p>
+                <p>因为使国际交流更容易的全球化并不意味着当地文化的改变，任何进口商业模式都需要对当地敏感性进行基本适应！</p>
               </div>
             </div>
 
             <div class="service-section">
-              <h2>Adaptation Culturelle</h2>
+              <h2>文化适应</h2>
               <div class="service-content-block">
-                <p>INNOLEDGE INTERNATIONAL a l'expertise et l'expérience pour conseiller et adapter les modèles commerciaux étrangers à l'environnement asiatique sans sacrifice aux concepts originaux.</p>
-                <p>Notre compréhension approfondie des cultures commerciales asiatiques, pratiques et dynamiques de marché nous permet de fournir des conseils stratégiques qui respectent les coutumes locales.</p>
+                <p>乐奇国际有限公司拥有建议和适应外国商业模式到亚洲环境而不牺牲原始概念的专业知识和经验。</p>
+                <p>我们对亚洲商业文化、实践和市场动态的深入了解使我们能够提供尊重当地习俗的战略指导。</p>
               </div>
             </div>
 
             <div class="service-section">
-              <h2>Planification Stratégique</h2>
+              <h2>战略规划</h2>
               <div class="service-content-block">
-                <p>Nous travaillons étroitement avec nos clients pour développer des stratégies commerciales complètes qui tiennent compte des défis et opportunités uniques présents sur les marchés asiatiques.</p>
-                <p>Des stratégies d'entrée sur le marché à l'optimisation opérationnelle, nos services de conseil couvrent tous les aspects du développement commercial en Asie.</p>
+                <p>我们与客户密切合作，制定考虑亚洲市场独特挑战和机遇的全面商业策略。</p>
+                <p>从市场进入策略到运营优化，我们的咨询服务涵盖亚洲业务发展的各个方面。</p>
               </div>
             </div>
 
             <div class="service-section">
-              <h2>Expertise du Marché Local</h2>
+              <h2>本地市场专业知识</h2>
               <div class="service-content-block">
-                <p>Avec des bureaux à Hong Kong, Beijing, Shanghai et Tokyo, notre équipe fournit des aperçus et un support sur le terrain pour les entreprises cherchant à établir ou étendre leur présence en Asie.</p>
-                <p>Nous aidons à combler le fossé entre les pratiques commerciales occidentales et les exigences du marché asiatique.</p>
+                <p>在香港、北京、上海和东京设有办事处，我们的团队为寻求在亚洲建立或扩展业务的企业提供实地洞察和支持。</p>
+                <p>我们帮助弥合西方商业实践和亚洲市场要求之间的差距。</p>
               </div>
             </div>
 
             <!-- Service Features Grid -->
             <div class="service-section">
-              <h2>Pourquoi Choisir Notre Conseil en Affaires ?</h2>
+              <h2>为什么选择我们的商务咨询？</h2>
               <div class="features-grid">
                 <div class="feature-item">
                   <div class="feature-icon">
@@ -192,8 +192,8 @@
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#d5682d"/>
                     </svg>
                   </div>
-                  <h3>30+ Années d'Expérience</h3>
-                  <p>Décennies d'expertise dans les environnements commerciaux asiatiques et l'adaptation culturelle.</p>
+                  <h3>30+年经验</h3>
+                  <p>在亚洲商业环境和文化适应方面拥有数十年的专业知识。</p>
                 </div>
                 <div class="feature-item">
                   <div class="feature-icon">
@@ -201,8 +201,8 @@
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#d5682d"/>
                     </svg>
                   </div>
-                  <h3>Focus Multi-Industriel</h3>
-                  <p>Expertise spécialisée dans les secteurs de la Santé, Cosmétiques et Agro-Alimentaire.</p>
+                  <h3>多行业专注</h3>
+                  <p>在健康、化妆品和农食品领域的专业专长。</p>
                 </div>
                 <div class="feature-item">
                   <div class="feature-icon">
@@ -210,8 +210,8 @@
                       <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#d5682d"/>
                     </svg>
                   </div>
-                  <h3>Réseau Régional</h3>
-                  <p>Bureaux à Hong Kong, Beijing, Shanghai et Tokyo pour un support local.</p>
+                  <h3>区域网络</h3>
+                  <p>在香港、北京、上海和东京设有办事处，提供本地支持。</p>
                 </div>
                 <div class="feature-item">
                   <div class="feature-icon">
@@ -219,21 +219,21 @@
                       <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="#d5682d"/>
                     </svg>
                   </div>
-                  <h3>Historique Prouvé</h3>
-                  <p>Partenariats réussis avec les multinationales et PME.</p>
+                  <h3>成功记录</h3>
+                  <p>与跨国公司和中小企业的成功合作伙伴关系。</p>
                 </div>
               </div>
             </div>
 
             <!-- Testimonial Section -->
             <div class="service-section testimonial-section">
-              <h2>Témoignages de Réussite</h2>
+              <h2>客户成功案例</h2>
               <div class="testimonial-container">
                 <blockquote class="testimonial">
-                  <p>"La compréhension approfondie des marchés asiatiques par Innoledge International a été déterminante dans notre expansion réussie en Chine. Leurs insights culturels et leur expertise locale ont fait toute la différence."</p>
+                  <p>"乐奇国际对亚洲市场的深度理解在我们成功拓展中国市场方面发挥了关键作用。他们的文化洞察和本地专业知识起到了决定性作用。"</p>
                   <footer class="testimonial-author">
-                    <strong>— Entreprise Mondiale de Santé</strong>
-                    <span>Projet d'Entrée sur le Marché</span>
+                    <strong>— 全球医疗保健公司</strong>
+                    <span>市场进入项目</span>
                   </footer>
                 </blockquote>
               </div>
@@ -241,11 +241,11 @@
 
             <!-- Call to Action -->
             <div class="service-cta">
-              <h3>Besoin de Services Conseil en Affaires ?</h3>
-              <p>Contactez-nous pour découvrir comment notre expertise en conseil en affaires peut aider votre entreprise à réussir en Asie.</p>
+              <h3>需要商务咨询服务？</h3>
+              <p>联系我们，了解我们的商务咨询专业知识如何帮助您的企业在亚洲取得成功。</p>
               <div class="cta-actions">
-                <a href="../../contactez-nous/" class="btn btn-primary">Nous Contacter</a>
-                <a href="../../portfolio/" class="btn btn-secondary">Voir Notre Portfolio</a>
+                <a href="../zh/contact/" class="btn btn-primary">联系我们</a>
+                <a href="../zh/portfolio/" class="btn btn-secondary">查看我们的产品</a>
               </div>
             </div>
           </div>
@@ -253,89 +253,89 @@
           <!-- Sidebar -->
           <div class="service-sidebar">
             <div class="related-services">
-              <h3>Nos Services</h3>
+              <h3>我们的服务</h3>
               <nav class="services-nav">
                 <ul>
                   <li>
-                    <a href="../../services/france-marketing/">Marketing</a>
+                    <a href="../zh/services/marketing/">市场营销</a>
                   </li>
                   <li>
-                    <a href="../../services/sourcing-2/">Sourcing</a>
+                    <a href="../zh/services/sourcing/">采购</a>
                   </li>
                   <li>
-                    <a href="../../services/investissement/">Investissement</a>
+                    <a href="../zh/services/investment/">投资</a>
                   </li>
                   <li>
-                    <a href="../../services/affaires-reglementaires/">Affaires Réglementaires</a>
+                    <a href="../zh/services/regulatory-affairs/">注册事务</a>
                   </li>
                   <li class="current-service">
-                    <a href="../../services/business-consultant/">Conseil en Affaires</a>
+                    <a href="../zh/services/business-consultancy/">商务咨询</a>
                   </li>
                   <li>
-                    <a href="../../services/distribution-2/">Distribution</a>
+                    <a href="../zh/services/distribution/">分布</a>
                   </li>
                 </ul>
               </nav>
             </div>
 
             <div class="service-highlights">
-              <h3>Expertise Conseil en Affaires</h3>
+              <h3>商务咨询专业知识</h3>
               <ul>
-                <li>Adaptation Modèle Commercial</li>
-                <li>Formation Sensibilité Culturelle</li>
-                <li>Stratégies d'Entrée Marché</li>
-                <li>Planification Stratégique</li>
-                <li>Analyse Marché Local</li>
-                <li>Support Joint-Venture</li>
-                <li>Évaluation des Risques</li>
-                <li>Optimisation Opérationnelle</li>
-                <li>Communication Interculturelle</li>
-                <li>Solutions de Résolution de Problèmes</li>
+                <li>商业模式适应</li>
+                <li>文化敏感性培训</li>
+                <li>市场进入策略</li>
+                <li>战略规划</li>
+                <li>本地市场分析</li>
+                <li>合资企业支持</li>
+                <li>风险评估</li>
+                <li>运营优化</li>
+                <li>跨文化沟通</li>
+                <li>问题解决方案</li>
               </ul>
             </div>
 
             <div class="service-stats">
-              <h3>Notre Impact</h3>
+              <h3>我们的影响</h3>
               <div class="stats-grid">
                 <div class="stat-item">
                   <div class="stat-number">150+</div>
-                  <div class="stat-label">Projets Réussis</div>
+                  <div class="stat-label">成功项目</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number">30+</div>
-                  <div class="stat-label">Années d'Expérience</div>
+                  <div class="stat-label">年经验</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number">4</div>
-                  <div class="stat-label">Bureaux Asiatiques</div>
+                  <div class="stat-label">亚洲办事处</div>
                 </div>
                 <div class="stat-item">
                   <div class="stat-number">95%</div>
-                  <div class="stat-label">Taux de Réussite</div>
+                  <div class="stat-label">客户成功率</div>
                 </div>
               </div>
             </div>
 
             <div class="contact-info-sidebar">
-              <h3>Commencer</h3>
-              <p>Prêt à discuter de vos besoins en conseil en affaires ?</p>
-              <a href="../../contactez-nous/" class="btn btn-primary">Contactez Notre Équipe</a>
+              <h3>开始合作</h3>
+              <p>准备讨论您的商务咨询需求？</p>
+              <a href="../zh/contact/" class="btn btn-primary">联系我们的团队</a>
             </div>
 
             <div class="download-resources">
-              <h3>Ressources</h3>
+              <h3>资源</h3>
               <div class="resource-links">
                 <a href="#" class="resource-link">
                   <span class="resource-icon">📄</span>
-                  <span class="resource-text">Brochure Conseil en Affaires</span>
+                  <span class="resource-text">商务咨询手册</span>
                 </a>
                 <a href="#" class="resource-link">
                   <span class="resource-icon">📊</span>
-                  <span class="resource-text">Analyse Marché Asiatique</span>
+                  <span class="resource-text">亚洲市场分析</span>
                 </a>
                 <a href="#" class="resource-link">
                   <span class="resource-icon">🗺️</span>
-                  <span class="resource-text">Guide d'Entrée Marché</span>
+                  <span class="resource-text">市场进入指南</span>
                 </a>
               </div>
             </div>
@@ -353,7 +353,7 @@
           <img src="../../assets/images/innoledge-logo.png" alt="Innoledge" width="180" height="78">
         </div>
         <div class="company-details">
-          <h3>INNOLEDGE INTERNATIONAL LTD.</h3>
+          <h3>乐奇国际有限公司</h3>
           <address class="company-address">
             Room 1708, One Midtown<br>
             11 Hoi Shing Road, Tsuen Wan<br>
@@ -364,18 +364,18 @@
 
       <!-- Contact Info -->
       <div class="footer-section contact-info">
-        <h4>Informations de Contact</h4>
+        <h4>联系信息</h4>
         <div class="contact-details">
           <div class="contact-item">
-            <span class="contact-label">Téléphone :</span>
+            <span class="contact-label">电话：</span>
             <a href="tel:+85228037784">+852 2803 7784</a>
           </div>
           <div class="contact-item">
-            <span class="contact-label">Fax :</span>
+            <span class="contact-label">传真：</span>
             <span>+852 3568 4410</span>
           </div>
           <div class="contact-item">
-            <span class="contact-label">Email :</span>
+            <span class="contact-label">邮箱：</span>
             <a href="mailto:info@innoledge.com">info@innoledge.com</a>
           </div>
         </div>
@@ -383,29 +383,29 @@
 
       <!-- Quick Links -->
       <div class="footer-section quick-links">
-        <h4>Liens Rapides</h4>
+        <h4>快速链接</h4>
         <nav class="footer-nav">
           <ul>
-            <li><a href="../../">Page d'accueil</a></li>
-            <li><a href="../../services/">Services</a></li>
-            <li><a href="../../portfolio/">Portfolio</a></li>
-            <li><a href="../../qui-sommes-nous/">Qui Sommes-Nous</a></li>
-            <li><a href="../../contactez-nous/">Contactez-Nous</a></li>
+            <li><a href="../zh/">主页</a></li>
+            <li><a href="../zh/services/">服务</a></li>
+            <li><a href="../zh/portfolio/">我们的产品</a></li>
+            <li><a href="../zh/about/">公司简介</a></li>
+            <li><a href="../zh/contact/">联系我们</a></li>
           </ul>
         </nav>
       </div>
 
       <!-- Services -->
       <div class="footer-section services-links">
-        <h4>Services</h4>
+        <h4>服务</h4>
         <nav class="services-nav">
           <ul>
-            <li><a href="../../services/france-marketing/">Marketing</a></li>
-            <li><a href="../../services/sourcing-2/">Sourcing</a></li>
-            <li><a href="../../services/investissement/">Investissement</a></li>
-            <li><a href="../../services/affaires-reglementaires/">Affaires Réglementaires</a></li>
-            <li><a href="../../services/business-consultant/">Business Consultant</a></li>
-            <li><a href="../../services/distribution-2/">Distribution</a></li>
+            <li><a href="../zh/services/marketing/">市场营销</a></li>
+            <li><a href="../zh/services/sourcing/">采购</a></li>
+            <li><a href="../zh/services/investment/">投资</a></li>
+            <li><a href="../zh/services/regulatory-affairs/">注册事务</a></li>
+            <li><a href="../zh/services/business-consultancy/">商务咨询</a></li>
+            <li><a href="../zh/services/distribution/">分布</a></li>
           </ul>
         </nav>
       </div>
@@ -415,7 +415,7 @@
     <div class="footer-bottom">
       <div class="footer-bottom-container">
         <div class="copyright">
-          <p>Copyright © 2024 Innoledge</p>
+          <p>Copyright © 2025 Innoledge</p>
         </div>
         <div class="powered-by">
           <p>Powered by TR Digital Services</p>
