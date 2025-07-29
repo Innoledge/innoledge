@@ -27,8 +27,8 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/main.css?v=16">
+  <link rel="stylesheet" href="/assets/css/components.css?v=11">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,55 +133,75 @@
               <p class="intro-text">Asia is a good source of supply however to find the good supplier is always time consuming and sometimes frustrating. Innoledge International has got a long time experiences in these areas and can be helpful to source your need.</p>
             </div>
 
-            <!-- Health Care Products Section -->
-            <div class="service-section">
-              <h2>Health Care Products Sourcing</h2>
-              <div class="service-content-block">
-                <p><strong>Sourcing of health care products from China and other Asian countries</strong> including Pharmaceuticals and medical supplies is one of the main functions of our company. We permanently monitor quality control to protect the business of our clients.</p>
-                
-                <p>The vast network of manufacturers in China and Japan is a valuable and competitive source of products because of the large integrated organic and non-organic chemical groups that exist in those countries.</p>
-                
-                <p>For example, certain classes of antibiotics are dominated by Chinese manufacturers worldwide. The recent trend in western countries for natural herbal medicines and health foods can also draw benefit from the long experiences of China, where traditional medicines are available from thousands of factories in different provinces.</p>
+            <!-- Sourcing Tabs and Content -->
+            <div class="sourcing-tabs-container">
+              <!-- Tab Navigation -->
+              <div class="sourcing-tabs">
+                <button class="tab-button active" data-tab="health-care">Health Care Products</button>
+                <button class="tab-button" data-tab="raw-materials">Raw Materials</button>
+                <button class="tab-button" data-tab="garment">Garment</button>
+                <button class="tab-button" data-tab="special-items">Special Items</button>
+              </div>
+
+              <!-- Tab Content Container -->
+              <div class="sourcing-content">
+                <!-- Images Grid (Left Side) -->
+                <div class="sourcing-images">
+                  <div class="image-grid">
+                    <div class="grid-item">
+                      <img src="/assets/images/services/sourcing-edited.jpg" alt="Health Care Products" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                      <img src="/assets/images/services/raw-materials.jpg" alt="Raw Materials" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                      <img src="/assets/images/services/garments.jpg" alt="Garments" loading="lazy">
+                    </div>
+                    <div class="grid-item">
+                      <img src="/assets/images/services/special-items.jpg" alt="Special Items" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Content (Right Side) -->
+                <div class="sourcing-text">
+                  <!-- Health Care Products Tab Content -->
+                  <div class="tab-content active" id="health-care">
+                    <h3>Health Care Products:</h3>
+                    <p><strong>Sourcing of health care products from China and other Asian countries</strong> including Pharmaceuticals and medical supplies is one of the main functions of our company. We permanently monitor quality control to protect the business of our clients.</p>
+                  </div>
+
+                  <!-- Raw Materials Tab Content -->
+                  <div class="tab-content" id="raw-materials">
+                    <h3>Raw Materials:</h3>
+                    <p><strong>Raw material sourcing</strong> is a critical component of our services. We have established strong relationships with reliable suppliers across Asia to provide high-quality raw materials for various industries.</p>
+                    <p>Our expertise covers chemical compounds, active pharmaceutical ingredients (APIs), natural extracts, and specialized materials required for manufacturing processes.</p>
+                  </div>
+
+                  <!-- Garment Tab Content -->
+                  <div class="tab-content" id="garment">
+                    <h3>Garment:</h3>
+                    <p><strong>Garment and textile sourcing</strong> represents another key area of our business. We work with established manufacturers to provide quality apparel and textile products.</p>
+                    <p>Our network includes factories specializing in various textile categories, from basic garments to specialized protective clothing and medical textiles.</p>
+                  </div>
+
+                  <!-- Special Items Tab Content -->
+                  <div class="tab-content" id="special-items">
+                    <h3>Special Items:</h3>
+                    <p><strong>Custom manufacturing and special items</strong> are where our expertise truly shines. Innoledge International can arrange the production of specialized products where raw materials and craftsmanship are available locally.</p>
+                    <p>We transfer and control design specifications to satisfy our overseas clients, ensuring quality and compliance with international standards.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Quality Control Section -->
+            <!-- Quality Assurance Section -->
             <div class="service-section">
               <h2>Quality Assurance</h2>
               <div class="service-content-block">
                 <p><strong>Quality is the top concern of our company</strong> in all aspects including service, competitiveness and products specifications and documentation. To ensure quality, over the years Innoledge International pharmacists have audited and selected factories with good records of price/quality ratio for export of finished products and active ingredients.</p>
                 
                 <p>Sourcing requires the right connections to secure export quotas, and a team of reliable quality controllers.</p>
-              </div>
-            </div>
-
-            <!-- Raw Materials Section -->
-            <div class="service-section">
-              <h2>Raw Materials</h2>
-              <div class="service-content-block">
-                <img src="/assets/images/services/raw-materials.jpg" alt="Raw Materials Sourcing" class="service-section-image">
-                <p><strong>Raw material sourcing</strong> is a critical component of our services. We have established strong relationships with reliable suppliers across Asia to provide high-quality raw materials for various industries.</p>
-                <p>Our expertise covers chemical compounds, active pharmaceutical ingredients (APIs), natural extracts, and specialized materials required for manufacturing processes.</p>
-              </div>
-            </div>
-
-            <!-- Garment Section -->
-            <div class="service-section">
-              <h2>Garment</h2>
-              <div class="service-content-block">
-                <img src="/assets/images/services/garments.jpg" alt="Garment Sourcing" class="service-section-image">
-                <p><strong>Garment and textile sourcing</strong> represents another key area of our business. We work with established manufacturers to provide quality apparel and textile products.</p>
-                <p>Our network includes factories specializing in various textile categories, from basic garments to specialized protective clothing and medical textiles.</p>
-              </div>
-            </div>
-
-            <!-- Special Items Section -->
-            <div class="service-section">
-              <h2>Special Items</h2>
-              <div class="service-content-block">
-                <img src="/assets/images/services/special-items.jpg" alt="Special Items Sourcing" class="service-section-image">
-                <p><strong>Custom manufacturing and special items</strong> are where our expertise truly shines. Innoledge International can arrange the production of specialized products where raw materials and craftsmanship are available locally.</p>
-                <p>We transfer and control design specifications to satisfy our overseas clients, ensuring quality and compliance with international standards.</p>
               </div>
             </div>
 

@@ -22,6 +22,7 @@
     initAccessibility();
     initFormValidation();
     initLazyLoading();
+    initSourcingTabs();
   });
 
   /**
@@ -320,6 +321,35 @@
         setTimeout(() => inThrottle = false, limit);
       }
     };
+  }
+
+  /**
+   * Sourcing Page Tabs Functionality
+   */
+  function initSourcingTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (!tabButtons.length || !tabContents.length) return;
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetTab = this.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const targetContent = document.getElementById(targetTab);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
   }
 
   // Expose utilities globally if needed
