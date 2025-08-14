@@ -106,8 +106,8 @@ async function findHtmlFiles(dir, files = []) {
     const stat = await fs.stat(fullPath);
     
     if (stat.isDirectory()) {
-      // Skip build directory and node_modules
-      if (item !== CONFIG.buildDir && item !== 'node_modules' && !item.startsWith('.')) {
+      // Skip build directory, node_modules, and innoledge subdirectory
+      if (item !== CONFIG.buildDir && item !== 'node_modules' && item !== 'innoledge' && !item.startsWith('.')) {
         await findHtmlFiles(fullPath, files);
       }
     } else if (item.endsWith('.html')) {
