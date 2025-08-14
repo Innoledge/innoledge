@@ -27,8 +27,36 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/main.css?v=38">
+  <link rel="stylesheet" href="/assets/css/components.css?v=11">
+  
+  <!-- Center Distribution Page -->
+  <style>
+    .service-content .service-container {
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      padding: 0 20px !important;
+    }
+    
+    .page-layout-with-sidebar {
+      display: flex !important;
+      gap: 2rem !important;
+      align-items: flex-start !important;
+    }
+    
+    .service-grid {
+      flex: 1 !important;
+      margin-top: -3rem !important;
+    }
+    
+    .extended-sidebar {
+      flex: 0 0 280px !important;
+    }
+    
+    .service-content-section {
+      margin-top: -1rem !important;
+    }
+  </style>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,7 +133,7 @@
     <!-- Page Header -->
     <section class="page-header">
       <div class="page-header-container">
-        <h1 class="page-title">Distribution</h1>
+        <h1 class="page-title"><strong>Distribution</strong></h1>
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
@@ -121,155 +149,181 @@
         </nav>
       </div>
     </section>
-
-    <!-- Promotional Banner -->
-    <section class="promo-banner">
-      <div class="promo-container">
-        <h2>Expand Your Market Reach in Asia</h2>
-        <p>Leverage our extensive distribution network across Hong Kong, China, and Japan to grow your business in the Asian market.</p>
-        <a href="/en/contact/" class="btn btn-cta">Get Distribution Quote</a>
-      </div>
-    </section>
-
     <!-- Service Content -->
     <section class="service-content">
       <div class="service-container">
-        <div class="service-grid">
-          <!-- Main Content -->
-          <div class="service-main">
+        <div class="page-layout-with-sidebar">
+          <div class="service-grid">
+            <!-- Main Content -->
+            <div class="service-main">
             <div class="service-intro">
-              <img src="/assets/images/services/distribution-edited.jpg" alt="Distribution Services" loading="eager" class="service-hero-image">
             </div>
 
-            
-            <div class="service-section">
-              <h2>Hong Kong Distribution</h2>
-              <div class="service-content-block">
-                <p class="intro-text">Because of the relatively simple regulation concerning imports in Hong Kong of Medicines and Cosmetics, INNOLEDGE INTERNATIONAL supplies local distributors and direct users.</p>
-                <p><strong>Among the partners are:</strong></p>
-                <ul>
-                  <li>SASA Cosmetics International</li>
-                  <li>Watson's</li>
-                  <li>Mannings</li>
-                  <li>NULIFE (Multilevel Marketing)</li>
-                  <li>PRIMAL CHEMICAL</li>
-                  <li>The HK Jockey Club</li>
-                  <li>Wingwai Trading Company</li>
-                </ul>
+            <!-- Distribution Tabs and Content -->
+            <div class="sourcing-tabs-container">
+              <!-- Tab Navigation -->
+              <div class="sourcing-tabs">
+                <button class="tab-button active" data-tab="hong-kong">Hong Kong</button>
+                <button class="tab-button" data-tab="china">China</button>
+                <button class="tab-button" data-tab="japan">Japan</button>
               </div>
-            </div>
 
-            <div class="service-section">
-              <h2>China Distribution Network</h2>
-              <div class="service-content-block">
-                <p>Because the distribution of Medicines is not open to foreign companies INNOLEDGE INTERNATIONAL has established partnerships with local distributors according to their products portfolio, geographic coverage, financial resources and promotional abilities.</p>
-                <p><strong>Presently the partnerships include specialized distributors in:</strong> Oncology, Urology, Gynecology, Pediatrics, Gastro-Enterology, Ophthalmology, Dermatology and Surgery.</p>
-                <p>In cosmetics INNOLEDGE INTERNATIONAL has established its own distribution division invoicing in RMB to the regional distributors and chain stores and drugstores. Logistic includes storage and deliveries throughout China.</p>
-              </div>
-            </div>
+              <!-- Tab Content Container -->
+              <div class="sourcing-content">
+                <!-- Hong Kong Tab Content -->
+                <div class="tab-content active" id="hong-kong">
+                  <div class="sourcing-text">
+                    <h3>Hong Kong</h3>
+                    <p>Because of the relatively simple regulation concerning imports in Hong Kong of Medicines and Cosmetics, INNOLEDGE INTERNATIONAL supplies local distributors and direct users. Among the partners are:</p>
+                    
+                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                      <ul style="flex: 1; margin: 0;">
+                        <li>SASA Cosmetics International</li>
+                        <li>Watson's</li>
+                        <li>Mannings</li>
+                        <li>NULIFE (Multilevel Marketing)</li>
+                        <li>PRIMAL CHEMICAL</li>
+                        <li>The HK Jockey Club</li>
+                        <li>Wingwai Trading Company</li>
+                      </ul>
+                      
+                      <div style="flex: 1;">
+                        <img src="/assets/images/services/distribution_partners.jpg" alt="Hong Kong Distribution Partners" loading="lazy" style="width: 100%; height: auto;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="service-section">
-              <h2>Internet & Digital Channels</h2>
-              <div class="service-content-block">
-                <p><strong>Internet:</strong> Because it is a channel very well adapted to china (geographic coverage, promotional, informative and reducing human factors) INNOLEDGE INTERNATIONAL is establishing supply of imported products for famous B2C websites.</p>
-                <p>A new concept is to promote health products (cosmetics and food) to prescribing doctors. Such health products are supply exclusively to the local dispensaries serving doctors prescriptions.</p>
-              </div>
-            </div>
+                <!-- China Tab Content -->
+                <div class="tab-content" id="china">
+                  <div class="sourcing-images">
+                    <img src="/assets/images/services/china_distribution.jpg" alt="China Distribution Network" loading="lazy" style="width: 100%; height: auto;">
+                  </div>
+                  <div class="sourcing-text">
+                    <h3>China</h3>
+                    <p>Because the distribution of Medicines is not open to foreign companies INNOLEDGE INTERNATIONAL has established partnerships with local distributors according to their products portfolio, geographic coverage, financial resources and promotional abilities. Presently the partnerships include specialized distributors in: Oncology, Urology, Gynecology, Pediatrics, Gastro-Enterology, Ophthalmology, Dermatology and Surgery.</p>
+                    
+                    <p>In cosmetics INNOLEDGE INTERNATIONAL has established its own distribution division invoicing in RMB to the regional distributors and chain stores and drugstores. Logistic includes storage and deliveries throughout China.</p>
+                    
+                    <p>Internet: Because it is a channel very well adapted to china (geographic coverage, promotional, informative and reducing human factors) INNOLEDGE INTERNATIONAL is establishing supply of imported products for famous B2C websites.</p>
+                  </div>
+                </div>
 
-            <div class="service-section">
-              <h2>Japan Distribution</h2>
-              <div class="service-content-block">
-                <p>For specific medicines INNOLEDGE INTERNATIONAL supplies directly from Hong Kong Japanese doctors who import medicines exclusively for their own patients. (Esthetic surgery, Geriatrics).</p>
-                <p>This specialized distribution channel provides access to the Japanese market while maintaining compliance with local regulations and medical standards.</p>
-              </div>
-            </div>
-
-            <!-- Partner Logos Section -->
-            <div class="partner-logos">
-              <h3>Our Distribution Partners</h3>
-              <div class="logos-grid">
-                <div class="logo-item">
-                  <img src="/assets/images/partners/sasa-logo.png" alt="SASA Cosmetics" width="120" height="60">
-                </div>
-                <div class="logo-item">
-                  <img src="/assets/images/partners/watsons-logo.png" alt="Watson's" width="120" height="60">
-                </div>
-                <div class="logo-item">
-                  <img src="/assets/images/partners/mannings-logo.png" alt="Mannings" width="120" height="60">
-                </div>
-                <div class="logo-item">
-                  <img src="/assets/images/partners/nulife-logo.png" alt="NULIFE" width="120" height="60">
-                </div>
-                <div class="logo-item">
-                  <img src="/assets/images/partners/primal-logo.png" alt="Primal Chemical" width="120" height="60">
-                </div>
-                <div class="logo-item">
-                  <img src="/assets/images/partners/hkjockey-logo.png" alt="HK Jockey Club" width="120" height="60">
+                <!-- Japan Tab Content -->
+                <div class="tab-content" id="japan">
+                  <div class="sourcing-images">
+                    <img src="/assets/images/services/japan_distribution.jpg" alt="Japan Distribution" loading="lazy" style="width: 100%; height: auto;">
+                  </div>
+                  <div class="sourcing-text">
+                    <h3>Japan</h3>
+                    <p>A new concept is to promote health products (cosmetics and food) to prescribing doctors. Such health products are supply exclusively to the local dispensaries serving doctors prescriptions.</p>
+                    
+                    <p>For specific medicines INNOLEDGE INTERNATIONAL supplies directly from Hong Kong Japanese doctors who import medicines exclusively for their own patients. (Esthetic surgery, Geriatrics).</p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <!-- Call to Action -->
-            <div class="service-cta">
-              <h3>Need Distribution Services?</h3>
-              <p>Contact us to learn how our distribution expertise can help your business succeed in Asia.</p>
-              <div class="cta-actions">
-                <a href="/en/contact/" class="btn btn-primary">Contact Us</a>
-                <a href="/en/portfolio/" class="btn btn-secondary">View Our Portfolio</a>
-              </div>
+            <!-- Next Service Navigation -->
+            <div class="next-service">
+              <a href="/en/services/marketing/" class="next-service-link">
+                <span class="next-service-text">Next Service</span>
+                <span class="next-service-arrow">→</span>
+              </a>
+            </div>
+            <!-- Leave a Reply Section -->
+            <div class="leave-reply-section">
+              <h3>Leave a Reply</h3>
+              <p class="reply-notice">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+              
+              <form class="comment-form" method="post" action="https://formspree.io/f/myzedzbl" data-validate>
+                <div class="comment-field">
+                  <label for="comment-distribution" class="visually-hidden">Comment</label>
+                  <textarea id="comment-distribution" name="comment" placeholder="Comment *" rows="6" required></textarea>
+                  <div class="error-message" style="display: none;"></div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="author-distribution" class="visually-hidden">Name</label>
+                    <input type="text" id="author-distribution" name="author" placeholder="Name*" required>
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="email-distribution" class="visually-hidden">E-mail</label>
+                    <input type="email" id="email-distribution" name="email" placeholder="E-mail*" required>
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="url-distribution" class="visually-hidden">Website</label>
+                    <input type="url" id="url-distribution" name="url" placeholder="Website">
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                </div>
+                
+                <div class="form-checkbox">
+                  <input type="checkbox" id="save-data-distribution" name="save-data" value="1">
+                  <label for="save-data-distribution">Save my name, email, and website in this browser for the next time I comment.</label>
+                </div>
+                
+                <div class="form-submit">
+                  <button type="submit" class="btn btn-primary">Post Comment</button>
+                </div>
+              </form>
             </div>
           </div>
 
-          <!-- Sidebar -->
-          <div class="service-sidebar">
-            <div class="related-services">
-              <h3>Our Services</h3>
-              <nav class="services-nav">
-                <ul>
-                  <li>
-                    <a href="/en/services/marketing/">Marketing</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/sourcing/">Sourcing</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/investment/">Investment</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/regulatory-affairs/">Regulatory Affairs</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/business-consultancy/">Business Consultancy</a>
-                  </li>
-                  <li class="current-service">
-                    <a href="/en/services/distribution/">Distribution</a>
-                  </li>
-                </ul>
-              </nav>
+          <!-- Extended Sidebar -->
+          <aside class="extended-sidebar" aria-label="Sidebar">
+            <div class="sidebar-content">
+              <!-- Related Links Section -->
+              <div class="sidebar-section">
+                <h2 class="sidebar-title">Related Links</h2>
+                <div class="partner-links">
+                <div class="partner-item">
+                  <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Precilens website">
+                    <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy" width="300" height="74">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer" aria-label="Visit GHN Pharma website">
+                    <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy" width="300" height="48">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amino Eclipse website">
+                    <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy" width="300" height="164">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Arthroguard300 website">
+                    <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300" loading="lazy" width="301" height="60">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer" aria-label="Visit Argile du Velay website">
+                    <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy" width="150" height="auto">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit COSMETiGATE website">
+                    <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy" width="200" height="auto">
+                  </a>
+                </div>
+                
+                <div class="partner-item">
+                  <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer" aria-label="Visit Francine Feminine website">
+                    <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy" width="150" height="auto">
+                  </a>
+                </div>
+              </div>
+              </div>
             </div>
-
-            <div class="service-highlights">
-              <h3>Distribution Expertise</h3>
-              <ul>
-                <li>Hong Kong Retail Partnerships</li>
-                <li>China Regional Distribution</li>
-                <li>Specialized Medical Channels</li>
-                <li>Internet & B2C Platforms</li>
-                <li>Logistic & Storage Solutions</li>
-                <li>RMB Invoicing Capability</li>
-                <li>Multi-Level Marketing Support</li>
-                <li>Doctor Prescription Channels</li>
-                <li>Cross-Border Supply</li>
-                <li>Regulatory Compliance</li>
-              </ul>
-            </div>
-
-            <div class="contact-info-sidebar">
-              <h3>Get Started</h3>
-              <p>Ready to discuss your distribution needs?</p>
-              <a href="/en/contact/" class="btn btn-primary">Contact Our Team</a>
-            </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -341,14 +395,16 @@
       </div>
     </div>
 
-    <!-- Footer Bottom -->
+    <!-- Copyright -->
     <div class="footer-bottom">
-      <div class="footer-bottom-container">
+      <div class="footer-container">
         <div class="copyright">
-          <p>Copyright © 2024 Innoledge</p>
+          <p>&copy; 2025 Innoledge International Ltd. All rights reserved.</p>
         </div>
-        <div class="powered-by">
-          <p>Powered by TR Digital Services</p>
+        <div class="footer-languages">
+          <a href="/en/services/distribution/" class="current">English</a>
+          <a href="/fr/services/distribution/">Français</a>
+          <a href="/zh/services/distribution/">中文</a>
         </div>
       </div>
     </div>
@@ -356,6 +412,6 @@
 
   <!-- Scripts -->
   <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/language-switcher.js"></script>
+  <script src="/assets/js/contact-form.js"></script>
 </body>
 </html>
