@@ -329,6 +329,11 @@
   function initSourcingTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
+    const tabImages = document.querySelectorAll('.tab-image');
+    const singleImage = document.querySelector('.single-image');
+    
+    console.log('Tab images found:', tabImages.length, 'Images:', tabImages);
+    tabImages.forEach(img => console.log('Tab image ID:', img.id));
     
     if (!tabButtons.length || !tabContents.length) return;
 
@@ -336,9 +341,10 @@
       button.addEventListener('click', function() {
         const targetTab = this.getAttribute('data-tab');
         
-        // Remove active class from all buttons and contents
+        // Remove active class from all buttons, contents, and images
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
+        tabImages.forEach(image => image.classList.remove('active'));
         
         // Add active class to clicked button
         this.classList.add('active');
@@ -347,6 +353,23 @@
         const targetContent = document.getElementById(targetTab);
         if (targetContent) {
           targetContent.classList.add('active');
+        }
+        
+        // Show corresponding image
+        const targetImage = document.getElementById(targetTab + '-image');
+        console.log('Looking for image with id:', targetTab + '-image', 'Found:', targetImage);
+        if (targetImage) {
+          // Hide the default single image when a tab image is shown
+          if (singleImage) {
+            singleImage.style.display = 'none';
+          }
+          targetImage.classList.add('active');
+          console.log('Activated image:', targetImage);
+        } else {
+          // Show the default single image if no tab-specific image
+          if (singleImage) {
+            singleImage.style.display = 'block';
+          }
         }
       });
     });

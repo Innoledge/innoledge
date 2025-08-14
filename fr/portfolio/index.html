@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-  <title>Portfolio – Innoledge</title>
+  <title>Notre Portfolio – Innoledge</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe et le Japon. Ils comprennent des médicaments, cosmétiques, suppléments alimentaires naturels, dispositifs médicaux et produits de santé animale.">
+  <meta name="description" content="Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe et au Japon. Ils comprennent des médicaments, des cosmétiques, des compléments alimentaires, des dispositifs médicaux et des produits de santé animale.">
   <meta name="robots" content="max-image-preview:large">
   <meta name="generator" content="Static Site Generator">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://innoledge.com/fr/portfolio/">
-  <meta property="og:title" content="Portfolio – Innoledge">
-  <meta property="og:description" content="Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe et le Japon. Ils comprennent des médicaments, cosmétiques, suppléments alimentaires naturels, dispositifs médicaux et produits de santé animale.">
+  <meta property="og:title" content="Notre Portfolio – Innoledge">
+  <meta property="og:description" content="Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe et au Japon. Ils comprennent des médicaments, des cosmétiques, des compléments alimentaires, des dispositifs médicaux et des produits de santé animale.">
   <meta property="og:image" content="https://innoledge.com/assets/images/innoledge-logo.png">
   <meta property="og:locale" content="fr-FR">
   <meta property="og:site_name" content="Innoledge">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://innoledge.com/fr/portfolio/">
+  <meta name="twitter:title" content="Notre Portfolio – Innoledge">
+  <meta name="twitter:description" content="Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe et au Japon. Ils comprennent des médicaments, des cosmétiques, des compléments alimentaires, des dispositifs médicaux et des produits de santé animale.">
+  <meta name="twitter:image" content="https://innoledge.com/assets/images/innoledge-logo.png">
 
   <!-- Language alternates -->
   <link rel="alternate" href="/en/portfolio/" hreflang="en">
@@ -27,8 +34,43 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/assets/css/main.css?v=15">
+  <link rel="stylesheet" href="/assets/css/main.css?v=21">
   <link rel="stylesheet" href="/assets/css/components.css?v=11">
+  
+  <!-- Force Portfolio Layout Fix -->
+  <style>
+    .portfolio-grid {
+      display: grid !important;
+      grid-template-columns: 1.5fr 1fr 300px !important;
+      gap: 1rem !important;
+      align-items: flex-start !important;
+      margin-top: 2rem !important;
+    }
+    
+    .portfolio-images {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.5rem !important;
+      padding: 0 0.5rem !important;
+    }
+    
+    .extended-sidebar {
+      background-color: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      height: fit-content !important;
+      position: sticky !important;
+      top: 1rem !important;
+      align-self: start !important;
+    }
+    
+    @media (max-width: 1199px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+    }
+  </style>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +79,7 @@
 </head>
 <body class="portfolio-page">
   <header class="site-header">
-    <nav class="main-navigation" role="navigation" aria-label="Navigation principale">
+    <nav class="main-navigation" role="navigation" aria-label="Main navigation">
       <div class="nav-container">
         <!-- Logo -->
         <div class="site-logo">
@@ -50,19 +92,19 @@
         <div class="nav-menu">
           <ul class="menu-items">
             <li class="menu-item">
-              <a href="/fr/">Page d'accueil</a>
+              <a href="/fr/">Accueil</a>
             </li>
             <li class="menu-item">
               <a href="/fr/services/">Services</a>
             </li>
             <li class="menu-item current-menu-item">
-              <a href="/fr/portfolio/">Portfolio</a>
+              <a href="/fr/portfolio/">Notre Portfolio</a>
             </li>
             <li class="menu-item">
-              <a href="/fr/qui-sommes-nous/">Qui Sommes-Nous</a>
+              <a href="/fr/about/">À Propos</a>
             </li>
             <li class="menu-item">
-              <a href="/fr/contactez-nous/">Contactez-Nous</a>
+              <a href="/fr/contact/">Contact</a>
             </li>
           </ul>
         </div>
@@ -92,7 +134,7 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-toggle" aria-label="Basculer le menu mobile" aria-expanded="false">
+        <button class="mobile-menu-toggle" aria-label="Ouvrir le menu mobile" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -102,23 +144,16 @@
   </header>
 
   <main id="main-content" class="main-content">
-    <!-- Orange Portfolio Banner -->
-    <section class="portfolio-banner">
-      <div class="portfolio-banner-container">
-        <h1 class="portfolio-banner-title">Notre Portfolio</h1>
-      </div>
-    </section>
-
     <!-- Page Header -->
     <section class="page-header">
       <div class="page-header-container">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <nav class="breadcrumb" aria-label="Fil d'ariane">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
-              <a href="/fr/">Page d'accueil</a>
+              <a href="/fr/">Accueil</a>
             </li>
             <li class="breadcrumb-item current" aria-current="page">
-              Portfolio
+              Notre Portfolio
             </li>
           </ol>
         </nav>
@@ -128,143 +163,105 @@
     <!-- Portfolio Content -->
     <section class="portfolio-content">
       <div class="portfolio-container">
+        <!-- Company Header -->
+        <div class="company-header">
+          <h2 class="company-title">&nbsp;&nbsp;Notre portfolio</h2>
+        </div>
+        
         <div class="portfolio-grid">
           <!-- Main Content -->
           <div class="portfolio-main">
-            <div class="portfolio-intro">
-              <p class="intro-text">Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe (Scandinavie, Royaume-Uni, Allemagne, Belgique, France, Espagne, Italie et Suisse) et le Japon.</p>
-            </div>
+            <p>Les produits que nous proposons en Asie proviennent principalement de fournisseurs basés en Europe (Scandinavie, Royaume-Uni, Allemagne, Belgique, France, Espagne, Italie et Suisse) et au Japon. Ils comprennent :</p>
 
-            <!-- Product Categories -->
-            <div class="product-categories">
+            <div style="margin-top: 1rem;">
+              <p><strong>Médicaments</strong></p>
+              <ul>
+                <li>Antibiotics: Quinolone</li>
+                <li>Ophthalmology: Myopia</li>
+                <li>Gastro-Enterology: Probiotics</li>
+                <li>Geriatrics: Osteoporosis, Hormones</li>
+                <li>Oncology: Radiotherapy</li>
+                <li>Esthetic surgery: Hyaluronic Acids</li>
+                <li>Dermatology: Derma Therapy Wound Healing</li>
+                <li>Surgery: Wound healing</li>
+                <li>Hepatology: Cholagogues and Choleretics</li>
+                <li>Gynecology: Feminine Hygiene, Hormones</li>
+                <li>Cardiology: Lipid Regulator</li>
+                <li>Pediatrics: Probiotics</li>
+                <li>Blood derivatives: Coagulation factors, Albumin, Gamma Globulin</li>
+                <li>Neurology: Vinca Alkaloids</li>
+              </ul>
+
+              <p><strong>Cosmétiques</strong></p>
+              <p>Skin Care ranges, moisturizers, whitening, anti-ageing, color cosmetics and fragrances, baby care ranges.</p>
+
+              <p><strong>Compléments Alimentaires Santé</strong></p>
+              <p>Various pathologies from children to elderly people based on herbal extracts and bioproteins.</p>
+
+              <p><strong>Dispositifs Médicaux</strong></p>
+              <p>OrthoKeratology lenses for the control of Myopia</p>
+
+              <p><strong>Santé Animale</strong></p>
+              <p>Suppléments d'acides aminés pour chevaux de course.</p>
+            </div>
+          </div>
+
+          <!-- Portfolio Images Column -->
+          <div class="portfolio-images">
+            <img src="/assets/images/portfolio/our-portfolio-1.png" alt="Portfolio - Laboratoire et Production" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="/assets/images/portfolio/our-portfolio-2.png" alt="Portfolio - Installation de Fabrication" style="width: 100%; height: auto; border-radius: 8px;">
+          </div>
+
+          <!-- Extended Sidebar -->
+          <aside class="extended-sidebar" aria-label="Liens Connexes">
+            <div class="sidebar-content">
+              <h2 class="sidebar-title">Liens Connexes</h2>
               
-              <!-- Médicaments -->
-              <div class="category-section">
-                <h2>Médicaments</h2>
-                <div class="category-grid">
-                  <div class="category-list">
-                    <ul>
-                      <li><strong>Antibiotiques :</strong> quinolones</li>
-                      <li><strong>Ophtalmologie :</strong> Myopie</li>
-                      <li><strong>Gastro-entérologie :</strong> probiotiques</li>
-                      <li><strong>Personnes âgées :</strong> ostéoporose, hormones</li>
-                      <li><strong>Oncologie :</strong> Radiothérapie</li>
-                      <li><strong>Chirurgie Esthétique :</strong> Hyaluronic Acid</li>
-                      <li><strong>Dermatologie :</strong> cicatrisation des plaies</li>
-                      <li><strong>Chirurgie :</strong> cicatrisation des plaies</li>
-                      <li><strong>Hépatologie :</strong> cholagogues et cholérétiques</li>
-                      <li><strong>Gynécologie :</strong> hygiène féminine, Hormones</li>
-                      <li><strong>Cardiologie :</strong> régulateur des lipides</li>
-                      <li><strong>Pédiatrie :</strong> probiotiques</li>
-                      <li><strong>Les dérivés du sang :</strong> facteurs de coagulation, albumine, Gamma-globuline</li>
-                      <li><strong>Neurologie :</strong> vinca-alcaloïdes</li>
-                    </ul>
-                  </div>
-                  <div class="category-image">
-                    <img src="/assets/images/portfolio/medicines.jpg" alt="Médicaments - Produits pharmaceutiques" width="300" height="200">
-                  </div>
-                </div>
-              </div>
-
-              <!-- Cosmétiques -->
-              <div class="category-section">
-                <h2>Cosmétiques</h2>
-                <div class="category-grid">
-                  <div class="category-content">
-                    <p>Soins de la peau, hydratants, blanchissants, anti-vieillissement, Cosmétiques couleur : produits de maquillage Parfums, Gammes de soins pour bébés.</p>
-                  </div>
-                  <div class="category-image">
-                    <img src="/assets/images/portfolio/cosmetics.jpg" alt="Cosmétiques - Produits de beauté et soins" width="300" height="200">
-                  </div>
-                </div>
-              </div>
-
-              <!-- Suppléments Alimentaires Naturels -->
-              <div class="category-section">
-                <h2>Suppléments Alimentaires Naturels</h2>
-                <div class="category-content">
-                  <p>Diverses pathologies des enfants aux personnes âgées à base d'extraits d'herbes et bioprotéines.</p>
-                </div>
-              </div>
-
-              <!-- Dispositifs Médicaux -->
-              <div class="category-section">
-                <h2>Dispositifs Médicaux</h2>
-                <div class="category-content">
-                  <p>Urologie (UI), chirurgie, diagnostic, orthopédie</p>
-                </div>
-              </div>
-
-              <!-- Santé Animale -->
-              <div class="category-section">
-                <h2>Santé Animale</h2>
-                <div class="category-content">
-                  <p>Suppléments alimentaires à base d'acides aminés pour les chevaux de courses.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Sidebar -->
-          <div class="portfolio-sidebar">
-            <div class="partner-links">
-              <h3>Liens Connexes</h3>
-              <div class="partner-logos-grid">
-                <div class="partner-logo-item">
-                  <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/precilens-logo.png" alt="Precilens - Solutions Ophtalmiques" width="120" height="60">
+              <div class="partner-links">
+                <div class="partner-item">
+                  <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web de Precilens">
+                    <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy" width="300" height="74">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/ghn-logo.png" alt="GHN Pharma - Solutions Pharmaceutiques" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web de GHN Pharma">
+                    <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy" width="300" height="48">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse - Suppléments d'Acides Aminés" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web d'Amino Eclipse">
+                    <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy" width="300" height="164">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300 - Santé Articulaire" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web d'Arthroguard300">
+                    <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300" loading="lazy" width="301" height="60">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay - Produits d'Argile Naturelle" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web d'Argile du Velay">
+                    <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy" width="150" height="auto">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE - Solutions Cosmétiques" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web de COSMETiGATE">
+                    <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy" width="200" height="auto">
                   </a>
                 </div>
-                <div class="partner-logo-item">
-                  <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer">
-                    <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine - Soins Féminins" width="120" height="60">
+                
+                <div class="partner-item">
+                  <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer" aria-label="Visitez le site web de Francine Feminine">
+                    <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy" width="150" height="auto">
                   </a>
                 </div>
               </div>
             </div>
-
-            <div class="portfolio-stats">
-              <h3>Aperçu du Portfolio</h3>
-              <div class="stat-item">
-                <strong>Catégories de Produits :</strong> 5
-              </div>
-              <div class="stat-item">
-                <strong>Régions Sources :</strong> Europe & Japon
-              </div>
-              <div class="stat-item">
-                <strong>Marché Cible :</strong> Asie
-              </div>
-              <div class="stat-item">
-                <strong>Entreprises Partenaires :</strong> 7+
-              </div>
-            </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -300,7 +297,7 @@
             <span>+852 3568 4410</span>
           </div>
           <div class="contact-item">
-            <span class="contact-label">Email :</span>
+            <span class="contact-label">E-mail :</span>
             <a href="mailto:info@innoledge.com">info@innoledge.com</a>
           </div>
         </div>
@@ -311,11 +308,11 @@
         <h4>Liens Rapides</h4>
         <nav class="footer-nav">
           <ul>
-            <li><a href="/fr/">Page d'accueil</a></li>
+            <li><a href="/fr/">Accueil</a></li>
             <li><a href="/fr/services/">Services</a></li>
-            <li><a href="/fr/portfolio/">Portfolio</a></li>
-            <li><a href="/fr/qui-sommes-nous/">Qui Sommes-Nous</a></li>
-            <li><a href="/fr/contactez-nous/">Contactez-Nous</a></li>
+            <li><a href="/fr/portfolio/">Notre Portfolio</a></li>
+            <li><a href="/fr/about/">À Propos</a></li>
+            <li><a href="/fr/contact/">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -325,12 +322,12 @@
         <h4>Services</h4>
         <nav class="services-nav">
           <ul>
-            <li><a href="/fr/services/france-marketing/">Marketing</a></li>
-            <li><a href="/fr/services/sourcing-2/">Sourcing</a></li>
+            <li><a href="/fr/services/marketing/">Marketing</a></li>
+            <li><a href="/fr/services/approvisionnement/">Approvisionnement</a></li>
             <li><a href="/fr/services/investissement/">Investissement</a></li>
             <li><a href="/fr/services/affaires-reglementaires/">Affaires Réglementaires</a></li>
-            <li><a href="/fr/services/business-consultant/">Business Consultant</a></li>
-            <li><a href="/fr/services/distribution-2/">Distribution</a></li>
+            <li><a href="/fr/services/conseil-entreprises/">Conseil aux Entreprises</a></li>
+            <li><a href="/fr/services/distribution/">Distribution</a></li>
           </ul>
         </nav>
       </div>
@@ -340,7 +337,7 @@
     <div class="footer-bottom">
       <div class="footer-bottom-container">
         <div class="copyright">
-          <p>Copyright © 2024 Innoledge</p>
+          <p>Copyright © 2025 Innoledge</p>
         </div>
         <div class="powered-by">
           <p>Powered by TR Digital Services</p>

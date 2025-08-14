@@ -27,8 +27,29 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/assets/css/main.css?v=15">
+  <link rel="stylesheet" href="/assets/css/main.css?v=38">
   <link rel="stylesheet" href="/assets/css/components.css?v=11">
+
+  <style>
+    .page-layout-with-sidebar {
+      display: flex !important;
+      gap: 2rem !important;
+      align-items: flex-start !important;
+    }
+    
+    .service-grid {
+      flex: 1 !important;
+      margin-top: -3rem !important;
+    }
+    
+    .extended-sidebar {
+      flex: 0 0 280px !important;
+    }
+    
+    .service-content-section {
+      margin-top: -1rem !important;
+    }
+  </style>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,7 +126,7 @@
     <!-- Page Header -->
     <section class="page-header">
       <div class="page-header-container">
-        <h1 class="page-title">Marketing</h1>
+        <h1 class="page-title"><strong>Marketing</strong></h1>
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol class="breadcrumb-list">
             <li class="breadcrumb-item">
@@ -125,150 +146,168 @@
     <!-- Service Content -->
     <section class="service-content">
       <div class="service-container">
-        <div class="service-grid">
-          <!-- Main Content -->
-          <div class="service-main">
+        <div class="page-layout-with-sidebar">
+          <div class="service-grid">
+            <!-- Main Content -->
+            <div class="service-main">
             <div class="service-intro">
-              <img src="/assets/images/services/marketing-edited.jpg" alt="Marketing Services" loading="eager" class="service-hero-image">
-              <p class="intro-text">Innoledge International executes pre-marketing functions, conducts market surveys, prepares registration dossiers, and administers clinical trials to serve as interface between manufacturers and health authorities for Asian markets.</p>
             </div>
 
-            <!-- Health Products Section -->
-            <div class="service-section">
-              <h2>Health Products</h2>
-              <div class="service-content-block">
-                <p>Innoledge International executes the pre-marketing functions, conducts market surveys, prepares registration dossiers, administer clinical trials and serves as interface to manufacturers and health authorities for China Market. The products from European Pharmaceutical manufacturers include antibiotics and medicines for gastroenterology, gynecology, and ophthalmology.</p>
-                
-                <p>The medical representatives of Innoledge International will promote the products in accordance to the expectations of the manufacturers. We also organize promotional seminars for opinion leaders of each target market. We purchase the products and distribute them through the logistic network. The emergence of OTC marketing and the health reform in China creates very promising developments opportunities for the health industries. The fast onset of internet trade is also a very efficient and well adapted channel of promotion and distribution.</p>
-                
-                <p>The Health Food Supplements is the new line of CardiWine, Slim Pack and DeodOral, which are all produced by experts in the pharmaceutical industry.</p>
-                
-                <p>Innoledge International spearheads the trading of pharmaceutical raw materials in places like Europe, China, India, Korea and Japan.</p>
-                
-                <p><strong>Our Medical devices:</strong> Tailor made myopia control lenses based on Ortho Keratology treatment.</p>
+            <!-- Marketing Tabs and Content -->
+            <div class="sourcing-tabs-container">
+              <!-- Tab Navigation -->
+              <div class="sourcing-tabs">
+                <button class="tab-button active" data-tab="health-products">Health Products</button>
+                <button class="tab-button" data-tab="cosmetics">Cosmetics</button>
+                <button class="tab-button" data-tab="animal-health">Animal Health</button>
+              </div>
+
+              <!-- Tab Content Container -->
+              <div class="sourcing-content">
+                <!-- Images Grid (Left Side) -->
+                <div class="sourcing-images">
+                  <div class="tab-image active" id="health-products-image">
+                    <img src="/assets/images/services/Pharmaceutical_health.png" alt="Health Products Marketing" loading="lazy">
+                  </div>
+                  <div class="tab-image" id="cosmetics-image">
+                    <img src="/assets/images/services/cosmetics.jpg" alt="Cosmetics Marketing" loading="lazy">
+                  </div>
+                  <div class="tab-image" id="animal-health-image">
+                    <img src="/assets/images/services/animal_health.jpg" alt="Animal Health Marketing" loading="lazy">
+                  </div>
+                </div>
+
+                <!-- Text Content (Right Side) -->
+                <div class="sourcing-text">
+                  <!-- Health Products Tab Content -->
+                  <div class="tab-content active" id="health-products">
+                    <p><strong>Innoledge International</strong> executes the pre-marketing functions, conducts market surveys, prepares registration dossiers, administer clinical trials and serves as interface to manufacturers and health authorities for China Market. The products from European Pharmaceutical manufacturers include antibiotics and medicines for gastroenterology, gynecology, and ophthalmology.</p>
+                    
+                    <p>The medical representatives of Innoledge International will promote the products in accordance to the expectations of the manufacturers. We also organize promotional seminars for opinion leaders of each target market. We purchase the products and distribute them through the logistic network. The emergence of OTC marketing and the health reform in China creates very promising developments opportunities for the health industries. The fast onset of internet trade is also a very efficient and well adapted channel of promotion and distribution.</p>
+                    
+                    <p><strong>The Health Food Supplements</strong> is the new line of CardiWine, Slim Pack and DeodOral, which are all produced by experts in the pharmaceutical industry.</p>
+                    <p><strong>Innoledge International spearheads the trading of pharmaceutical raw materials</strong> in places like Europe, China, India, Korea and Japan.</p>
+                    <p><strong>Our Medical devices:</strong> Tailor made myopia control lenses based on Othro Keratology treatment.</p>
+                  </div>
+
+                  <!-- Cosmetics Tab Content -->
+                  <div class="tab-content" id="cosmetics">
+                    <p>Innoledge International imports prominent cosmetic brands from France straight into the Chinese market.</p>
+                    <p>Our team controls the function of marketing and sales, i.e. import and point of sales.</p>
+                  </div>
+
+                  <!-- Animal Health Tab Content -->
+                  <div class="tab-content" id="animal-health">
+                    <p>Innoledge International caters trainers and breeders from Asia, Australia and Europe.</p>
+                    <p>We are the international distributor of Amino Eclipse, a racing horse supplement. We supply European-made milk replacer in the feed industry of Asia.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Cosmetics Section -->
-            <div class="service-section">
-              <h2>Cosmetics</h2>
-              <div class="service-content-block">
-                <p>Innoledge International imports prominent cosmetic brands from France straight into the Chinese market.</p>
-                <p>Our team controls the function of marketing and sales, i.e. import and point of sales.</p>
-              </div>
+            <!-- Next Service Navigation -->
+            <div class="next-service">
+              <a href="/en/services/sourcing/" class="next-service-link">
+                <span class="next-service-text">Next Service</span>
+                <span class="next-service-arrow">→</span>
+              </a>
             </div>
 
-            <!-- Animal Health Section -->
-            <div class="service-section">
-              <h2>Animal Health</h2>
-              <div class="service-content-block">
-                <p>Innoledge International caters trainers and breeders from Asia, Australia and Europe.</p>
-                <p>We are the international distributor of Amino Eclipse, a racing horse supplement. We supply European-made milk replacer in the feed industry of Asia.</p>
-              </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="service-cta">
-              <h3>Ready to Expand Your Marketing in Asia?</h3>
-              <p>Contact us to learn how our marketing expertise can help your products succeed in Asian markets.</p>
-              <div class="cta-actions">
-                <a href="/en/contact/" class="btn btn-primary">Contact Us</a>
-                <a href="/en/portfolio/" class="btn btn-secondary">View Our Portfolio</a>
-              </div>
+            <!-- Leave a Reply Section -->
+            <div class="leave-reply-section">
+              <h3>Leave a Reply</h3>
+              <p class="reply-notice">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+              
+              <form class="comment-form" method="post" action="https://formspree.io/f/myzedzbl" data-validate>
+                <div class="comment-field">
+                  <label for="comment" class="visually-hidden">Comment</label>
+                  <textarea id="comment" name="comment" placeholder="Comment *" rows="6" required></textarea>
+                  <div class="error-message" style="display: none;"></div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="author" class="visually-hidden">Name</label>
+                    <input type="text" id="author" name="author" placeholder="Name*" required>
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="email" class="visually-hidden">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="E-mail*" required>
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                  <div class="form-field">
+                    <label for="url" class="visually-hidden">Website</label>
+                    <input type="url" id="url" name="url" placeholder="Website">
+                    <div class="error-message" style="display: none;"></div>
+                  </div>
+                </div>
+                
+                <div class="form-checkbox">
+                  <input type="checkbox" id="save-data" name="save-data" value="1">
+                  <label for="save-data">Save my name, email, and website in this browser for the next time I comment.</label>
+                </div>
+                
+                <div class="form-submit">
+                  <button type="submit" class="btn btn-primary">Post Comment</button>
+                </div>
+              </form>
             </div>
           </div>
 
-          <!-- Sidebar -->
-          <div class="service-sidebar">
-            <div class="related-services">
-              <h3>Our Services</h3>
-              <nav class="services-nav">
-                <ul>
-                  <li class="current-service">
-                    <a href="/en/services/marketing/">Marketing</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/sourcing/">Sourcing</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/investment/">Investment</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/regulatory-affairs/">Regulatory Affairs</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/business-consultancy/">Business Consultancy</a>
-                  </li>
-                  <li>
-                    <a href="/en/services/distribution/">Distribution</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            <div class="service-highlights">
-              <h3>Marketing Expertise</h3>
-              <ul>
-                <li>Pre-marketing Functions</li>
-                <li>Market Surveys & Analysis</li>
-                <li>Registration Dossiers</li>
-                <li>Clinical Trials Administration</li>
-                <li>Promotional Seminars</li>
-                <li>Logistic Network Distribution</li>
-                <li>Health Products & Supplements</li>
-                <li>Medical Devices</li>
-                <li>Cosmetics Marketing</li>
-                <li>Animal Health Products</li>
-              </ul>
-            </div>
-
-            <div class="contact-info-sidebar">
-              <h3>Get Started</h3>
-              <p>Ready to discuss your marketing needs in Asia?</p>
-              <a href="/en/contact/" class="btn btn-primary">Contact Our Team</a>
-            </div>
-
-            <div class="partner-links-sidebar">
-              <h3>Our Partners & Products</h3>
-              <div class="partner-links">
-                <div class="partner-link">
-                  <a href="https://www.precilens.com/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy">
+          
+          <!-- Extended Sidebar -->
+          <aside class="extended-sidebar" aria-label="Sidebar">
+            <div class="sidebar-content">
+              <!-- Related Links Section -->
+              <div class="sidebar-section">
+                <h2 class="sidebar-title">Related Links</h2>
+                <div class="partner-links">
+                <div class="partner-item">
+                  <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Precilens website">
+                    <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy" width="300" height="74">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer" aria-label="Visit GHN Pharma website">
+                    <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy" width="300" height="48">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="http://aminoeclipse.com/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amino Eclipse website">
+                    <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy" width="300" height="164">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="http://arthroguard300.com/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/arthroguard300-logo.png" alt="ArthroGuard 300" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Arthroguard300 website">
+                    <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300" loading="lazy" width="301" height="60">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer" aria-label="Visit Argile du Velay website">
+                    <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy" width="150" height="auto">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="https://cosmetigate.com/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit COSMETiGATE website">
+                    <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy" width="200" height="auto">
                   </a>
                 </div>
-                <div class="partner-link">
-                  <a href="http://francine-feminine.com/" target="_blank" rel="noopener">
-                    <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy">
+                
+                <div class="partner-item">
+                  <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer" aria-label="Visit Francine Feminine website">
+                    <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy" width="150" height="auto">
                   </a>
                 </div>
               </div>
+              </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -340,14 +379,16 @@
       </div>
     </div>
 
-    <!-- Footer Bottom -->
+    <!-- Copyright -->
     <div class="footer-bottom">
-      <div class="footer-bottom-container">
+      <div class="footer-container">
         <div class="copyright">
-          <p>Copyright © 2024 Innoledge</p>
+          <p>&copy; 2025 Innoledge International Ltd. All rights reserved.</p>
         </div>
-        <div class="powered-by">
-          <p>Powered by TR Digital Services</p>
+        <div class="footer-languages">
+          <a href="/en/services/marketing/" class="current">English</a>
+          <a href="/fr/services/france-marketing/">Français</a>
+          <a href="/zh/services/marketing/">中文</a>
         </div>
       </div>
     </div>
@@ -355,6 +396,6 @@
 
   <!-- Scripts -->
   <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/language-switcher.js"></script>
+  <script src="/assets/js/contact-form.js"></script>
 </body>
 </html>

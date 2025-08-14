@@ -36,6 +36,79 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/css/main.css?v=15">
   <link rel="stylesheet" href="/assets/css/components.css?v=11">
+  
+  <!-- Expand Contact Form -->
+  <style>
+    .contact-content .page-layout-with-sidebar {
+      display: flex !important;
+      gap: 2rem !important;
+      align-items: flex-start !important;
+    }
+    
+    .contact-form-wrapper {
+      flex: 1 1 85% !important;
+      max-width: none !important;
+      width: 85% !important;
+    }
+    
+    .extended-sidebar {
+      flex: 0 0 200px !important;
+      width: 200px !important;
+    }
+    
+    .contact-container {
+      max-width: 1400px !important;
+      margin: 0 0 0 50px !important;
+      padding: 0 20px !important;
+    }
+    
+    /* Make form inputs normal size */
+    .contact-form .form-input,
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form .form-select,
+    .contact-form select {
+      padding: 16px 20px !important;
+      font-size: 16px !important;
+      min-height: 50px !important;
+      height: 50px !important;
+      width: 100% !important;
+      border: 2px solid #ddd !important;
+      border-radius: 8px !important;
+      box-sizing: border-box !important;
+      line-height: 1.2 !important;
+    }
+    
+    .contact-form .form-textarea,
+    .contact-form textarea {
+      padding: 16px 20px !important;
+      font-size: 16px !important;
+      min-height: 160px !important;
+      width: 100% !important;
+      border: 2px solid #ddd !important;
+      border-radius: 8px !important;
+      box-sizing: border-box !important;
+      resize: vertical !important;
+      line-height: 1.4 !important;
+    }
+    
+    .contact-form .form-group {
+      margin-bottom: 24px !important;
+    }
+    
+    .contact-form .form-label {
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      margin-bottom: 8px !important;
+      display: block !important;
+    }
+    
+    .contact-form-wrapper h2 {
+      text-align: center !important;
+      margin-bottom: 2rem !important;
+    }
+  </style>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,45 +202,7 @@
     <!-- Contact Content -->
     <section class="contact-content">
       <div class="contact-container">
-        <div class="contact-grid">
-          <!-- Contact Information -->
-          <div class="contact-info">
-            <h2>Get in Touch</h2>
-            
-            <div class="contact-details">
-              <div class="contact-item">
-                <h3>Address</h3>
-                <address class="contact-address">
-                  Room 1708, One Midtown<br>
-                  11 Hoi Shing Road, Tsuen Wan<br>
-                  Hong Kong
-                </address>
-              </div>
-              
-              <div class="contact-item">
-                <h3>Phone</h3>
-                <p><a href="tel:+85228037784">+852 2803 7784</a></p>
-              </div>
-              
-              <div class="contact-item">
-                <h3>Fax</h3>
-                <p>+852 3568 4410</p>
-              </div>
-              
-              <div class="contact-item">
-                <h3>Email</h3>
-                <p><a href="mailto:info@innoledge.com">info@innoledge.com</a></p>
-              </div>
-            </div>
-            
-            <!-- Office Locations -->
-            <div class="office-locations">
-              <h3>Our Office Locations</h3>
-              <p>Hong Kong, Beijing, Shanghai and Tokyo</p>
-              <p>INNOLEDGE INTERNATIONAL is the right partner for your development with Asia.</p>
-            </div>
-          </div>
-
+        <div class="page-layout-with-sidebar">
           <!-- Contact Form -->
           <div class="contact-form-wrapper">
             <h2>Send us a Message</h2>
@@ -206,32 +241,6 @@
                       required 
                       aria-required="true"
                       autocomplete="email"
-                    >
-                    <span class="error-message" role="alert"></span>
-                  </div>
-
-                  <!-- Phone Field -->
-                  <div class="form-group">
-                    <label for="contact-phone" class="form-label">Phone</label>
-                    <input 
-                      type="tel" 
-                      id="contact-phone" 
-                      name="phone" 
-                      class="form-input"
-                      autocomplete="tel"
-                    >
-                    <span class="error-message" role="alert"></span>
-                  </div>
-
-                  <!-- Company Field -->
-                  <div class="form-group">
-                    <label for="contact-company" class="form-label">Company</label>
-                    <input 
-                      type="text" 
-                      id="contact-company" 
-                      name="company" 
-                      class="form-input"
-                      autocomplete="organization"
                     >
                     <span class="error-message" role="alert"></span>
                   </div>
@@ -302,38 +311,59 @@
               </div>
             </section>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Related Links Section -->
-    <section class="related-links-section">
-      <div class="related-links-container">
-        <h2>Our Partners & Clients</h2>
-        <div class="related-links-grid">
-          <div class="related-link-item">
-            <img src="/assets/images/related/aminoclipse-logo.png" alt="Aminoclipse" loading="lazy">
-          </div>
-          <div class="related-link-item">
-            <img src="/assets/images/related/argile-du-velay-logo.png" alt="Argile du Velay" loading="lazy">
-          </div>
-          <div class="related-link-item">
-            <img src="/assets/images/related/arthroguard-logo.png" alt="Arthroguard" loading="lazy">
-          </div>
-          <div class="related-link-item">
-            <img src="/assets/images/related/cosmetigate-logo.png" alt="Cosmetigate" loading="lazy">
-          </div>
-          <div class="related-link-item">
-            <a href="https://francine-feminine.net" target="_blank" rel="noopener">
-              <img src="/assets/images/related/francine-logo.png" alt="Francine" loading="lazy">
-            </a>
-          </div>
-          <div class="related-link-item">
-            <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy">
-          </div>
-          <div class="related-link-item">
-            <img src="/assets/images/related/precilens-logo.png" alt="Precilens" loading="lazy">
-          </div>
+          <!-- Extended Sidebar -->
+          <aside class="extended-sidebar" aria-label="Related Links">
+            <div class="sidebar-content">
+              <!-- Related Links Section -->
+              <div class="sidebar-section">
+                <h2 class="sidebar-title">Related Links</h2>
+                <div class="partner-links">
+                  <div class="partner-item">
+                    <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Precilens website">
+                      <img src="/assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy" width="300" height="74">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer" aria-label="Visit GHN Pharma website">
+                      <img src="/assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy" width="300" height="48">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amino Eclipse website">
+                      <img src="/assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy" width="300" height="164">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Arthroguard300 website">
+                      <img src="/assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300" loading="lazy" width="301" height="60">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer" aria-label="Visit Argile du Velay website">
+                      <img src="/assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy" width="150" height="auto">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit COSMETiGATE website">
+                      <img src="/assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy" width="200" height="auto">
+                    </a>
+                  </div>
+                  
+                  <div class="partner-item">
+                    <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer" aria-label="Visit Francine Feminine website">
+                      <img src="/assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy" width="150" height="auto">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
