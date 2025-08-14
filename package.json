@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Innoledge/innoledge#readme",
   "dependencies": {
+    "fs-extra": "^11.3.1",
     "puppeteer": "^24.10.2"
   }
 }

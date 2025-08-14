@@ -24,15 +24,11 @@ jobs:
         with:
           node-version: '18'
       - name: Install dependencies
-        run: |
-          cd innoledge
-          npm install fs-extra
+        run: npm install fs-extra
       - name: Build site
-        run: |
-          cd innoledge
-          node scripts/build.js
+        run: node scripts/build.js
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: 'innoledge/dist'
+          path: 'dist'
       - uses: actions/deploy-pages@v4
