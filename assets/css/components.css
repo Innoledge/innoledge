@@ -13,14 +13,16 @@
 }
 
 .content-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  float: right;
+  width: 280px;
+  max-width: 40%;
+  margin: 0 0 1rem 2rem;
 }
 
 .content-image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  display: block;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
