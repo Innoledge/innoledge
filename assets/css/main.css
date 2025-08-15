@@ -574,15 +574,17 @@ img {
 .services-wrapper {
   display: flex;
   flex-wrap: nowrap;
-  gap: 2.5rem;
   justify-content: center;
   align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
 }
 
 .service-item {
-  flex: 0 1 150px;
-  max-width: 150px;
-  min-width: 110px;
+  flex: 0 1 auto;
+  width: 140px;
+  max-width: 140px;
+  min-width: 120px;
   text-align: center;
   background: none !important;
   border: none !important;
@@ -633,16 +635,26 @@ img {
   word-wrap: break-word;
 }
 
-/* Custom spacing adjustments for French service items - removed for even spacing */
-/*
-.services-wrapper .service-item:nth-child(1) {
-  margin-right: -1rem !important;
+/* Ensure uniform service item heights for better spacing */
+.services-grid .service-title {
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.services-grid .service-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+/* Custom spacing adjustments for French service items */
+/* Add extra spacing between Approvisionnement (2nd) and Investissement (3rd) */
 .services-wrapper .service-item:nth-child(2) {
-  margin-left: 0 !important;
-  margin-right: 1.5rem !important;
+  margin-right: 1rem !important;
 }
-*/
 
 .service-title {
   margin: 0;
