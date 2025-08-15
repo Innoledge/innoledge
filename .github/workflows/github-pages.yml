@@ -19,16 +19,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build site
-        run: npm run build || node scripts/build.js
+      - name: Fix paths for GitHub Pages
+        run: |
+          # Create a temporary directory for deployment
+          mkdir -p _deploy
+          
+          # Copy all files except .git, node_modules, and dist
+          rsync -av --exclude='.git' --exclude='node_modules' --exclude='dist' --exclude='_deploy' . _deploy/
+          
+          # Fix paths in HTML files for GitHub Pages subdirectory
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/assets/|href="/innoledge/assets/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|src="/assets/|src="/innoledge/assets/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/en/|href="/innoledge/en/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/fr/|href="/innoledge/fr/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/zh/|href="/innoledge/zh/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/services/|href="/innoledge/services/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/about-us/|href="/innoledge/about-us/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/contact-us/|href="/innoledge/contact-us/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/our-portfolio/|href="/innoledge/our-portfolio/|g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/" |href="/innoledge/" |g' {} \;
+          find _deploy -name "*.html" -type f -exec sed -i 's|href="/">|href="/innoledge/">|g' {} \;
+          
+          # Create .nojekyll file
+          touch _deploy/.nojekyll
+          
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: '_deploy'
       - uses: actions/deploy-pages@v4
