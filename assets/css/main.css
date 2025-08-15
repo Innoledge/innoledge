@@ -1862,8 +1862,8 @@ img {
 
 /* Individual Service Item */
 .service-item {
-  padding: 2rem 0;
-  margin-bottom: 2rem;
+  padding: 1rem 0;
+  margin-bottom: 0;
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
@@ -1871,18 +1871,7 @@ img {
 }
 
 .services-list .service-item::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: -45rem;
-  height: 1px;
-  background-color: #cccccc;
-  width: calc(100% + 45rem);
-}
-
-.services-list .service-item:last-child::after {
-  display: none;
+  display: none !important;
 }
 
 .services-list .service-item:last-child {
