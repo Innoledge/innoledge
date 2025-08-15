@@ -1,0 +1,16 @@
+<section class="services-grid" aria-label="Our Services">
+  <div class="services-container">
+    <div class="services-wrapper">
+      {{#each services}}
+      <div class="service-item">
+        <a href="{{url}}" class="service-link" aria-label="Learn more about {{title}}">
+          <div class="service-image">
+            <img src="/innoledge/assets/images/services/{{id}}-edited.jpg" alt="{{title}}" loading="lazy">
+          </div>
+          <h3 class="service-title">{{title}}</h3>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

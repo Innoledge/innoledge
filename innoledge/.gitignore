@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Development files
+*.log
+server.log
+
+# Test files
+test-*.js
+test-*.json
+*-test.js
+*-test.json
+
+# Debug files
+debug-*.js
+debug-*.png
+*-debug.*
+
+# Build artifacts
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local environment
+.env
+.env.local
+
+# Screenshots and test images
+screenshot*.png
+*-screenshot.*
+comparison*.png
+visual-*.png
+
+# WordPress artifacts
+index.html@p*
+xmlrpc.php@rsd
+wp-content/
+wp-includes/
+wp-json/
