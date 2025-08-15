@@ -88,8 +88,29 @@ async function generatePages() {
     // Ensure output directory exists
     await fs.ensureDir(path.dirname(outputPath));
     
-    // Copy HTML file
-    await fs.copy(file, outputPath);
+    // Read, process, and write HTML file
+    let content = await fs.readFile(file, 'utf8');
+    
+    // Fix paths for GitHub Pages subdirectory deployment
+    content = content.replace(/href="\/assets\//g, 'href="/innoledge/assets/');
+    content = content.replace(/src="\/assets\//g, 'src="/innoledge/assets/');
+    content = content.replace(/href="\/en\//g, 'href="/innoledge/en/');
+    content = content.replace(/href="\/fr\//g, 'href="/innoledge/fr/');
+    content = content.replace(/href="\/zh\//g, 'href="/innoledge/zh/');
+    content = content.replace(/href="\/services\//g, 'href="/innoledge/services/');
+    content = content.replace(/href="\/about-us\//g, 'href="/innoledge/about-us/');
+    content = content.replace(/href="\/contact-us\//g, 'href="/innoledge/contact-us/');
+    content = content.replace(/href="\/our-portfolio\//g, 'href="/innoledge/our-portfolio/');
+    content = content.replace(/href="\/"([^a-zA-Z]|$)/g, 'href="/innoledge/"$1');
+    content = content.replace(/href="\/">([^<]*)</g, 'href="/innoledge/">$1<');
+    
+    // Fix external URLs that might have been incorrectly modified
+    content = content.replace(/href="https:\/innoledge\//g, 'href="https://');
+    content = content.replace(/src="https:\/innoledge\//g, 'src="https://');
+    content = content.replace(/href="http:\/innoledge\//g, 'href="http://');
+    content = content.replace(/src="http:\/innoledge\//g, 'src="http://');
+    
+    await fs.writeFile(outputPath, content);
     
     console.log(`  ✓ ${relativePath}`);
   }
@@ -144,15 +165,15 @@ Sitemap: https://innoledge.com/sitemap.xml
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Innoledge</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/innoledge/assets/css/main.css">
+    <link rel="stylesheet" href="/innoledge/assets/css/components.css">
 </head>
 <body>
     <div class="error-page">
         <div class="container">
             <h1>404 - Page Not Found</h1>
             <p>The page you're looking for doesn't exist.</p>
-            <a href="/" class="btn btn-primary">Go Home</a>
+            <a href="/innoledge/" class="btn btn-primary">Go Home</a>
         </div>
     </div>
 </body>
