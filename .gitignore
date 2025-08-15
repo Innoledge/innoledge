@@ -17,7 +17,6 @@ debug-*.png
 *-debug.*
 
 # Build artifacts
-dist/
 build/
 
 # IDE files
