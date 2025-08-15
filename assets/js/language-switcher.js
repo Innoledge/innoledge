@@ -200,7 +200,16 @@
     const currentPath = window.location.pathname;
     let currentLang = 'en'; // default
 
-    if (currentPath.startsWith('/fr/')) {
+    // Handle GitHub Pages paths
+    if (currentPath.startsWith('/innoledge/fr/')) {
+      currentLang = 'fr';
+    } else if (currentPath.startsWith('/innoledge/zh/')) {
+      currentLang = 'zh';
+    } else if (currentPath.startsWith('/innoledge/')) {
+      currentLang = 'en';
+    }
+    // Handle local development paths
+    else if (currentPath.startsWith('/fr/')) {
       currentLang = 'fr';
     } else if (currentPath.startsWith('/zh/')) {
       currentLang = 'zh';
@@ -273,6 +282,12 @@
    * Get current language from URL path
    */
   function getCurrentLanguageFromPath(path) {
+    // Handle GitHub Pages paths
+    if (path.startsWith('/innoledge/fr/')) return 'fr';
+    if (path.startsWith('/innoledge/zh/')) return 'zh';
+    if (path.startsWith('/innoledge/')) return 'en';
+    
+    // Handle local development paths
     if (path.startsWith('/fr/')) return 'fr';
     if (path.startsWith('/zh/')) return 'zh';
     return 'en';
@@ -282,21 +297,44 @@
    * Construct translated URL when direct mapping not found
    */
   function constructTranslatedUrl(currentPath, currentLang, targetLang) {
+    // Check if we're on GitHub Pages
+    const isGitHubPages = currentPath.startsWith('/innoledge/');
+    
     // Remove current language prefix
     let basePath = currentPath;
-    if (currentLang === 'fr' && basePath.startsWith('/fr/')) {
-      basePath = basePath.substring(3);
-    } else if (currentLang === 'zh' && basePath.startsWith('/zh/')) {
-      basePath = basePath.substring(3);
-    } else if (currentLang === 'en' && basePath.startsWith('/en/')) {
-      basePath = basePath.substring(3);
-    }
-
-    // Add target language prefix
-    if (targetLang === 'en') {
-      return basePath === '/' ? '/' : '/en' + basePath;
+    
+    if (isGitHubPages) {
+      // Handle GitHub Pages paths
+      if (currentLang === 'fr' && basePath.startsWith('/innoledge/fr/')) {
+        basePath = basePath.substring('/innoledge/fr'.length) || '/';
+      } else if (currentLang === 'zh' && basePath.startsWith('/innoledge/zh/')) {
+        basePath = basePath.substring('/innoledge/zh'.length) || '/';
+      } else if (currentLang === 'en' && basePath.startsWith('/innoledge/')) {
+        basePath = basePath.substring('/innoledge'.length) || '/';
+      }
+      
+      // Add target language prefix for GitHub Pages
+      if (targetLang === 'en') {
+        return '/innoledge' + (basePath === '/' ? '/' : basePath);
+      } else {
+        return '/innoledge/' + targetLang + (basePath === '/' ? '/' : basePath);
+      }
     } else {
-      return '/' + targetLang + (basePath === '/' ? '/' : basePath);
+      // Handle local development paths
+      if (currentLang === 'fr' && basePath.startsWith('/fr/')) {
+        basePath = basePath.substring(3);
+      } else if (currentLang === 'zh' && basePath.startsWith('/zh/')) {
+        basePath = basePath.substring(3);
+      } else if (currentLang === 'en' && basePath.startsWith('/en/')) {
+        basePath = basePath.substring(3);
+      }
+
+      // Add target language prefix for local development
+      if (targetLang === 'en') {
+        return basePath === '/' ? '/' : '/en' + basePath;
+      } else {
+        return '/' + targetLang + (basePath === '/' ? '/' : basePath);
+      }
     }
   }
 
