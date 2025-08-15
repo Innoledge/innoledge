@@ -916,12 +916,13 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-lg);
+  align-items: start;
 }
 
 .footer-section h3,
 .footer-section h4 {
   color: var(--color-dark-gray);
-  margin-bottom: var(--spacing-sm);
+  margin: 0 0 var(--spacing-sm) 0;
   font-size: 1.1rem;
 }
 
