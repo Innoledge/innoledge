@@ -30,8 +30,10 @@
 
   // URL mapping between languages
   const URL_MAPPINGS = {
-    // English to French
+    // English to French (local development)
     '/': '/fr/',
+    // English to French (GitHub Pages)
+    '/innoledge/': '/innoledge/fr/',
     '/en/services/': '/fr/services/',
     '/en/services/marketing/': '/fr/services/france-marketing/',
     '/en/services/sourcing/': '/fr/services/sourcing-2/',
@@ -43,8 +45,10 @@
     '/en/about/': '/fr/qui-sommes-nous/',
     '/en/contact/': '/fr/contactez-nous/',
 
-    // English to Chinese
+    // English to Chinese (local development)
     '/': '/zh/',
+    // English to Chinese (GitHub Pages)
+    '/innoledge/': '/innoledge/zh/',
     '/en/services/': '/zh/services/',
     '/en/services/marketing/': '/zh/services/marketing/',
     '/en/services/sourcing/': '/zh/services/sourcing/',
@@ -56,8 +60,10 @@
     '/en/about/': '/zh/about/',
     '/en/contact/': '/zh/contact/',
 
-    // French to English
+    // French to English (local development)
     '/fr/': '/',
+    // French to English (GitHub Pages)
+    '/innoledge/fr/': '/innoledge/',
     '/fr/services/': '/en/services/',
     '/fr/services/france-marketing/': '/en/services/marketing/',
     '/fr/services/sourcing-2/': '/en/services/sourcing/',
@@ -69,8 +75,10 @@
     '/fr/qui-sommes-nous/': '/en/about/',
     '/fr/contactez-nous/': '/en/contact/',
 
-    // French to Chinese  
+    // French to Chinese (local development)
     '/fr/': '/zh/',
+    // French to Chinese (GitHub Pages)
+    '/innoledge/fr/': '/innoledge/zh/',
     '/fr/services/': '/zh/services/',
     '/fr/services/france-marketing/': '/zh/services/marketing/',
     '/fr/services/sourcing-2/': '/zh/services/sourcing/',
@@ -82,8 +90,10 @@
     '/fr/qui-sommes-nous/': '/zh/about/',
     '/fr/contactez-nous/': '/zh/contact/',
 
-    // Chinese to English
+    // Chinese to English (local development)
     '/zh/': '/',
+    // Chinese to English (GitHub Pages)
+    '/innoledge/zh/': '/innoledge/',
     '/zh/services/': '/en/services/',
     '/zh/services/marketing/': '/en/services/marketing/',
     '/zh/services/sourcing/': '/en/services/sourcing/',
@@ -95,8 +105,10 @@
     '/zh/about/': '/en/about/',
     '/zh/contact/': '/en/contact/',
 
-    // Chinese to French
+    // Chinese to French (local development)
     '/zh/': '/fr/',
+    // Chinese to French (GitHub Pages)
+    '/innoledge/zh/': '/innoledge/fr/',
     '/zh/services/': '/fr/services/',
     '/zh/services/marketing/': '/fr/services/france-marketing/',
     '/zh/services/sourcing/': '/fr/services/sourcing-2/',
