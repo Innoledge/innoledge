@@ -64,6 +64,12 @@
     const successMessage = form.querySelector('.success-message');
     const errorMessage = form.querySelector('.error-message-general');
 
+    // Check for spam
+    if (isSpamSubmission(form)) {
+      console.log('Spam submission detected, blocking');
+      return;
+    }
+
     // Validate form
     if (!validateContactForm(form)) {
       return;
@@ -79,8 +85,6 @@
       // Add additional fields for Formspree
       formData.append('_subject', `New contact from innoledge-contact (${getLanguageFromForm(form)} version)`);
       formData.append('_replyto', formData.get('email'));
-      formData.append('_form_name', 'innoledge-contact');
-      formData.append('_to', 'info@innoledge.com');
       
       // Submit to Formspree
       const response = await fetch(FORMSPREE_ENDPOINT, {
