@@ -2,9 +2,11 @@
   <div class="form-container">
     <form class="contact-form" action="{{formAction}}" method="POST" novalidate>
       <!-- Hidden field for Formspree -->
-      <input type="hidden" name="_subject" value="New contact from {{siteName}} ({{language}})">
+      <input type="hidden" name="_subject" value="New contact from innoledge-contact ({{language}})">
       <input type="hidden" name="_language" value="{{language}}">
       <input type="hidden" name="_next" value="{{thankYouUrl}}">
+      <input type="hidden" name="_form_name" value="innoledge-contact">
+      <input type="hidden" name="_to" value="info@innoledge.com">
       
       <!-- Name Field -->
       <div class="form-group">

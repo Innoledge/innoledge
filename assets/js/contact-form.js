@@ -77,8 +77,10 @@
       const formData = new FormData(form);
       
       // Add additional fields for Formspree
-      formData.append('_subject', `New contact from ${getLanguageFromForm(form)} version`);
+      formData.append('_subject', `New contact from innoledge-contact (${getLanguageFromForm(form)} version)`);
       formData.append('_replyto', formData.get('email'));
+      formData.append('_form_name', 'innoledge-contact');
+      formData.append('_to', 'info@innoledge.com');
       
       // Submit to Formspree
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -102,13 +104,37 @@
         
       } else {
         // Handle Formspree errors
-        const data = await response.json();
-        throw new Error(data.error || 'Form submission failed');
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          errorData = { error: 'Unknown server error' };
+        }
+        
+        console.error('Formspree Response Details:', {
+          status: response.status,
+          statusText: response.statusText,
+          url: response.url,
+          headers: Object.fromEntries(response.headers.entries()),
+          data: errorData
+        });
+        
+        const detailedError = `${errorData.error || 'Form submission failed'} (Status: ${response.status})`;
+        throw new Error(detailedError);
       }
       
     } catch (error) {
       console.error('Form submission error:', error);
-      showFormMessage(form, 'error', getErrorMessage(form));
+      console.error('Form data being submitted:', Array.from(formData.entries()));
+      console.error('Formspree endpoint:', FORMSPREE_ENDPOINT);
+      
+      // Show detailed error message in development
+      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const errorMessage = isDevelopment ? 
+        `${getErrorMessage(form)} (Debug: ${error.message})` : 
+        getErrorMessage(form);
+        
+      showFormMessage(form, 'error', errorMessage);
       trackFormSubmission('error', error.message);
     } finally {
       setFormLoading(form, false);
