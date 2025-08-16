@@ -916,7 +916,13 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-lg);
-  align-items: start;
+  align-items: flex-start;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .footer-section h3,
@@ -924,11 +930,28 @@ img {
   color: var(--color-dark-gray);
   margin: 0 0 var(--spacing-sm) 0;
   font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.footer-section .contact-details,
+.footer-section .footer-nav,
+.footer-section .services-nav {
+  flex: 1;
+  width: 100%;
+  margin-top: 0;
 }
 
 .footer-logo img {
   max-width: 180px;
   margin-bottom: var(--spacing-sm);
+  height: 78px;
+}
+
+/* Align other section headers with company section by compensating for logo height */
+.footer-section.contact-info h4,
+.footer-section.quick-links h4,
+.footer-section.services-links h4 {
+  margin-top: calc(78px + var(--spacing-sm));
 }
 
 .company-address {

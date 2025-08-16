@@ -1,197 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <title>Page Not Found – Innoledge</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The requested page was not found on the Innoledge website.">
-  <meta name="robots" content="noindex, nofollow">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="assets/images/favicon.ico">
-  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Innoledge International Ltd.</title>
+  <meta name="description" content="The page you're looking for cannot be found. Navigate back to our main site.">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/main.css?v=38">
-  <link rel="stylesheet" href="assets/css/components.css?v=11">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   
   <style>
-    .error-page {
+    .error-container {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 60vh;
+      align-items: center;
       text-align: center;
       padding: 2rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     }
     
-    .error-code {
-      font-size: 6rem;
-      font-weight: 700;
-      color: #d5682d;
+    .error-content {
+      max-width: 600px;
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .error-number {
+      font-size: 8rem;
+      font-weight: bold;
+      color: var(--primary-color, #d5682d);
+      margin: 0;
+      line-height: 1;
+    }
+    
+    .error-title {
+      font-size: 2rem;
+      color: #333;
+      margin: 1rem 0;
+    }
+    
+    .error-description {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color, #d5682d);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #c45a26;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 2px solid #dee2e6;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #e9ecef;
+      transform: translateY(-2px);
+    }
+    
+    .language-options {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .language-options h3 {
+      color: #666;
+      font-size: 1rem;
       margin-bottom: 1rem;
     }
     
-    .error-message {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      color: #333;
-    }
-    
-    .error-links {
+    .language-links {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
     }
     
-    .error-link {
-      background: #d5682d;
-      color: white;
-      padding: 0.8rem 1.5rem;
+    .language-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 8px 16px;
+      background: #f8f9fa;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 5px;
+      color: #333;
       transition: background-color 0.3s ease;
     }
     
-    .error-link:hover {
-      background: #b5572a;
+    .language-links a:hover {
+      background: #e9ecef;
+    }
+    
+    .language-links img {
+      width: 20px;
+      height: 15px;
+    }
+    
+    @media (max-width: 768px) {
+      .error-content {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .error-number {
+        font-size: 6rem;
+      }
+      
+      .error-title {
+        font-size: 1.5rem;
+      }
+      
+      .error-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 200px;
+      }
     }
   </style>
 </head>
-<body class="error-page-body">
-  <header class="site-header">
-    <nav class="main-navigation" role="navigation" aria-label="Main navigation">
-      <div class="nav-container">
-        <!-- Logo -->
-        <div class="site-logo">
-          <a href="./" aria-label="Innoledge Homepage">
-            <img src="assets/images/innoledge-logo.png" alt="Innoledge" width="222" height="96">
+<body>
+  <div class="error-container">
+    <div class="error-content">
+      <h1 class="error-number">404</h1>
+      <h2 class="error-title">Oops! The page you're looking for cannot be found.</h2>
+      <p class="error-description">
+        The page you requested might have been moved, deleted, or you may have entered an incorrect URL. 
+        Let's get you back on track!
+      </p>
+      
+      <div class="error-actions">
+        <a href="./" class="btn btn-primary">Go Home</a>
+        <a href="en/services/" class="btn btn-secondary">View Services</a>
+        <a href="en/contact/" class="btn btn-secondary">Contact Us</a>
+      </div>
+      
+      <div class="language-options">
+        <h3>Visit our site in your preferred language:</h3>
+        <div class="language-links">
+          <a href="./">
+            <img src="assets/images/flags/en.svg" alt="English flag">
+            <span>English</span>
+          </a>
+          <a href="fr/">
+            <img src="assets/images/flags/fr.svg" alt="French flag">
+            <span>Français</span>
+          </a>
+          <a href="zh/">
+            <img src="assets/images/flags/zh.svg" alt="Chinese flag">
+            <span>中文</span>
           </a>
         </div>
-
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-          <button class="lang-toggle" aria-label="Language options" aria-expanded="false" aria-haspopup="true">
-            <span class="current-lang">EN</span>
-            <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-              <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <div class="lang-dropdown" role="menu">
-            <a href="./" class="lang-option current" role="menuitem" hreflang="en">
-              <img src="assets/images/flags/en.svg" alt="" width="20" height="15">
-              <span>English</span>
-            </a>
-            <a href="fr/index.html" class="lang-option" role="menuitem" hreflang="fr">
-              <img src="assets/images/flags/fr.svg" alt="" width="20" height="15">
-              <span>Français</span>
-            </a>
-            <a href="zh/index.html" class="lang-option" role="menuitem" hreflang="zh">
-              <img src="assets/images/flags/zh.svg" alt="" width="20" height="15">
-              <span>中文</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main id="main-content" class="main-content">
-    <div class="error-page">
-      <div class="error-code">404</div>
-      <div class="error-message">Oops! The page you're looking for cannot be found.</div>
-      <div class="error-links">
-        <a href="./" class="error-link">Go Home</a>
-        <a href="fr/index.html" class="error-link">Français</a>
-        <a href="zh/index.html" class="error-link">中文</a>
-        <a href="en/services/" class="error-link">View Services</a>
-        <a href="en/contact/" class="error-link">Contact Us</a>
       </div>
     </div>
-  </main>
+  </div>
 
-  <footer class="site-footer">
-    <div class="footer-container">
-      <!-- Company Info -->
-      <div class="footer-section company-info">
-        <div class="footer-logo">
-          <img src="assets/images/innoledge-logo.png" alt="Innoledge" width="180" height="78">
-        </div>
-        <div class="company-details">
-          <h3>INNOLEDGE INTERNATIONAL LTD.</h3>
-          <address class="company-address">
-            Room 1708, One Midtown<br>
-            11 Hoi Shing Road, Tsuen Wan<br>
-            Hong Kong
-          </address>
-        </div>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="footer-section contact-info">
-        <h4>Contact Information</h4>
-        <div class="contact-details">
-          <div class="contact-item">
-            <span class="contact-label">Phone:</span>
-            <a href="tel:+85228037784">+852 2803 7784</a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">Fax:</span>
-            <span>+852 3568 4410</span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-label">Email:</span>
-            <a href="mailto:info@innoledge.com">info@innoledge.com</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="footer-section quick-links">
-        <h4>Quick Links</h4>
-        <nav class="footer-nav">
-          <ul>
-            <li><a href="./">Home</a></li>
-            <li><a href="en/services/">Services</a></li>
-            <li><a href="en/portfolio/">Our Portfolio</a></li>
-            <li><a href="en/about/">About Us</a></li>
-            <li><a href="en/contact/">Contact Us</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-      <div class="footer-bottom-container">
-        <div class="copyright">
-          <p>Copyright © 2025 Innoledge</p>
-        </div>
-        <div class="powered-by">
-          <p>Powered by TR Digital Services</p>
-        </div>
-      </div>
+  <!-- Company Footer -->
+  <footer style="background: #333; color: white; text-align: center; padding: 1rem; margin-top: auto;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <img src="assets/images/innoledge-logo.png" alt="Innoledge International Ltd." style="height: 40px; margin-bottom: 1rem;">
+      <p style="margin: 0; opacity: 0.8;">&copy; 2025 Innoledge International Ltd. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/language-switcher.js"></script>
-  
   <script>
-    // Auto-redirect to homepage if user ends up on 404 after 5 seconds
-    setTimeout(function() {
-      if (confirm("Would you like to return to the homepage?")) {
-        window.location.href = "./";
+    // Auto-detect and update links based on current URL structure
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPath = window.location.pathname;
+      const isGitHubPages = currentPath.startsWith('/innoledge/');
+      
+      if (isGitHubPages) {
+        // Update all links for GitHub Pages
+        const links = document.querySelectorAll('a[href^="./"], a[href^="en/"], a[href^="fr/"], a[href^="zh/"]');
+        links.forEach(link => {
+          let href = link.getAttribute('href');
+          if (href === './') {
+            link.setAttribute('href', '/innoledge/');
+          } else if (href.startsWith('en/') || href.startsWith('fr/') || href.startsWith('zh/')) {
+            link.setAttribute('href', '/innoledge/' + href);
+          }
+        });
       }
-    }, 5000);
+      
+      // Store the 404 event for analytics if needed
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_not_found', {
+          'page_title': '404 Error',
+          'page_location': window.location.href
+        });
+      }
+    });
   </script>
 </body>
 </html>

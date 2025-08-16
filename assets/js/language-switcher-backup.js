@@ -28,8 +28,86 @@
     }
   };
 
-  // Simple URL mapping - all languages use the same URL structure
-  // No hardcoded mappings needed - we'll use pattern-based approach
+  // URL mapping between languages
+  const URL_MAPPINGS = {
+    // English to French
+    '/': '/fr/',
+    '/en/services/': '/fr/services/',
+    '/en/services/marketing/': '/fr/services/france-marketing/',
+    '/en/services/sourcing/': '/fr/services/sourcing-2/',
+    '/en/services/investment/': '/fr/services/investissement/',
+    '/en/services/regulatory-affairs/': '/fr/services/affaires-reglementaires/',
+    '/en/services/business-consultancy/': '/fr/services/business-consultant/',
+    '/en/services/distribution/': '/fr/services/distribution-2/',
+    '/en/portfolio/': '/fr/portfolio/',
+    '/en/about/': '/fr/qui-sommes-nous/',
+    '/en/contact/': '/fr/contactez-nous/',
+
+    // English to Chinese
+    '/': '/zh/',
+    '/en/services/': '/zh/services/',
+    '/en/services/marketing/': '/zh/services/marketing/',
+    '/en/services/sourcing/': '/zh/services/sourcing/',
+    '/en/services/investment/': '/zh/services/investment/',
+    '/en/services/regulatory-affairs/': '/zh/services/regulatory-affairs/',
+    '/en/services/business-consultancy/': '/zh/services/business-consultancy/',
+    '/en/services/distribution/': '/zh/services/distribution/',
+    '/en/portfolio/': '/zh/portfolio/',
+    '/en/about/': '/zh/about/',
+    '/en/contact/': '/zh/contact/',
+
+    // French to English
+    '/fr/': '/',
+    '/fr/services/': '/en/services/',
+    '/fr/services/france-marketing/': '/en/services/marketing/',
+    '/fr/services/sourcing-2/': '/en/services/sourcing/',
+    '/fr/services/investissement/': '/en/services/investment/',
+    '/fr/services/affaires-reglementaires/': '/en/services/regulatory-affairs/',
+    '/fr/services/business-consultant/': '/en/services/business-consultancy/',
+    '/fr/services/distribution-2/': '/en/services/distribution/',
+    '/fr/portfolio/': '/en/portfolio/',
+    '/fr/qui-sommes-nous/': '/en/about/',
+    '/fr/contactez-nous/': '/en/contact/',
+
+    // French to Chinese  
+    '/fr/': '/zh/',
+    '/fr/services/': '/zh/services/',
+    '/fr/services/france-marketing/': '/zh/services/marketing/',
+    '/fr/services/sourcing-2/': '/zh/services/sourcing/',
+    '/fr/services/investissement/': '/zh/services/investment/',
+    '/fr/services/affaires-reglementaires/': '/zh/services/regulatory-affairs/',
+    '/fr/services/business-consultant/': '/zh/services/business-consultancy/',
+    '/fr/services/distribution-2/': '/zh/services/distribution/',
+    '/fr/portfolio/': '/zh/portfolio/',
+    '/fr/qui-sommes-nous/': '/zh/about/',
+    '/fr/contactez-nous/': '/zh/contact/',
+
+    // Chinese to English
+    '/zh/': '/',
+    '/zh/services/': '/en/services/',
+    '/zh/services/marketing/': '/en/services/marketing/',
+    '/zh/services/sourcing/': '/en/services/sourcing/',
+    '/zh/services/investment/': '/en/services/investment/',
+    '/zh/services/regulatory-affairs/': '/en/services/regulatory-affairs/',
+    '/zh/services/business-consultancy/': '/en/services/business-consultancy/',
+    '/zh/services/distribution/': '/en/services/distribution/',
+    '/zh/portfolio/': '/en/portfolio/',
+    '/zh/about/': '/en/about/',
+    '/zh/contact/': '/en/contact/',
+
+    // Chinese to French
+    '/zh/': '/fr/',
+    '/zh/services/': '/fr/services/',
+    '/zh/services/marketing/': '/fr/services/france-marketing/',
+    '/zh/services/sourcing/': '/fr/services/sourcing-2/',
+    '/zh/services/investment/': '/fr/services/investissement/',
+    '/zh/services/regulatory-affairs/': '/fr/services/affaires-reglementaires/',
+    '/zh/services/business-consultancy/': '/fr/services/business-consultant/',
+    '/zh/services/distribution/': '/fr/services/distribution-2/',
+    '/zh/portfolio/': '/fr/portfolio/',
+    '/zh/about/': '/fr/qui-sommes-nous/',
+    '/zh/contact/': '/fr/contactez-nous/'
+  };
 
   // Initialize language switcher when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
@@ -110,16 +188,7 @@
     const currentPath = window.location.pathname;
     let currentLang = 'en'; // default
 
-    // Handle GitHub Pages paths
-    if (currentPath.startsWith('/innoledge/fr/')) {
-      currentLang = 'fr';
-    } else if (currentPath.startsWith('/innoledge/zh/')) {
-      currentLang = 'zh';
-    } else if (currentPath.startsWith('/innoledge/')) {
-      currentLang = 'en';
-    }
-    // Handle local development paths
-    else if (currentPath.startsWith('/fr/')) {
+    if (currentPath.startsWith('/fr/')) {
       currentLang = 'fr';
     } else if (currentPath.startsWith('/zh/')) {
       currentLang = 'zh';
@@ -166,14 +235,25 @@
     // Normalize current path
     const normalizedPath = currentPath.endsWith('/') ? currentPath : currentPath + '/';
     
-    // Get current language from path
+    // Build mapping key based on current path and target language
     const currentLang = getCurrentLanguageFromPath(normalizedPath);
     
     if (currentLang === targetLang) {
       return normalizedPath; // Same language, return current path
     }
 
-    // Construct URL based on pattern
+    // Look for direct mapping
+    for (const [fromPath, toPath] of Object.entries(URL_MAPPINGS)) {
+      if (fromPath === normalizedPath) {
+        // Check if this mapping goes to the target language
+        const mappingTargetLang = getCurrentLanguageFromPath(toPath);
+        if (mappingTargetLang === targetLang) {
+          return toPath;
+        }
+      }
+    }
+
+    // Fallback: construct URL based on pattern
     return constructTranslatedUrl(normalizedPath, currentLang, targetLang);
   }
 
@@ -181,59 +261,30 @@
    * Get current language from URL path
    */
   function getCurrentLanguageFromPath(path) {
-    // Handle GitHub Pages paths
-    if (path.startsWith('/innoledge/fr/')) return 'fr';
-    if (path.startsWith('/innoledge/zh/')) return 'zh';
-    if (path.startsWith('/innoledge/')) return 'en';
-    
-    // Handle local development paths
     if (path.startsWith('/fr/')) return 'fr';
     if (path.startsWith('/zh/')) return 'zh';
     return 'en';
   }
 
   /**
-   * Construct translated URL using pattern-based approach
+   * Construct translated URL when direct mapping not found
    */
   function constructTranslatedUrl(currentPath, currentLang, targetLang) {
-    // Check if we're on GitHub Pages
-    const isGitHubPages = currentPath.startsWith('/innoledge/');
-    
-    // Remove current language prefix to get the base path
+    // Remove current language prefix
     let basePath = currentPath;
-    
-    if (isGitHubPages) {
-      // Handle GitHub Pages paths
-      if (currentLang === 'fr' && basePath.startsWith('/innoledge/fr/')) {
-        basePath = basePath.substring('/innoledge/fr'.length) || '/';
-      } else if (currentLang === 'zh' && basePath.startsWith('/innoledge/zh/')) {
-        basePath = basePath.substring('/innoledge/zh'.length) || '/';
-      } else if (currentLang === 'en' && basePath.startsWith('/innoledge/')) {
-        basePath = basePath.substring('/innoledge'.length) || '/';
-      }
-      
-      // Add target language prefix for GitHub Pages
-      if (targetLang === 'en') {
-        return '/innoledge' + (basePath === '/' ? '/' : basePath);
-      } else {
-        return '/innoledge/' + targetLang + (basePath === '/' ? '/' : basePath);
-      }
-    } else {
-      // Handle local development paths
-      if (currentLang === 'fr' && basePath.startsWith('/fr/')) {
-        basePath = basePath.substring(3) || '/';
-      } else if (currentLang === 'zh' && basePath.startsWith('/zh/')) {
-        basePath = basePath.substring(3) || '/';
-      } else if (currentLang === 'en' && basePath.startsWith('/en/')) {
-        basePath = basePath.substring(3) || '/';
-      }
+    if (currentLang === 'fr' && basePath.startsWith('/fr/')) {
+      basePath = basePath.substring(3);
+    } else if (currentLang === 'zh' && basePath.startsWith('/zh/')) {
+      basePath = basePath.substring(3);
+    } else if (currentLang === 'en' && basePath.startsWith('/en/')) {
+      basePath = basePath.substring(3);
+    }
 
-      // Add target language prefix for local development
-      if (targetLang === 'en') {
-        return basePath === '/' ? '/' : '/en' + basePath;
-      } else {
-        return '/' + targetLang + (basePath === '/' ? '/' : basePath);
-      }
+    // Add target language prefix
+    if (targetLang === 'en') {
+      return basePath === '/' ? '/' : '/en' + basePath;
+    } else {
+      return '/' + targetLang + (basePath === '/' ? '/' : basePath);
     }
   }
 
@@ -264,10 +315,7 @@
    */
   function autoRedirectBasedOnBrowserLanguage() {
     // Only redirect on homepage and if no stored preference
-    const currentPath = window.location.pathname;
-    const isHomepage = currentPath === '/' || currentPath === '/innoledge/';
-    
-    if (!isHomepage || getStoredLanguagePreference()) {
+    if (window.location.pathname !== '/' || getStoredLanguagePreference()) {
       return;
     }
 
@@ -281,8 +329,8 @@
     }
 
     if (targetLang !== 'en') {
-      const targetUrl = getTranslatedUrl(currentPath, targetLang);
-      if (targetUrl && targetUrl !== currentPath) {
+      const targetUrl = getTranslatedUrl('/', targetLang);
+      if (targetUrl && targetUrl !== '/') {
         window.location.href = targetUrl;
       }
     }
