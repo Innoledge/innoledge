@@ -84,7 +84,6 @@
       
       // Add additional fields for Formspree
       formData.append('_subject', `New contact from innoledge-contact (${getLanguageFromForm(form)} version)`);
-      formData.append('_replyto', formData.get('email'));
       
       // Submit to Formspree
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -98,6 +97,7 @@
       if (response.ok) {
         // Success
         showFormMessage(form, 'success', getSuccessMessage(form));
+        showSuccessNotification(getSuccessMessage(form));
         form.reset();
         
         // Analytics tracking
@@ -134,11 +134,25 @@
       
       // Show detailed error message in development
       const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const errorMessage = isDevelopment ? 
-        `${getErrorMessage(form)} (Debug: ${error.message})` : 
-        getErrorMessage(form);
+      let errorMessage;
+      
+      if (isDevelopment) {
+        errorMessage = `${getErrorMessage(form)} (Debug: ${error.message})`;
+      } else {
+        // Show more helpful error messages
+        if (error.message.includes('403')) {
+          errorMessage = 'Form submission blocked. Please ensure you\'re visiting from the correct domain.';
+        } else if (error.message.includes('422')) {
+          errorMessage = 'Form validation failed. Please check all required fields.';
+        } else if (error.message.includes('429')) {
+          errorMessage = 'Too many submissions. Please wait a moment and try again.';
+        } else {
+          errorMessage = getErrorMessage(form);
+        }
+      }
         
       showFormMessage(form, 'error', errorMessage);
+      showErrorNotification(errorMessage);
       trackFormSubmission('error', error.message);
     } finally {
       setFormLoading(form, false);
@@ -329,12 +343,129 @@
     contactForms.forEach(addHoneypotField);
   });
 
+  /**
+   * Show prominent success notification
+   */
+  function showSuccessNotification(message) {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.success-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'success-notification';
+    notification.innerHTML = `
+      <div class="notification-content">
+        <div class="notification-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="11" fill="#28a745"/>
+            <path d="M8 12l3 3 5-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="notification-message">
+          <strong>Message Sent Successfully!</strong>
+          <p>${message}</p>
+        </div>
+        <button class="notification-close" aria-label="Close notification">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    `;
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Add close functionality
+    const closeButton = notification.querySelector('.notification-close');
+    closeButton.addEventListener('click', () => {
+      notification.classList.add('notification-hiding');
+      setTimeout(() => notification.remove(), 300);
+    });
+
+    // Show notification with animation
+    setTimeout(() => notification.classList.add('notification-visible'), 100);
+
+    // Auto-hide after 7 seconds
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.classList.add('notification-hiding');
+        setTimeout(() => notification.remove(), 300);
+      }
+    }, 7000);
+
+    // Focus for accessibility
+    notification.focus();
+  }
+
+  /**
+   * Show error notification
+   */
+  function showErrorNotification(message) {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.error-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'error-notification';
+    notification.innerHTML = `
+      <div class="notification-content">
+        <div class="notification-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="11" fill="#dc3545"/>
+            <path d="M15 9l-6 6M9 9l6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="notification-message">
+          <strong>Message Failed to Send</strong>
+          <p>${message}</p>
+        </div>
+        <button class="notification-close" aria-label="Close notification">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    `;
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Add close functionality
+    const closeButton = notification.querySelector('.notification-close');
+    closeButton.addEventListener('click', () => {
+      notification.classList.add('notification-hiding');
+      setTimeout(() => notification.remove(), 300);
+    });
+
+    // Show notification with animation
+    setTimeout(() => notification.classList.add('notification-visible'), 100);
+
+    // Auto-hide after 10 seconds (longer for errors)
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.classList.add('notification-hiding');
+        setTimeout(() => notification.remove(), 300);
+      }
+    }, 10000);
+
+    // Focus for accessibility
+    notification.focus();
+  }
+
   // Expose utilities for external use
   window.ContactForm = {
     handleFormSubmit,
     validateContactForm,
     setFormLoading,
     showFormMessage,
+    showSuccessNotification,
     trackFormSubmission
   };
 
