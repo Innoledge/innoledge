@@ -214,7 +214,7 @@
       
       // Add target language prefix for GitHub Pages
       if (targetLang === 'en') {
-        return '/innoledge' + (basePath === '/' ? '/' : basePath);
+        return '/innoledge' + (basePath === '/' ? '/' : '/en' + basePath);
       } else {
         return '/innoledge/' + targetLang + (basePath === '/' ? '/' : basePath);
       }
