@@ -209,7 +209,13 @@
       } else if (currentLang === 'zh' && basePath.startsWith('/innoledge/zh/')) {
         basePath = basePath.substring('/innoledge/zh'.length) || '/';
       } else if (currentLang === 'en' && basePath.startsWith('/innoledge/')) {
-        basePath = basePath.substring('/innoledge'.length) || '/';
+        // Check if it's an English subpage with /en/ prefix
+        if (basePath.startsWith('/innoledge/en/')) {
+          basePath = basePath.substring('/innoledge/en'.length) || '/';
+        } else {
+          // Homepage or root-level pages
+          basePath = basePath.substring('/innoledge'.length) || '/';
+        }
       }
       
       // Add target language prefix for GitHub Pages
