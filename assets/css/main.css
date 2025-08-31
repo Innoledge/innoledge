@@ -1897,6 +1897,21 @@ img {
   display: flex;
   border-bottom: 1px solid #ddd;
   margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.sourcing-tabs::-webkit-scrollbar {
+  height: 3px;
+}
+
+.sourcing-tabs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sourcing-tabs::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
 }
 
 .tab-button {
@@ -1908,6 +1923,8 @@ img {
   color: #666;
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .tab-button.active {
@@ -1937,7 +1954,7 @@ img {
 .service-main .sourcing-tabs-container {
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .service-main .sourcing-content {
@@ -1994,6 +2011,19 @@ img {
   margin-bottom: 1rem;
 }
 
+/* Tablet responsiveness for sourcing tabs */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sourcing-tabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  
+  .tab-button {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* Mobile responsiveness for sourcing tabs */
 @media (max-width: 768px) {
   .sourcing-content {
@@ -2006,12 +2036,81 @@ img {
   }
   
   .sourcing-tabs {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
+    gap: 0.75rem;
+    justify-content: center;
+    overflow-x: visible !important;
+    border-bottom: none !important; /* Remove container border on mobile */
+    margin-bottom: 1.5rem !important;
   }
   
   .tab-button {
-    padding: 0.8rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+    flex: 1 1 calc(50% - 0.375rem);
+    min-width: 0;
+    max-width: calc(50% - 0.375rem);
+    text-align: center;
+    white-space: normal !important;
+    flex-shrink: 1 !important;
+    border: 2px solid #ddd !important;
+    border-radius: 6px !important;
+    background: white !important;
+  }
+  
+  .tab-button.active {
+    border-color: var(--color-primary) !important;
+    background-color: rgba(213, 104, 45, 0.05) !important;
+    color: var(--color-primary) !important;
+  }
+  
+  .tab-button:hover {
+    border-color: var(--color-primary) !important;
+  }
+  
+  .sourcing-tabs-container {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .service-main .sourcing-tabs-container {
+    overflow: visible !important;
+  }
+}
+
+/* Enhanced mobile styles for very small screens */
+@media (max-width: 480px) {
+  .sourcing-tabs {
+    flex-direction: column !important;
+    align-items: stretch;
+    gap: 0.75rem;
+    overflow-x: visible !important;
+    border-bottom: none !important;
+  }
+  
+  .tab-button {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    font-size: 0.9rem !important;
+    min-height: 48px; /* Better touch targets */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    white-space: normal !important;
+    border: 2px solid #ddd !important;
+    border-radius: 6px !important;
+    background: white !important;
+  }
+  
+  .tab-button.active {
+    background-color: rgba(213, 104, 45, 0.1) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+  }
+  
+  .tab-button:hover {
+    border-color: var(--color-primary) !important;
   }
 }
 
