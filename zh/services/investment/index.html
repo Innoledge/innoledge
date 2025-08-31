@@ -8,20 +8,12 @@
   <link rel="stylesheet" href="../../../assets/css/components.css?v=11">
 
   <style>
-    .page-layout-with-sidebar {
-      display: flex !important;
-      gap: 2rem !important;
-      align-items: flex-start !important;
-    }
     
     .service-grid {
       flex: 1 !important;
       margin-top: -3rem !important;
     }
     
-    .extended-sidebar {
-      flex: 0 0 280px !important;
-    }
     
     .service-content-section {
       margin-top: -1rem !important;
@@ -71,7 +63,7 @@
 
     <section class="service-content">
       <div class="service-container">
-        <div class="page-layout-with-sidebar">
+        
           <div class="service-grid">
             <div class="service-main">
               <div class="service-intro">
@@ -128,123 +120,3 @@
                 </a>
               </div>
 
-              <!-- Leave a Reply Section -->
-              <div class="leave-reply-section">
-                <h3>发表评论</h3>
-                <p class="reply-notice">您的电子邮件地址不会被公布。必填字段已标记 <span class="required">*</span></p>
-                
-                <form class="comment-form" method="post" action="https://formspree.io/f/myzedzbl" data-validate>
-                  <div class="comment-field">
-                    <label for="comment-investment" class="visually-hidden">评论</label>
-                    <textarea id="comment-investment" name="comment" placeholder="评论 *" rows="6" required></textarea>
-                    <div class="error-message" style="display: none;"></div>
-                  </div>
-                  
-                  <div class="form-row">
-                    <div class="form-field">
-                      <label for="author-investment" class="visually-hidden">姓名</label>
-                      <input type="text" id="author-investment" name="author" placeholder="姓名*" required>
-                      <div class="error-message" style="display: none;"></div>
-                    </div>
-                    <div class="form-field">
-                      <label for="email-investment" class="visually-hidden">电子邮件</label>
-                      <input type="email" id="email-investment" name="email" placeholder="电子邮件*" required>
-                      <div class="error-message" style="display: none;"></div>
-                    </div>
-                    <div class="form-field">
-                      <label for="url-investment" class="visually-hidden">网站</label>
-                      <input type="url" id="url-investment" name="url" placeholder="网站">
-                      <div class="error-message" style="display: none;"></div>
-                    </div>
-                  </div>
-                  
-                  <div class="form-checkbox">
-                    <input type="checkbox" id="save-data-investment" name="save-data" value="1">
-                    <label for="save-data-investment">在此浏览器中保存我的姓名、电子邮件和网站，以便下次评论时使用。</label>
-                  </div>
-                  
-                  <div class="form-submit">
-                    <button type="submit" class="btn btn-primary">发表评论</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <!-- Extended Sidebar -->
-          <aside class="extended-sidebar" aria-label="侧边栏">
-            <div class="sidebar-content">
-              <!-- Related Links Section -->
-              <div class="sidebar-section">
-                <h2 class="sidebar-title">相关链接</h2>
-                <div class="partner-links">
-                  <div class="partner-item">
-                    <a href="https://www.precilens.com/" target="_blank" rel="noopener noreferrer" aria-label="访问Precilens网站">
-                      <img src="../../../assets/images/partners/precilens-logo.png" alt="Precilens" loading="lazy" width="300" height="74">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="https://ghnpharma.com/we-are-ghn/" target="_blank" rel="noopener noreferrer" aria-label="访问GHN Pharma网站">
-                      <img src="../../../assets/images/partners/ghn-logo.webp" alt="GHN Pharma" loading="lazy" width="300" height="48">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="http://aminoeclipse.com/" target="_blank" rel="noopener noreferrer" aria-label="访问Amino Eclipse网站">
-                      <img src="../../../assets/images/partners/aminoeclipse-logo.png" alt="Amino Eclipse" loading="lazy" width="300" height="164">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="http://arthroguard300.com/" target="_blank" rel="noopener noreferrer" aria-label="访问Arthroguard300网站">
-                      <img src="../../../assets/images/partners/arthroguard300-logo.png" alt="Arthroguard300" loading="lazy" width="301" height="60">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="https://argileduvelay.com/fr/" target="_blank" rel="noopener noreferrer" aria-label="访问Argile du Velay网站">
-                      <img src="../../../assets/images/partners/argileduvelay-logo.png" alt="Argile du Velay" loading="lazy" width="150" height="auto">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="https://cosmetigate.com/" target="_blank" rel="noopener noreferrer" aria-label="访问COSMETiGATE网站">
-                      <img src="../../../assets/images/partners/cosmetigate-logo.png" alt="COSMETiGATE" loading="lazy" width="200" height="auto">
-                    </a>
-                  </div>
-                  
-                  <div class="partner-item">
-                    <a href="https://francine-feminine.net" target="_blank" rel="noopener noreferrer" aria-label="访问Francine Feminine网站">
-                      <img src="../../../assets/images/partners/francine-feminine-logo.png" alt="Francine Feminine" loading="lazy" width="150" height="auto">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-section company-info">
-        <h3>INNOLEDGE INTERNATIONAL LTD.</h3>
-        <address>Room 1708, One Midtown<br>11 Hoi Shing Road, Tsuen Wan<br>Hong Kong</address>
-      </div>
-      <div class="footer-section contact-info">
-        <h4>联系信息</h4>
-        <p>电话: <a href="tel:+85228037784">+852 2803 7784</a></p>
-        <p>邮箱: <a href="mailto:info@innoledge.com">info@innoledge.com</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Innoledge International Ltd. 版权所有。</p>
-    </div>
-  </footer>
-
-  <script src="../../../assets/js/main.js"></script>
-</body>
-</html>

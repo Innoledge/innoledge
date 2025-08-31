@@ -30,6 +30,7 @@
   /* Container Widths */
   --container-max-width: 1000px;
   --container-padding: 2.4rem;
+  --container-padding-mobile: 1rem;
   
   /* Transitions */
   --transition-base: 0.2s linear;
@@ -55,6 +56,60 @@ html {
 @media (max-width: 921px) {
   html {
     font-size: 85.5%; /* Scale down on mobile */
+  }
+}
+
+/* Better typography scaling for mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* 30px instead of 40px */
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.6rem; /* 24px instead of 30px */
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.3rem; /* 19px instead of 22px */
+    line-height: 1.4;
+  }
+  
+  p, li {
+    font-size: 1rem; /* 15px */
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 87.5%; /* Slightly larger on very small screens for readability */
+  }
+  
+  h1 {
+    font-size: 1.8rem; /* 28px */
+  }
+  
+  h2 {
+    font-size: 1.4rem; /* 22px */
+  }
+  
+  .page-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile Container Padding Override */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--container-padding-mobile);
   }
 }
 
@@ -144,6 +199,23 @@ a:hover {
 }
 
 img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Better image responsiveness */
+.service-image img,
+.partner-item img,
+.portfolio-image img,
+.company-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.founder-image-float img {
   max-width: 100%;
   height: auto;
 }
@@ -467,10 +539,40 @@ img {
 @media (max-width: 921px) {
   .nav-menu {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: var(--spacing-md);
+  }
+  
+  .nav-menu.mobile-menu-open {
+    display: block;
+  }
+  
+  .nav-menu .menu-items {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-menu .menu-item {
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-xs);
+  }
+  
+  .nav-menu .menu-item:last-child {
+    border-bottom: none;
   }
   
   .mobile-menu-toggle {
     display: flex;
+    cursor: pointer;
+    padding: var(--spacing-xs);
   }
   
   .language-switcher {
@@ -1023,11 +1125,48 @@ img {
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: var(--spacing-md);
+    padding: 0 var(--container-padding-mobile);
+  }
+  
+  .footer-section {
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .footer-logo img {
+    max-width: 150px;
+    margin: 0 auto var(--spacing-sm) auto;
+  }
+  
+  .company-address {
+    font-style: normal;
+    line-height: 1.5;
+  }
+  
+  .contact-details,
+  .footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: center;
+  }
+  
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
   
   .footer-bottom-container {
     flex-direction: column;
     text-align: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--container-padding-mobile);
+  }
+  
+  .footer-bottom {
+    padding: var(--spacing-sm) 0;
   }
 }
 
@@ -1338,7 +1477,7 @@ img {
   }
   
   .partner-links {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
   
   .cta-actions {
@@ -1349,6 +1488,39 @@ img {
   .cta-actions .btn {
     width: 100%;
     max-width: 300px;
+  }
+}
+
+/* Additional mobile improvements for service pages */
+@media (max-width: 768px) {
+  .service-grid {
+    gap: var(--spacing-md);
+  }
+  
+  .service-main {
+    padding: 0;
+  }
+  
+  .partner-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .service-highlight {
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+  }
+  
+  .service-description {
+    text-align: left;
+  }
+  
+  .service-features {
+    padding: 0;
+  }
+  
+  .service-features ul {
+    padding-left: var(--spacing-md);
   }
 }
 
@@ -2356,13 +2528,243 @@ img {
   border: 0 !important;
 }
 
-/* Responsive adjustments for comment form */
+/* Enhanced mobile form layouts */
 @media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
   }
   
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    width: 100%;
+    font-size: 16px; /* Prevent iOS zoom */
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    min-height: 44px; /* Better touch targets */
+  }
+  
+  .form-field textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-form,
   .leave-reply-section {
     padding: var(--spacing-md);
+  }
+  
+  .comment-field,
+  .form-field {
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Centered Content Layout - No Sidebar */
+.content-centered {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Update page layout without sidebar to be centered */
+.page-layout-no-sidebar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Override existing sidebar layouts to center content */
+.page-layout-with-sidebar {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+/* Ensure service grid content is centered */
+.service-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Center about grid content without sidebar */
+.about-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  grid-template-columns: 1fr !important;
+}
+
+/* Fix service container centering - override the problematic left margin */
+.service-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+}
+
+/* Bruno image floating layout for About pages */
+.founder-image-float {
+  float: right;
+  margin: 0 0 20px 30px;
+  text-align: center;
+  max-width: 180px;
+}
+
+.founder-image-float img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments for centered content */
+@media (max-width: 768px) {
+  .content-centered,
+  .page-layout-no-sidebar,
+  .page-layout-with-sidebar,
+  .service-grid,
+  .about-grid {
+    padding: 0 var(--container-padding-mobile);
+    max-width: 100%;
+  }
+  
+  .service-container {
+    padding: 0 var(--container-padding-mobile) !important;
+    max-width: 100% !important;
+  }
+  
+  /* Better spacing for mobile content */
+  .service-content,
+  .about-content {
+    padding: var(--spacing-md) 0;
+  }
+  
+  /* Stack content vertically on mobile */
+  .company-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .founder-image-float {
+    float: none;
+    margin: 20px auto;
+    display: block;
+    max-width: 200px;
+  }
+  
+  /* Mobile image optimizations */
+  .service-image {
+    margin: var(--spacing-sm) auto;
+    text-align: center;
+  }
+  
+  .portfolio-images {
+    margin: var(--spacing-md) 0;
+  }
+  
+  .image-grid {
+    gap: var(--spacing-xs);
+  }
+  
+  .partner-item {
+    padding: var(--spacing-xs);
+  }
+  
+  .partner-item img {
+    max-height: 60px;
+    object-fit: contain;
+  }
+}
+
+/* Related Links Horizontal Layout for About Us Pages */
+.related-links-horizontal {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.related-links-horizontal .section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.related-links-horizontal .partner-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.related-links-horizontal .partner-item {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+}
+
+.related-links-horizontal .partner-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-primary);
+}
+
+.related-links-horizontal .partner-item a {
+  display: block;
+}
+
+.related-links-horizontal .partner-item img {
+  max-width: 100%;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+  transition: var(--transition-base);
+}
+
+.related-links-horizontal .partner-item:hover img {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .related-links-horizontal .partner-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .related-links-horizontal .partner-item {
+    padding: 0.75rem;
+    max-width: none;
+  }
+  
+  .related-links-horizontal .partner-item img {
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .related-links-horizontal .partner-links {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
