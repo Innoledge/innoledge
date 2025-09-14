@@ -82,16 +82,16 @@
       // Prepare form data
       const formData = new FormData(form);
       
-      // Add additional fields for Formspree
-      formData.append('_subject', `New contact from innoledge-contact (${getLanguageFromForm(form)} version)`);
+      // Debug: Log all form data being submitted
+      console.log('Form data being submitted:');
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
       
       // Submit to Formspree
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        body: formData
       });
 
       if (response.ok) {
