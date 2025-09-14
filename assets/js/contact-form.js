@@ -91,7 +91,10 @@
       // Submit to Formspree
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {
