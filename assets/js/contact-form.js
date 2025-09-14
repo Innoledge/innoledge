@@ -81,43 +81,42 @@
     try {
       // Prepare form data
       const originalFormData = new FormData(form);
-
-      // Create new FormData with renamed fields for Formspree
-      const formData = new FormData();
-
+      
+      // Create JSON object with renamed fields for Formspree
+      const jsonData = {};
+      
       // Map fields to Formspree expected names
       for (let [key, value] of originalFormData.entries()) {
         switch(key) {
           case 'name':
-            formData.append('author', value);
+            jsonData['author'] = value;
             break;
           case 'email':
-            formData.append('email', value);  // Keep as is
+            jsonData['email'] = value;
             break;
           case 'service_type':
-            formData.append('comment', value);
+            jsonData['comment'] = value;
             break;
           case 'service_description':
-            formData.append('message', value);
+            jsonData['message'] = value;
             break;
           default:
             // Keep other fields as is (like _subject, _language, _next)
-            formData.append(key, value);
+            jsonData[key] = value;
         }
       }
-
-      // Debug: Log all form data being submitted
-      console.log('Form data being submitted (with renamed fields):');
-      for (let [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
       
-      // Submit to Formspree
+      // Debug: Log all data being submitted
+      console.log('Form data being submitted (as JSON):');
+      console.log(jsonData);
+      
+      // Submit to Formspree as JSON
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: formData,
+        body: JSON.stringify(jsonData),
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         }
       });
 
