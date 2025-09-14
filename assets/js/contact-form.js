@@ -82,33 +82,19 @@
       // Prepare form data
       const originalFormData = new FormData(form);
       
-      // Create JSON object with renamed fields for Formspree
-      const jsonData = {};
-      
-      // Map fields to Formspree expected names
+      console.log('=== DEBUGGING FORM DATA ===');
+      console.log('Original form data entries:');
       for (let [key, value] of originalFormData.entries()) {
-        switch(key) {
-          case 'name':
-            jsonData['author'] = value;
-            break;
-          case 'email':
-            jsonData['email'] = value;
-            break;
-          case 'service_type':
-            jsonData['comment'] = value;
-            break;
-          case 'service_description':
-            jsonData['message'] = value;
-            break;
-          default:
-            // Keep other fields as is (like _subject, _language, _next)
-            jsonData[key] = value;
-        }
+        console.log(`  ${key}: "${value}" (length: ${value.length})`);
       }
       
-      // Debug: Log all data being submitted
-      console.log('Form data being submitted (as JSON):');
-      console.log(jsonData);
+      // Create JSON object with original field names for testing
+      const jsonData = {};
+      for (let [key, value] of originalFormData.entries()) {
+        jsonData[key] = value;
+      }
+      
+      console.log('JSON object being sent:', JSON.stringify(jsonData, null, 2));
       
       // Submit to Formspree as JSON
       const response = await fetch(FORMSPREE_ENDPOINT, {
