@@ -80,10 +80,34 @@
     
     try {
       // Prepare form data
-      const formData = new FormData(form);
-      
+      const originalFormData = new FormData(form);
+
+      // Create new FormData with renamed fields for Formspree
+      const formData = new FormData();
+
+      // Map fields to Formspree expected names
+      for (let [key, value] of originalFormData.entries()) {
+        switch(key) {
+          case 'name':
+            formData.append('author', value);
+            break;
+          case 'email':
+            formData.append('email', value);  // Keep as is
+            break;
+          case 'service_type':
+            formData.append('comment', value);
+            break;
+          case 'service_description':
+            formData.append('message', value);
+            break;
+          default:
+            // Keep other fields as is (like _subject, _language, _next)
+            formData.append(key, value);
+        }
+      }
+
       // Debug: Log all form data being submitted
-      console.log('Form data being submitted:');
+      console.log('Form data being submitted (with renamed fields):');
       for (let [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
       }
