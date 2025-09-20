@@ -22,7 +22,8 @@
 
     contactForms.forEach(form => {
       setupFormHandlers(form);
-      addHoneypotField(form);
+      // Note: Not adding honeypot dynamically to avoid interference
+      // Formspree has built-in spam protection
     });
   }
 
@@ -50,150 +51,47 @@
   }
 
   /**
-   * Handle form submission with hybrid approach
-   * Try AJAX first, fallback to HTML submission if AJAX fails
+   * Handle form submission - Simple HTML submission approach
+   * This ensures maximum compatibility with Formspree
    */
-  async function handleFormSubmit(event) {
-    event.preventDefault();
-
+  function handleFormSubmit(event) {
     const form = event.target;
-    const status = form.querySelector('.success-message') || form.querySelector('.error-message-general');
 
-    // Check for spam
+    // Check for spam (only if honeypot exists in HTML)
     if (isSpamSubmission(form)) {
       console.log('Spam submission detected, blocking');
+      event.preventDefault();
       return;
     }
 
     // Validate form
     if (!validateContactForm(form)) {
+      event.preventDefault();
       return;
     }
 
-    // Show loading state
-    setFormLoading(form, true);
-
-    // Prepare form data - convert to URLSearchParams for Formspree compatibility
-    const formData = new FormData(form);
-    const urlParams = new URLSearchParams();
-
-    // Convert FormData to URLSearchParams (handles files properly)
-    for (const [key, value] of formData.entries()) {
-      if (typeof value === 'string') {
-        urlParams.append(key, value);
-      } else {
-        // Handle File objects (convert to filename)
-        urlParams.append(key, value.name || value.toString());
-      }
-    }
-
-    // Log form data for debugging
+    // Log what we're submitting for debugging
     console.log('=== FORM SUBMISSION DEBUG ===');
     console.log('Form action:', form.action);
-    console.log('Original FormData entries:');
+    console.log('Form method:', form.method);
+
+    const formData = new FormData(form);
+    console.log('Form data being submitted:');
     for (let [key, value] of formData.entries()) {
-      console.log(`  ${key}: "${value}" (type: ${typeof value})`);
+      console.log(`  ${key}: "${value}"`);
     }
-    console.log('URLSearchParams data:', urlParams.toString());
 
-    try {
-      // Try AJAX submission first with proper URL-encoded format
-      console.log('Attempting AJAX submission with URLSearchParams...');
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: urlParams.toString(),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      });
+    // Show loading state briefly
+    setFormLoading(form, true);
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+    // Track submission
+    trackFormSubmission('html_submit', 'Using pure HTML submission');
 
-      if (response.ok) {
-        // AJAX Success
-        console.log('✅ AJAX submission successful!');
-        console.log('Response body:', await response.clone().text());
-        showFormMessage(form, 'success', getSuccessMessage(form));
-        showSuccessNotification(getSuccessMessage(form));
-        form.reset();
-        trackFormSubmission('success', 'AJAX');
-
-        if (status) {
-          status.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-      } else if (response.status === 400 || response.status === 403) {
-        // AJAX blocked (likely free tier), fallback to HTML submission
-        console.log('❌ AJAX submission blocked (status: ' + response.status + '), falling back to HTML submission');
-        const errorText = await response.clone().text();
-        console.log('Error response body:', errorText);
-        setFormLoading(form, false);
-        fallbackToHtmlSubmission(form);
-        return;
-
-      } else {
-        // Other AJAX errors
-        console.log('❌ AJAX submission failed with status:', response.status);
-        const responseText = await response.clone().text();
-        console.log('Error response body:', responseText);
-
-        try {
-          const data = await response.json();
-          let errorMsg = getErrorMessage(form);
-          if (data.errors) {
-            errorMsg = data.errors.map(error => error.message).join(", ");
-          }
-          console.error('Parsed error response:', data);
-          showFormMessage(form, 'error', errorMsg);
-          showErrorNotification(errorMsg);
-          trackFormSubmission('error', errorMsg);
-        } catch (e) {
-          console.log('Failed to parse error response, falling back to HTML submission');
-          setFormLoading(form, false);
-          fallbackToHtmlSubmission(form);
-        }
-      }
-
-    } catch (error) {
-      // Network error or AJAX completely blocked, fallback to HTML submission
-      console.log('AJAX submission failed (' + error.message + '), falling back to HTML submission');
-      setFormLoading(form, false);
-      fallbackToHtmlSubmission(form);
-      return;
-
-    } finally {
-      setFormLoading(form, false);
-    }
+    // Let the form submit naturally to Formspree
+    // Don't prevent default - let browser handle it
+    console.log('✅ Submitting form via standard HTML submission');
   }
 
-  /**
-   * Fallback to standard HTML form submission
-   */
-  function fallbackToHtmlSubmission(form) {
-    console.log('Executing HTML form submission fallback');
-
-    // Remove the event listener temporarily to allow normal form submission
-    form.removeEventListener('submit', handleFormSubmit);
-
-    // Add a small delay to ensure the loading state is reset
-    setTimeout(() => {
-      // Create a new submit event without preventDefault
-      const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
-
-      // Revert to normal form submission behavior
-      form.submit();
-
-      // Re-add event listener for future submissions
-      setTimeout(() => {
-        form.addEventListener('submit', handleFormSubmit);
-      }, 1000);
-
-    }, 100);
-
-    trackFormSubmission('fallback', 'HTML submission used');
-  }
 
   /**
    * Validate contact form
