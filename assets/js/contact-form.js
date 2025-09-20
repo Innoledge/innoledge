@@ -1,6 +1,6 @@
 /**
- * Contact Form Handler
- * Handles Formspree integration and form validation
+ * Contact Form Handler - Simplified Formspree Implementation
+ * Based on official Formspree documentation for reliable form submissions
  */
 
 (function() {
@@ -8,7 +8,7 @@
 
   // Form configuration
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/myzedzbl';
-  
+
   // Initialize contact form when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
@@ -19,9 +19,10 @@
    */
   function initContactForm() {
     const contactForms = document.querySelectorAll('.contact-form');
-    
+
     contactForms.forEach(form => {
       setupFormHandlers(form);
+      addHoneypotField(form);
     });
   }
 
@@ -30,10 +31,7 @@
    */
   function setupFormHandlers(form) {
     form.addEventListener('submit', handleFormSubmit);
-    
-    // Add validation attributes
-    form.setAttribute('data-validate', 'true');
-    
+
     // Setup real-time validation
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -42,7 +40,7 @@
           window.InnoledgeUtils.validateField(this);
         }
       });
-      
+
       input.addEventListener('input', function() {
         if (window.InnoledgeUtils && window.InnoledgeUtils.clearFieldError) {
           window.InnoledgeUtils.clearFieldError(this);
@@ -52,17 +50,13 @@
   }
 
   /**
-   * Handle form submission
+   * Handle form submission using Formspree's recommended approach
    */
-  async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const submitButton = form.querySelector('.form-submit');
-    const buttonText = submitButton.querySelector('.button-text');
-    const buttonLoading = submitButton.querySelector('.button-loading');
-    const successMessage = form.querySelector('.success-message');
-    const errorMessage = form.querySelector('.error-message-general');
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const status = form.querySelector('.success-message') || form.querySelector('.error-message-general');
 
     // Check for spam
     if (isSpamSubmission(form)) {
@@ -75,51 +69,27 @@
       return;
     }
 
-    // Disable form and show loading state
+    // Show loading state
     setFormLoading(form, true);
-    
+
+    // Prepare form data - use FormData directly as recommended by Formspree
+    const formData = new FormData(form);
+
+    // Log form data for debugging
+    console.log('=== FORM SUBMISSION DEBUG ===');
+    console.log('Form action:', form.action);
+    console.log('Form data entries:');
+    for (let [key, value] of formData.entries()) {
+      console.log(`  ${key}: "${value}"`);
+    }
+
     try {
-      // Prepare form data
-      const originalFormData = new FormData(form);
-      
-      console.log('=== DEBUGGING FORM DATA ===');
-      console.log('Original form data entries:');
-      for (let [key, value] of originalFormData.entries()) {
-        console.log(`  ${key}: "${value}" (length: ${value.length})`);
-      }
-      
-      // Create JSON object with fallback for both old and new field names
-      const jsonData = {};
-      for (let [key, value] of originalFormData.entries()) {
-        // Handle field name compatibility during transition
-        switch(key) {
-          case 'name':
-            jsonData['name'] = value; // Use standard Formspree name field
-            break;
-          case 'email':
-            jsonData['email'] = value; // Standard email field
-            break;
-          case 'message':
-          case 'service_description': // Handle both old and new field names
-            jsonData['message'] = value; // Use standard Formspree message field
-            break;
-          case 'service_type':
-            jsonData['service_type'] = value; // Keep as custom field
-            break;
-          default:
-            jsonData[key] = value; // Keep hidden fields as-is
-        }
-      }
-      
-      console.log('JSON object being sent:', JSON.stringify(jsonData, null, 2));
-      
-      // Submit to Formspree as JSON
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: JSON.stringify(jsonData),
+      // Submit using Formspree's recommended fetch approach
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Accept': 'application/json'
         }
       });
 
@@ -128,61 +98,45 @@
         showFormMessage(form, 'success', getSuccessMessage(form));
         showSuccessNotification(getSuccessMessage(form));
         form.reset();
-        
+
         // Analytics tracking
         trackFormSubmission('success');
-        
+
         // Scroll to success message
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-      } else {
-        // Handle Formspree errors
-        let errorData;
-        try {
-          errorData = await response.json();
-        } catch (e) {
-          errorData = { error: 'Unknown server error' };
+        if (status) {
+          status.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        
-        console.error('Formspree Response Details:', {
-          status: response.status,
-          statusText: response.statusText,
-          url: response.url,
-          headers: Object.fromEntries(response.headers.entries()),
-          data: errorData
+
+      } else {
+        // Handle errors
+        response.json().then(data => {
+          let errorMsg = getErrorMessage(form);
+
+          if (data.errors) {
+            errorMsg = data.errors.map(error => error.message).join(", ");
+          }
+
+          console.error('Formspree error response:', data);
+          showFormMessage(form, 'error', errorMsg);
+          showErrorNotification(errorMsg);
+          trackFormSubmission('error', errorMsg);
+
+        }).catch(() => {
+          const errorMsg = getErrorMessage(form);
+          showFormMessage(form, 'error', errorMsg);
+          showErrorNotification(errorMsg);
+          trackFormSubmission('error', 'Response parsing failed');
         });
-        
-        const detailedError = `${errorData.error || 'Form submission failed'} (Status: ${response.status})`;
-        throw new Error(detailedError);
       }
-      
+
     } catch (error) {
       console.error('Form submission error:', error);
-      console.error('Form data being submitted:', Array.from(originalFormData.entries()));
-      console.error('Formspree endpoint:', FORMSPREE_ENDPOINT);
-      
-      // Show detailed error message in development
-      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      let errorMessage;
-      
-      if (isDevelopment) {
-        errorMessage = `${getErrorMessage(form)} (Debug: ${error.message})`;
-      } else {
-        // Show more helpful error messages
-        if (error.message.includes('403')) {
-          errorMessage = 'Form submission blocked. Please ensure you\'re visiting from the correct domain.';
-        } else if (error.message.includes('422')) {
-          errorMessage = 'Form validation failed. Please check all required fields.';
-        } else if (error.message.includes('429')) {
-          errorMessage = 'Too many submissions. Please wait a moment and try again.';
-        } else {
-          errorMessage = getErrorMessage(form);
-        }
-      }
-        
-      showFormMessage(form, 'error', errorMessage);
-      showErrorNotification(errorMessage);
+
+      const errorMsg = getErrorMessage(form);
+      showFormMessage(form, 'error', errorMsg);
+      showErrorNotification(errorMsg);
       trackFormSubmission('error', error.message);
+
     } finally {
       setFormLoading(form, false);
     }
@@ -199,6 +153,16 @@
       if (window.InnoledgeUtils && window.InnoledgeUtils.validateField) {
         if (!window.InnoledgeUtils.validateField(field)) {
           isValid = false;
+        }
+      } else {
+        // Basic validation if utils not available
+        if (!field.value.trim()) {
+          isValid = false;
+          const errorElement = field.parentNode.querySelector('.error-message');
+          if (errorElement) {
+            errorElement.textContent = 'This field is required';
+            errorElement.style.display = 'block';
+          }
         }
       }
     });
@@ -262,29 +226,17 @@
   }
 
   /**
-   * Get language from form context
-   */
-  function getLanguageFromForm(form) {
-    const htmlLang = document.documentElement.lang || 'en';
-    const pathLang = window.location.pathname.split('/')[1];
-    
-    if (pathLang === 'fr') return 'French';
-    if (pathLang === 'zh') return 'Chinese';
-    return 'English';
-  }
-
-  /**
    * Get localized success message
    */
   function getSuccessMessage(form) {
     const lang = document.documentElement.lang || 'en';
-    
+
     const messages = {
       'en': 'Thank you for your message! We will get back to you soon.',
       'fr': 'Merci pour votre message ! Nous vous répondrons bientôt.',
       'zh': '感谢您的留言！我们会尽快回复您。'
     };
-    
+
     return messages[lang] || messages['en'];
   }
 
@@ -293,13 +245,13 @@
    */
   function getErrorMessage(form) {
     const lang = document.documentElement.lang || 'en';
-    
+
     const messages = {
       'en': 'There was an error sending your message. Please try again later.',
       'fr': 'Une erreur s\'est produite lors de l\'envoi de votre message. Veuillez réessayer plus tard.',
       'zh': '发送消息时出错。请稍后重试。'
     };
-    
+
     return messages[lang] || messages['en'];
   }
 
@@ -316,23 +268,13 @@
         'page_location': window.location.href,
         'language': document.documentElement.lang || 'en'
       });
-      
+
       if (status === 'error' && errorMessage) {
         gtag('event', 'exception', {
           'description': errorMessage,
           'fatal': false
         });
       }
-    }
-
-    // Custom analytics (if implemented)
-    if (window.analytics && typeof window.analytics.track === 'function') {
-      window.analytics.track('Form Submitted', {
-        formName: 'contact_form',
-        status: status,
-        language: document.documentElement.lang || 'en',
-        error: errorMessage
-      });
     }
 
     // Console logging for development
@@ -354,7 +296,7 @@
     honeypot.style.display = 'none';
     honeypot.tabIndex = -1;
     honeypot.setAttribute('autocomplete', 'off');
-    
+
     form.appendChild(honeypot);
   }
 
@@ -365,12 +307,6 @@
     const honeypot = form.querySelector('input[name="_gotcha"]');
     return honeypot && honeypot.value !== '';
   }
-
-  // Initialize honeypot protection
-  document.addEventListener('DOMContentLoaded', function() {
-    const contactForms = document.querySelectorAll('.contact-form');
-    contactForms.forEach(addHoneypotField);
-  });
 
   /**
    * Show prominent success notification
