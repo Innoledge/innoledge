@@ -1,0 +1,11 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  <rect x="50" y="30" width="200" height="140" fill="#e9ecef" rx="8"/>
+  <circle cx="100" cy="80" r="25" fill="#e83e8c"/>
+  <circle cx="150" cy="80" r="25" fill="#fd7e14"/>
+  <circle cx="200" cy="80" r="25" fill="#20c997"/>
+  <rect x="75" y="120" width="50" height="30" fill="#6f42c1" rx="15"/>
+  <rect x="130" y="120" width="50" height="30" fill="#dc3545" rx="15"/>
+  <rect x="75" y="155" width="105" height="10" fill="#ffc107" rx="5"/>
+  <text x="150" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#495057">Cosmetic Products</text>
+</svg>

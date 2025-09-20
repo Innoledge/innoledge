@@ -18,7 +18,6 @@ debug-*.png
 
 # Build artifacts
 build/
-dist/
 
 # IDE files
 .vscode/
