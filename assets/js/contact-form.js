@@ -88,10 +88,27 @@
         console.log(`  ${key}: "${value}" (length: ${value.length})`);
       }
       
-      // Create JSON object from form data using standard field names
+      // Create JSON object with fallback for both old and new field names
       const jsonData = {};
       for (let [key, value] of originalFormData.entries()) {
-        jsonData[key] = value;
+        // Handle field name compatibility during transition
+        switch(key) {
+          case 'name':
+            jsonData['name'] = value; // Use standard Formspree name field
+            break;
+          case 'email':
+            jsonData['email'] = value; // Standard email field
+            break;
+          case 'message':
+          case 'service_description': // Handle both old and new field names
+            jsonData['message'] = value; // Use standard Formspree message field
+            break;
+          case 'service_type':
+            jsonData['service_type'] = value; // Keep as custom field
+            break;
+          default:
+            jsonData[key] = value; // Keep hidden fields as-is
+        }
       }
       
       console.log('JSON object being sent:', JSON.stringify(jsonData, null, 2));
