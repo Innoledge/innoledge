@@ -73,31 +73,48 @@
     // Show loading state
     setFormLoading(form, true);
 
-    // Prepare form data
+    // Prepare form data - convert to URLSearchParams for Formspree compatibility
     const formData = new FormData(form);
+    const urlParams = new URLSearchParams();
+
+    // Convert FormData to URLSearchParams (handles files properly)
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === 'string') {
+        urlParams.append(key, value);
+      } else {
+        // Handle File objects (convert to filename)
+        urlParams.append(key, value.name || value.toString());
+      }
+    }
 
     // Log form data for debugging
     console.log('=== FORM SUBMISSION DEBUG ===');
     console.log('Form action:', form.action);
-    console.log('Form data entries:');
+    console.log('Original FormData entries:');
     for (let [key, value] of formData.entries()) {
-      console.log(`  ${key}: "${value}"`);
+      console.log(`  ${key}: "${value}" (type: ${typeof value})`);
     }
+    console.log('URLSearchParams data:', urlParams.toString());
 
     try {
-      // Try AJAX submission first
-      console.log('Attempting AJAX submission...');
+      // Try AJAX submission first with proper URL-encoded format
+      console.log('Attempting AJAX submission with URLSearchParams...');
       const response = await fetch(form.action, {
         method: form.method,
-        body: formData,
+        body: urlParams.toString(),
         headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json'
         }
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
       if (response.ok) {
         // AJAX Success
-        console.log('AJAX submission successful');
+        console.log('✅ AJAX submission successful!');
+        console.log('Response body:', await response.clone().text());
         showFormMessage(form, 'success', getSuccessMessage(form));
         showSuccessNotification(getSuccessMessage(form));
         form.reset();
@@ -109,27 +126,34 @@
 
       } else if (response.status === 400 || response.status === 403) {
         // AJAX blocked (likely free tier), fallback to HTML submission
-        console.log('AJAX submission blocked (status: ' + response.status + '), falling back to HTML submission');
+        console.log('❌ AJAX submission blocked (status: ' + response.status + '), falling back to HTML submission');
+        const errorText = await response.clone().text();
+        console.log('Error response body:', errorText);
         setFormLoading(form, false);
         fallbackToHtmlSubmission(form);
         return;
 
       } else {
         // Other AJAX errors
-        response.json().then(data => {
+        console.log('❌ AJAX submission failed with status:', response.status);
+        const responseText = await response.clone().text();
+        console.log('Error response body:', responseText);
+
+        try {
+          const data = await response.json();
           let errorMsg = getErrorMessage(form);
           if (data.errors) {
             errorMsg = data.errors.map(error => error.message).join(", ");
           }
-          console.error('AJAX error response:', data);
+          console.error('Parsed error response:', data);
           showFormMessage(form, 'error', errorMsg);
           showErrorNotification(errorMsg);
           trackFormSubmission('error', errorMsg);
-        }).catch(() => {
+        } catch (e) {
           console.log('Failed to parse error response, falling back to HTML submission');
           setFormLoading(form, false);
           fallbackToHtmlSubmission(form);
-        });
+        }
       }
 
     } catch (error) {
