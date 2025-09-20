@@ -81,14 +81,12 @@
       console.log(`  ${key}: "${value}"`);
     }
 
-    // Show loading state briefly
-    setFormLoading(form, true);
-
     // Track submission
     trackFormSubmission('html_submit', 'Using pure HTML submission');
 
     // Let the form submit naturally to Formspree
     // Don't prevent default - let browser handle it
+    // CRITICAL: Do NOT disable fields before submission!
     console.log('✅ Submitting form via standard HTML submission');
   }
 
