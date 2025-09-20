@@ -50,7 +50,8 @@
   }
 
   /**
-   * Handle form submission using Formspree's recommended approach
+   * Handle form submission with hybrid approach
+   * Try AJAX first, fallback to HTML submission if AJAX fails
    */
   async function handleFormSubmit(event) {
     event.preventDefault();
@@ -72,7 +73,7 @@
     // Show loading state
     setFormLoading(form, true);
 
-    // Prepare form data - use FormData directly as recommended by Formspree
+    // Prepare form data
     const formData = new FormData(form);
 
     // Log form data for debugging
@@ -84,7 +85,8 @@
     }
 
     try {
-      // Submit using Formspree's recommended fetch approach
+      // Try AJAX submission first
+      console.log('Attempting AJAX submission...');
       const response = await fetch(form.action, {
         method: form.method,
         body: formData,
@@ -94,52 +96,79 @@
       });
 
       if (response.ok) {
-        // Success
+        // AJAX Success
+        console.log('AJAX submission successful');
         showFormMessage(form, 'success', getSuccessMessage(form));
         showSuccessNotification(getSuccessMessage(form));
         form.reset();
+        trackFormSubmission('success', 'AJAX');
 
-        // Analytics tracking
-        trackFormSubmission('success');
-
-        // Scroll to success message
         if (status) {
           status.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
+      } else if (response.status === 400 || response.status === 403) {
+        // AJAX blocked (likely free tier), fallback to HTML submission
+        console.log('AJAX submission blocked (status: ' + response.status + '), falling back to HTML submission');
+        setFormLoading(form, false);
+        fallbackToHtmlSubmission(form);
+        return;
+
       } else {
-        // Handle errors
+        // Other AJAX errors
         response.json().then(data => {
           let errorMsg = getErrorMessage(form);
-
           if (data.errors) {
             errorMsg = data.errors.map(error => error.message).join(", ");
           }
-
-          console.error('Formspree error response:', data);
+          console.error('AJAX error response:', data);
           showFormMessage(form, 'error', errorMsg);
           showErrorNotification(errorMsg);
           trackFormSubmission('error', errorMsg);
-
         }).catch(() => {
-          const errorMsg = getErrorMessage(form);
-          showFormMessage(form, 'error', errorMsg);
-          showErrorNotification(errorMsg);
-          trackFormSubmission('error', 'Response parsing failed');
+          console.log('Failed to parse error response, falling back to HTML submission');
+          setFormLoading(form, false);
+          fallbackToHtmlSubmission(form);
         });
       }
 
     } catch (error) {
-      console.error('Form submission error:', error);
-
-      const errorMsg = getErrorMessage(form);
-      showFormMessage(form, 'error', errorMsg);
-      showErrorNotification(errorMsg);
-      trackFormSubmission('error', error.message);
+      // Network error or AJAX completely blocked, fallback to HTML submission
+      console.log('AJAX submission failed (' + error.message + '), falling back to HTML submission');
+      setFormLoading(form, false);
+      fallbackToHtmlSubmission(form);
+      return;
 
     } finally {
       setFormLoading(form, false);
     }
+  }
+
+  /**
+   * Fallback to standard HTML form submission
+   */
+  function fallbackToHtmlSubmission(form) {
+    console.log('Executing HTML form submission fallback');
+
+    // Remove the event listener temporarily to allow normal form submission
+    form.removeEventListener('submit', handleFormSubmit);
+
+    // Add a small delay to ensure the loading state is reset
+    setTimeout(() => {
+      // Create a new submit event without preventDefault
+      const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+
+      // Revert to normal form submission behavior
+      form.submit();
+
+      // Re-add event listener for future submissions
+      setTimeout(() => {
+        form.addEventListener('submit', handleFormSubmit);
+      }, 1000);
+
+    }, 100);
+
+    trackFormSubmission('fallback', 'HTML submission used');
   }
 
   /**

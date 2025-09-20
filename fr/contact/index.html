@@ -245,6 +245,28 @@
                     <span class="error-message" role="alert"></span>
                   </div>
 
+                  <!-- Service Type Field -->
+                  <div class="form-group">
+                    <label for="contact-service-type" class="form-label">Type de Service <span class="required">*</span></label>
+                    <select
+                      id="contact-service-type"
+                      name="service_type"
+                      class="form-select"
+                      required
+                      aria-required="true"
+                    >
+                      <option value="">Sélectionnez un service...</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="sourcing">Approvisionnement</option>
+                      <option value="investment">Investissement</option>
+                      <option value="regulatory-affairs">Affaires Réglementaires</option>
+                      <option value="business-consultancy">Conseil aux Entreprises</option>
+                      <option value="distribution">Distribution</option>
+                      <option value="other">Autre</option>
+                    </select>
+                    <span class="error-message" role="alert"></span>
+                  </div>
+
                   <!-- Message Field -->
                   <div class="form-group">
                     <label for="contact-message" class="form-label">Message <span class="required">*</span></label>
