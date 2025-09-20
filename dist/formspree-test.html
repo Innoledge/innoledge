@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formspree Test - Pure HTML</title>
+</head>
+<body>
+    <h1>Formspree Test - Pure HTML Form</h1>
+    <p>This form has ZERO JavaScript and should work 100% with Formspree.</p>
+
+    <form action="https://formspree.io/f/myzedzbl" method="POST">
+        <input type="hidden" name="_subject" value="TEST: Pure HTML form submission">
+
+        <p>
+            <label for="author">Name:</label><br>
+            <input type="text" id="author" name="author" value="Test User" required>
+        </p>
+
+        <p>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="test@example.com" required>
+        </p>
+
+        <p>
+            <label for="service_type">Service:</label><br>
+            <select id="service_type" name="service_type" required>
+                <option value="marketing">Marketing</option>
+                <option value="sourcing">Sourcing</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="comment">Message:</label><br>
+            <textarea id="comment" name="comment" required>This is a test message from pure HTML form.</textarea>
+        </p>
+
+        <p>
+            <button type="submit">Submit Test Form</button>
+        </p>
+    </form>
+
+    <h2>What should happen:</h2>
+    <ul>
+        <li>Form submits to Formspree</li>
+        <li>You get redirected to Formspree thank you page</li>
+        <li>ALL columns should be populated: author, email, service_type, comment</li>
+    </ul>
+</body>
+</html>

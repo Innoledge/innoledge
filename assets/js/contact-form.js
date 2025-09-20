@@ -28,12 +28,15 @@
   }
 
   /**
-   * Setup form event handlers
+   * Setup form event handlers - DISABLED FOR PURE HTML SUBMISSION
+   * Removed all JavaScript interference to guarantee Formspree compatibility
    */
   function setupFormHandlers(form) {
-    form.addEventListener('submit', handleFormSubmit);
+    // NUCLEAR OPTION: Remove ALL JavaScript form handling
+    // Let HTML handle everything naturally
+    console.log('✅ Contact form initialized - using PURE HTML submission (no JavaScript interference)');
 
-    // Setup real-time validation
+    // Optional: Setup real-time validation only (no submit handling)
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
       input.addEventListener('blur', function() {
