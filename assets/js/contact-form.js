@@ -88,10 +88,23 @@
         console.log(`  ${key}: "${value}" (length: ${value.length})`);
       }
       
-      // Create JSON object with original field names for testing
+      // Create JSON object with field mapping for Formspree
       const jsonData = {};
       for (let [key, value] of originalFormData.entries()) {
-        jsonData[key] = value;
+        // Map form fields to Formspree expected field names
+        switch(key) {
+          case 'name':
+            jsonData['author'] = value;
+            break;
+          case 'service_description':
+            jsonData['message'] = value;
+            break;
+          case 'service_type':
+            jsonData['comment'] = value; // Service type goes to comment field
+            break;
+          default:
+            jsonData[key] = value; // Keep other fields as-is (email, hidden fields)
+        }
       }
       
       console.log('JSON object being sent:', JSON.stringify(jsonData, null, 2));
@@ -141,7 +154,7 @@
       
     } catch (error) {
       console.error('Form submission error:', error);
-      console.error('Form data being submitted:', Array.from(formData.entries()));
+      console.error('Form data being submitted:', Array.from(originalFormData.entries()));
       console.error('Formspree endpoint:', FORMSPREE_ENDPOINT);
       
       // Show detailed error message in development
