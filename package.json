@@ -18,5 +18,7 @@
     "url": "https://github.com/Innoledge/innoledge/issues"
   },
   "homepage": "https://github.com/Innoledge/innoledge#readme",
-  "dependencies": {}
+  "dependencies": {
+    "nodemailer": "10.0.1"
+  }
 }

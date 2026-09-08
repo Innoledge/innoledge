@@ -14,8 +14,17 @@ Deploy this repository (`Innoledge/innoledge`) to Vercel project `akemis-dev-pro
 
 ## Email
 
-EN, FR and ZH contact forms POST to `/api/contact`. Set `RESEND_API_KEY` in both Vercel Preview and Production after verifying the sending domain in Resend. `MAIL_FROM` defaults to `website@innoledge.com`, and `MAIL_TO` to `info@innoledge.com`. Replies go to the visitor's email address. Keep all credentials in Vercel, never the repository.
+EN, FR and ZH contact forms POST to `/api/contact`, which sends through Google SMTP using Nodemailer. No Resend account is required.
 
-Without the key, the endpoint returns an explicit failure; the browser preserves the message and displays the fallback address. Tests mock Resend and do not send emails. The handler checks required fields, length limits and origins, includes a honeypot, and uses a timeout. Origin checks and a honeypot are basic abuse controls, not distributed rate limiting.
+Set these Vercel environment variables for Production and Preview:
 
-Before enabling email, verify sender DNS and perform an authorized delivery test. Future traffic-based rate limiting can be configured in Vercel Firewall if needed.
+- `SMTP_HOST`: `smtp.gmail.com`
+- `SMTP_PORT`: `465` (implicit TLS; port 587 with required STARTTLS is also supported)
+- `SMTP_USER`: `info@innoledge.com`
+- `SMTP_PASS`: a Google app password, never the normal account password
+
+`MAIL_FROM` defaults to the authenticated mailbox. `MAIL_TO` defaults to `info@innoledge.com`; Reply-To is the visitor. Credentials stay in Vercel, never the repository.
+
+Without credentials, the endpoint reports an explicit failure and preserves the message in the browser. Tests mock the SMTP transport and send no mail. The handler validates fields and origins, has a honeypot, requires encrypted SMTP, and uses connection and socket timeouts. Basic abuse controls do not replace distributed rate limiting.
+
+Before enabling email, verify SMTP authentication and perform an authorized delivery test.
