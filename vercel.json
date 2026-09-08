@@ -4,6 +4,146 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/contact-us/",
+      "destination": "/en/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/index.html",
+      "destination": "/en/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/en/about/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/index.html",
+      "destination": "/en/about/",
+      "permanent": true
+    },
+    {
+      "source": "/our-portfolio/",
+      "destination": "/en/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/our-portfolio/index.html",
+      "destination": "/en/portfolio/",
+      "permanent": true
+    },
+    {
+      "source": "/services/marketing/",
+      "destination": "/en/services/marketing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/marketing/index.html",
+      "destination": "/en/services/marketing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/sourcing/",
+      "destination": "/en/services/sourcing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/sourcing/index.html",
+      "destination": "/en/services/sourcing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/investment/",
+      "destination": "/en/services/investment/",
+      "permanent": true
+    },
+    {
+      "source": "/services/investment/index.html",
+      "destination": "/en/services/investment/",
+      "permanent": true
+    },
+    {
+      "source": "/services/regulatory-affairs/",
+      "destination": "/en/services/regulatory-affairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/regulatory-affairs/index.html",
+      "destination": "/en/services/regulatory-affairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/business-consultancy/",
+      "destination": "/en/services/business-consultancy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/business-consultancy/index.html",
+      "destination": "/en/services/business-consultancy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/distribution/",
+      "destination": "/en/services/distribution/",
+      "permanent": true
+    },
+    {
+      "source": "/services/distribution/index.html",
+      "destination": "/en/services/distribution/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/en/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services/index.html",
+      "destination": "/en/services/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/page-daccueil/",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/page-daccueil/index.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contactez-nous/",
+      "destination": "/fr/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contactez-nous/index.html",
+      "destination": "/fr/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/homepage/",
+      "destination": "/zh/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/homepage/index.html",
+      "destination": "/zh/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/\u4e3b\u9875/",
+      "destination": "/zh/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/\u4e3b\u9875/index.html",
+      "destination": "/zh/",
+      "permanent": true
+    },
+    {
       "source": "/contact-us/:path*",
       "destination": "/en/contact/",
       "permanent": true
