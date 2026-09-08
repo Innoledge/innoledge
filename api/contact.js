@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer');
 const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const copy = {
  en: {success:'Your message has been sent. We will be in touch shortly.', error:'Your message could not be sent. Please email info@innoledge.com.', invalid:'Please complete your name, email address, service and message.', back:'Back to the website'},
@@ -39,14 +40,24 @@ module.exports = async function contact(req, res) {
   fields[key]=body[key].trim();
  }
  if(!EMAIL.test(fields.email) || /[\r\n\x00-\x1f]/.test(fields.name+fields.email+fields.service)) return reply(400,false,t.invalid);
- if (!process.env.RESEND_API_KEY) return reply(503,false,t.error);
+ if (!process.env.SMTP_USER || !process.env.SMTP_PASS) return reply(503,false,t.error);
  try {
-  const response=await fetch('https://api.resend.com/emails',{
-   method:'POST',signal:AbortSignal.timeout(10000),
-   headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,'Content-Type':'application/json'},
-   body:JSON.stringify({from:process.env.MAIL_FROM || 'website@innoledge.com',to:[process.env.MAIL_TO || 'info@innoledge.com'],reply_to:fields.email,subject:`Website enquiry: ${fields.service}`,text:`Name: ${fields.name}\nEmail: ${fields.email}\nService: ${fields.service}\nLanguage: ${lang}\n\n${fields.message}`})
+  const port = Number(process.env.SMTP_PORT || 465);
+  if (![465,587].includes(port)) throw new Error('Invalid SMTP port');
+  const transport = nodemailer.createTransport({
+   host: process.env.SMTP_HOST || 'smtp.gmail.com', port,
+   secure: port === 465, requireTLS: true,
+   auth: {user:process.env.SMTP_USER, pass:process.env.SMTP_PASS},
+   connectionTimeout:10000, greetingTimeout:10000, socketTimeout:10000,
+   disableFileAccess:true, disableUrlAccess:true
   });
-  if(!response.ok) throw new Error(`Provider status ${response.status}`);
+  const result = await transport.sendMail({
+   from:process.env.MAIL_FROM || process.env.SMTP_USER,
+   to:process.env.MAIL_TO || 'info@innoledge.com', replyTo:fields.email,
+   subject:`Website enquiry: ${fields.service}`,
+   text:`Name: ${fields.name}\nEmail: ${fields.email}\nService: ${fields.service}\nLanguage: ${lang}\n\n${fields.message}`
+  });
+  if (!result.accepted || !result.accepted.length) throw new Error('SMTP recipient rejected');
   return reply(200,true,t.success);
  } catch(error) {
   console.error('Email delivery failed:',error.name);
