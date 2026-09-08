@@ -4,7 +4,7 @@
   "description": "A modern, maintainable static version of innoledge.com with full multilingual support.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test tests/*.test.js",
     "build": "node scripts/build.js"
   },
   "repository": {
@@ -18,8 +18,5 @@
     "url": "https://github.com/Innoledge/innoledge/issues"
   },
   "homepage": "https://github.com/Innoledge/innoledge#readme",
-  "dependencies": {
-    "fs-extra": "^11.3.1",
-    "puppeteer": "^24.10.2"
-  }
+  "dependencies": {}
 }

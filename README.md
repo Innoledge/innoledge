@@ -1,75 +1,21 @@
-# Innoledge.com2 - Modern Static Site
+# Innoledge website
 
-A modern, maintainable static version of innoledge.com with full multilingual support.
+The cleaned static Innoledge site, with EN/FR/ZH pages and the original seven partner links retained in a right-hand sidebar. On mobile, partners appear below the main content.
 
-## Features
+## Build and test
 
-- 🌍 **Multilingual**: English, French, and Chinese versions
-- 📱 **Responsive**: Mobile-first design approach
-- ⚡ **Fast**: Optimized static files for quick loading
-- 🔧 **Maintainable**: Modern development workflow
-- 📝 **Forms**: Formspree integration for contact forms
-- 🎨 **Visual Fidelity**: Exact visual match to original WordPress site
-
-## Structure
-
-```
-innoledge.com2/
-├── index.html              # English homepage
-├── fr/                     # French version
-├── zh/                     # Chinese version
-├── en/                     # English pages (non-homepage)
-├── assets/                 # CSS, JS, images
-├── components/             # Reusable HTML components
-├── data/                   # Content JSON files
-└── templates/              # Build templates
-```
-
-## Development
-
-### Setup
-```bash
-npm install
-```
-
-### Local Development
-```bash
-npm run dev
-# Opens http://localhost:8000
-```
-
-### Content Extraction
-```bash
-npm run extract-content
-```
-
-### Build for Production
-```bash
-npm run build
-```
-
-### Deploy to GitHub Pages
-```bash
-npm run deploy
-```
-
-## Languages
-
-- **English**: `/` (homepage), `/en/` (other pages)
-- **French**: `/fr/`
-- **Chinese**: `/zh/`
-
-## Content Management
-
-Content is organized in JSON files in the `/data/` directory:
-- `content-en.json` - English content
-- `content-fr.json` - French content
-- `content-zh.json` - Chinese content
-
-## Forms
-
-All contact forms use Formspree (https://formspree.io/f/myzedzbl) for static site compatibility.
+Requires Node.js 24. Run `npm ci`, `npm test`, then `npm run build`. Output is `dist/`. Serve that folder locally to preview the built sidebar, which is generated from `data/partners.json`.
 
 ## Deployment
 
-This site is optimized for GitHub Pages deployment with automatic building via GitHub Actions.
+Deploy this repository (`Innoledge/innoledge`) to Vercel project `akemis-dev-projects/innoledge-com`. The similarly named `Innoledge/innoledge.com` repository is the older WordPress export and must not be used as this site's deployment source.
+
+`vercel.json` configures the static build and redirects old WordPress URLs. `api/contact.js` runs as a Vercel function alongside the static output. GitHub Actions validates the build; it no longer publishes GitHub Pages.
+
+## Email
+
+EN, FR and ZH contact forms POST to `/api/contact`. Set `RESEND_API_KEY` in both Vercel Preview and Production after verifying the sending domain in Resend. `MAIL_FROM` defaults to `website@innoledge.com`, and `MAIL_TO` to `info@innoledge.com`. Replies go to the visitor's email address. Keep all credentials in Vercel, never the repository.
+
+Without the key, the endpoint returns an explicit failure; the browser preserves the message and displays the fallback address. Tests mock Resend and do not send emails. The handler checks required fields, length limits and origins, includes a honeypot, and uses a timeout. Origin checks and a honeypot are basic abuse controls, not distributed rate limiting.
+
+Before enabling email, verify sender DNS and perform an authorized delivery test. Future traffic-based rate limiting can be configured in Vercel Firewall if needed.
