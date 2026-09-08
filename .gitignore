@@ -49,3 +49,4 @@ xmlrpc.php@rsd
 wp-content/
 wp-includes/
 wp-json/
+.vercel

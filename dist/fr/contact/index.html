@@ -114,14 +114,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<link rel="stylesheet" href="/assets/css/restoration.css"></head>
 <body class="contact-page">
   <header class="site-header">
     <nav class="main-navigation" role="navigation" aria-label="Navigation principale">
       <div class="nav-container">
         <!-- Logo -->
         <div class="site-logo">
-          <a href="../services/" aria-label="Page d'accueil Innoledge">
+          <a href="/fr/" aria-label="Page d'accueil Innoledge">
             <img src="../../assets/images/innoledge-logo.png" alt="Innoledge" width="222" height="96">
           </a>
         </div>
@@ -156,7 +156,7 @@
             </svg>
           </button>
           <div class="lang-dropdown" role="menu">
-            <a href="/innoledge/en/contact/" class="lang-option" role="menuitem" hreflang="en">
+            <a href="/en/contact/" class="lang-option" role="menuitem" hreflang="en">
               <img src="../../assets/images/flags/en.svg" alt="" width="20" height="15">
               <span>English</span>
             </a>
@@ -164,7 +164,7 @@
               <img src="../../assets/images/flags/fr.svg" alt="" width="20" height="15">
               <span>Français</span>
             </a>
-            <a href="/innoledge/zh/contact/" class="lang-option" role="menuitem" hreflang="zh">
+            <a href="/zh/contact/" class="lang-option" role="menuitem" hreflang="zh">
               <img src="../../assets/images/flags/zh.svg" alt="" width="20" height="15">
               <span>中文</span>
             </a>
@@ -181,7 +181,7 @@
     </nav>
   </header>
 
-  <main id="main-content" class="main-content">
+  <main id="main-content" class="main-content"><div class="restored-layout"><div class="restored-primary">
     <!-- Page Header -->
     <section class="page-header">
       <div class="page-header-container">
@@ -209,19 +209,18 @@
             
             <section class="contact-form-section">
               <div class="form-container">
-                <form class="contact-form" action="https://formspree.io/f/myzedzbl" method="POST" novalidate>
-                  <!-- Hidden fields for Formspree -->
-                  <input type="hidden" name="_subject" value="Nouveau contact d'Innoledge (Français)">
-                  <input type="hidden" name="_language" value="fr">
-                  <input type="hidden" name="_next" value="/fr/contact/merci/">
+                <form class="contact-form" action="/api/contact" method="POST">
+                  <!-- Form language and spam protection -->
+                  <input type="hidden" name="language" value="fr">
                   
+                  <div hidden aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
                   <!-- Name Field -->
                   <div class="form-group">
                     <label for="contact-name" class="form-label">Nom <span class="required">*</span></label>
                     <input 
                       type="text" 
                       id="contact-name" 
-                      name="author" 
+                      name="name"
                       class="form-input" 
                       required 
                       aria-required="true"
@@ -250,7 +249,7 @@
                     <label for="contact-service-type" class="form-label">Type de Service <span class="required">*</span></label>
                     <select
                       id="contact-service-type"
-                      name="service_type"
+                      name="service"
                       class="form-select"
                       required
                       aria-required="true"
@@ -272,7 +271,7 @@
                     <label for="contact-message" class="form-label">Message <span class="required">*</span></label>
                     <textarea
                       id="contact-message"
-                      name="comment"
+                      name="message"
                       class="form-textarea"
                       rows="6"
                       required
@@ -318,7 +317,7 @@
         </div>
       </div>
     </section>
-  </main>
+  </div><aside class="partner-sidebar" aria-label="Liens utiles"><h2>Liens utiles</h2><ul><li><a href="https://www.precilens.com/"><img src="/assets/images/partners/precilens.png" alt="Precilens" loading="lazy" decoding="async"></a></li><li><a href="https://ghnpharma.com/we-are-ghn/"><img src="/assets/images/partners/ghn.webp" alt="GHN Pharma" loading="lazy" decoding="async"></a></li><li><a href="http://aminoeclipse.com/"><img src="/assets/images/partners/aminoeclipse.png" alt="Aminoeclipse" loading="lazy" decoding="async"></a></li><li><a href="http://arthroguard300.com/"><img src="/assets/images/partners/arthroguard300.png" alt="Arthroguard300" loading="lazy" decoding="async"></a></li><li><a href="https://argileduvelay.com/fr/"><img src="/assets/images/partners/argile-du-velay.png" alt="Argile du Velay" loading="lazy" decoding="async"></a></li><li><a href="https://cosmetigate.com/"><img src="/assets/images/partners/cosmetigate.png" alt="COSMETiGATE" loading="lazy" decoding="async"></a></li><li><a href="http://francine-feminine.com/"><img src="/assets/images/partners/francine.png" alt="Francine Feminine" loading="lazy" decoding="async"></a></li></ul></aside></div></main>
 
   <footer class="site-footer">
     <div class="footer-container">

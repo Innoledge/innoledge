@@ -121,7 +121,7 @@
       <div class="nav-container">
         <!-- Logo -->
         <div class="site-logo">
-          <a href="../services/" aria-label="英诺知主页">
+          <a href="/zh/" aria-label="英诺知主页">
             <img src="../../assets/images/innoledge-logo.png" alt="英诺知" width="222" height="96">
           </a>
         </div>
@@ -160,11 +160,11 @@
               <img src="../../assets/images/flags/zh.svg" alt="" width="20" height="15">
               <span>中文</span>
             </a>
-            <a href="/innoledge/en/contact/" class="lang-option" role="menuitem" hreflang="en">
+            <a href="/en/contact/" class="lang-option" role="menuitem" hreflang="en">
               <img src="../../assets/images/flags/en.svg" alt="" width="20" height="15">
               <span>English</span>
             </a>
-            <a href="/innoledge/fr/contact/" class="lang-option" role="menuitem" hreflang="fr">
+            <a href="/fr/contact/" class="lang-option" role="menuitem" hreflang="fr">
               <img src="../../assets/images/flags/fr.svg" alt="" width="20" height="15">
               <span>Français</span>
             </a>
@@ -209,19 +209,18 @@
             
             <section class="contact-form-section">
               <div class="form-container">
-                <form class="contact-form" action="https://formspree.io/f/myzedzbl" method="POST" novalidate>
-                  <!-- Hidden fields for Formspree -->
-                  <input type="hidden" name="_subject" value="来自英诺知的新联系（中文）">
-                  <input type="hidden" name="_language" value="zh">
-                  <input type="hidden" name="_next" value="/zh/contact/thank-you/">
+                <form class="contact-form" action="/api/contact" method="POST">
+                  <!-- Form language and spam protection -->
+                  <input type="hidden" name="language" value="zh">
                   
+                  <div hidden aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
                   <!-- Name Field -->
                   <div class="form-group">
                     <label for="contact-name" class="form-label">您的姓名 <span class="required">*</span></label>
                     <input 
                       type="text" 
                       id="contact-name" 
-                      name="author" 
+                      name="name"
                       class="form-input" 
                       required 
                       aria-required="true"
@@ -250,7 +249,7 @@
                     <label for="contact-service-type" class="form-label">服务类型 <span class="required">*</span></label>
                     <select
                       id="contact-service-type"
-                      name="service_type"
+                      name="service"
                       class="form-select"
                       required
                       aria-required="true"
@@ -272,7 +271,7 @@
                     <label for="contact-message" class="form-label">留言 <span class="required">*</span></label>
                     <textarea
                       id="contact-message"
-                      name="comment"
+                      name="message"
                       class="form-textarea"
                       rows="6"
                       required

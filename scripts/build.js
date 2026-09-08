@@ -1,190 +1,39 @@
-#!/usr/bin/env node
-
-/**
- * Build Script for Innoledge.com2
- * Compiles templates and optimizes assets for production
- */
-
-const fs = require('fs-extra');
-const path = require('path');
-
-// Configuration
-const CONFIG = {
-  sourceDir: '.',
-  buildDir: 'dist',
-  assetsDir: 'assets',
-  templateDir: 'templates',
-  componentDir: 'components',
-  dataDir: 'data'
-};
-
-// Main build function
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
 async function build() {
-  console.log('🏗️  Building Innoledge.com2...\n');
-  
-  try {
-    // Clean build directory
-    await cleanBuildDir();
-    
-    // Copy static assets
-    await copyAssets();
-    
-    // Generate pages
-    await generatePages();
-    
-    // Create redirects and robots.txt
-    await createMetaFiles();
-    
-    console.log('✅ Build completed successfully!\n');
-    console.log('📁 Build output in:', path.resolve(CONFIG.buildDir));
-    
-  } catch (error) {
-    console.error('❌ Build failed:', error.message);
-    process.exit(1);
+  const dist = path.join(root, 'dist');
+  await fs.rm(dist, {recursive: true, force: true});
+  await fs.mkdir(dist, {recursive: true});
+  await fs.cp(path.join(root, 'assets'), path.join(dist, 'assets'), {recursive: true});
+  const partners = JSON.parse(await fs.readFile(path.join(root, 'data/partners.json'), 'utf8'));
+  async function copyPage(relative) {
+    let html = await fs.readFile(path.join(root, relative), 'utf8');
+    const lang = relative.startsWith('fr/') ? 'fr' : relative.startsWith('zh/') ? 'zh' : 'en';
+    const title = {en:'Related Links',fr:'Liens utiles',zh:'相关链接'}[lang];
+    const sidebar = `<aside class="partner-sidebar" aria-label="${title}"><h2>${title}</h2><ul>${partners.map(p => `<li><a href="${p.url}"><img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"></a></li>`).join('')}</ul></aside>`;
+    if (html.includes('<main') && !relative.includes('thank-you')) {
+      html = html.replace(/(<main\b[^>]*>)/, '$1<div class="restored-layout"><div class="restored-primary">');
+      html = html.replace('</main>', `</div>${sidebar}</div></main>`);
+    }
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/restoration.css"></head>');
+    const destination = path.join(dist, relative);
+    await fs.mkdir(path.dirname(destination), {recursive: true});
+    await fs.writeFile(destination, html);
   }
-}
-
-/**
- * Clean build directory
- */
-async function cleanBuildDir() {
-  console.log('🧹 Cleaning build directory...');
-  await fs.emptyDir(CONFIG.buildDir);
-}
-
-/**
- * Copy static assets
- */
-async function copyAssets() {
-  console.log('📁 Copying assets...');
-  
-  // Copy assets directory
-  await fs.copy(CONFIG.assetsDir, path.join(CONFIG.buildDir, CONFIG.assetsDir));
-  
-  // Copy robots.txt if exists
-  if (await fs.pathExists('robots.txt')) {
-    await fs.copy('robots.txt', path.join(CONFIG.buildDir, 'robots.txt'));
-  }
-  
-  // Copy CNAME if exists
-  if (await fs.pathExists('CNAME')) {
-    await fs.copy('CNAME', path.join(CONFIG.buildDir, 'CNAME'));
-  }
-}
-
-/**
- * Generate all pages
- */
-async function generatePages() {
-  console.log('📄 Generating pages...');
-  
-  // Copy existing HTML files
-  const htmlFiles = await findHtmlFiles('.');
-  
-  for (const file of htmlFiles) {
-    const relativePath = path.relative('.', file);
-    const outputPath = path.join(CONFIG.buildDir, relativePath);
-    
-    // Ensure output directory exists
-    await fs.ensureDir(path.dirname(outputPath));
-    
-    // Read, process, and write HTML file
-    let content = await fs.readFile(file, 'utf8');
-    
-    // Fix paths for GitHub Pages subdirectory deployment
-    content = content.replace(/href="\/assets\//g, 'href="/innoledge/assets/');
-    content = content.replace(/src="\/assets\//g, 'src="/innoledge/assets/');
-    content = content.replace(/href="\/en\//g, 'href="/innoledge/en/');
-    content = content.replace(/href="\/fr\//g, 'href="/innoledge/fr/');
-    content = content.replace(/href="\/zh\//g, 'href="/innoledge/zh/');
-    content = content.replace(/href="\/services\//g, 'href="/innoledge/services/');
-    content = content.replace(/href="\/about-us\//g, 'href="/innoledge/about-us/');
-    content = content.replace(/href="\/contact-us\//g, 'href="/innoledge/contact-us/');
-    content = content.replace(/href="\/our-portfolio\//g, 'href="/innoledge/our-portfolio/');
-    content = content.replace(/href="\/"([^a-zA-Z]|$)/g, 'href="/innoledge/"$1');
-    content = content.replace(/href="\/">([^<]*)</g, 'href="/innoledge/">$1<');
-    
-    // Fix external URLs that might have been incorrectly modified
-    content = content.replace(/href="https:\/innoledge\//g, 'href="https://');
-    content = content.replace(/src="https:\/innoledge\//g, 'src="https://');
-    content = content.replace(/href="http:\/innoledge\//g, 'href="http://');
-    content = content.replace(/src="http:\/innoledge\//g, 'src="http://');
-    
-    await fs.writeFile(outputPath, content);
-    
-    console.log(`  ✓ ${relativePath}`);
-  }
-}
-
-/**
- * Find all HTML files recursively
- */
-async function findHtmlFiles(dir, files = []) {
-  const items = await fs.readdir(dir);
-  
-  for (const item of items) {
-    const fullPath = path.join(dir, item);
-    const stat = await fs.stat(fullPath);
-    
-    if (stat.isDirectory()) {
-      // Skip build directory, node_modules, and innoledge subdirectory
-      if (item !== CONFIG.buildDir && item !== 'node_modules' && item !== 'innoledge' && !item.startsWith('.')) {
-        await findHtmlFiles(fullPath, files);
-      }
-    } else if (item.endsWith('.html')) {
-      files.push(fullPath);
+  async function pages(dir) {
+    for (const e of await fs.readdir(path.join(root, dir), {withFileTypes:true})) {
+      const rel = path.join(dir, e.name);
+      if (e.isDirectory()) await pages(rel);
+      else if (e.name.endsWith('.html')) await copyPage(rel);
     }
   }
-  
-  return files;
+  await copyPage('index.html');
+  for (const lang of ['en','fr','zh']) await pages(lang);
+  let error = await fs.readFile(path.join(root, '404.html'), 'utf8');
+  await fs.writeFile(path.join(dist, '404.html'), error.replaceAll('/innoledge/', '/').replace(/[ \t]+$/gm, ''));
+  await fs.writeFile(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n');
+  console.log('Built cleaned site with partner sidebar in dist/');
 }
-
-/**
- * Create meta files (robots.txt, redirects, etc.)
- */
-async function createMetaFiles() {
-  console.log('🔧 Creating meta files...');
-  
-  // Create robots.txt if it doesn't exist
-  const robotsTxt = path.join(CONFIG.buildDir, 'robots.txt');
-  if (!await fs.pathExists(robotsTxt)) {
-    await fs.writeFile(robotsTxt, `User-agent: *
-Allow: /
-
-Sitemap: https://innoledge.com/sitemap.xml
-`);
-  }
-  
-  // Create .nojekyll for GitHub Pages
-  await fs.writeFile(path.join(CONFIG.buildDir, '.nojekyll'), '');
-  
-  // Create 404.html
-  const error404 = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - Innoledge</title>
-    <link rel="stylesheet" href="/innoledge/assets/css/main.css">
-    <link rel="stylesheet" href="/innoledge/assets/css/components.css">
-</head>
-<body>
-    <div class="error-page">
-        <div class="container">
-            <h1>404 - Page Not Found</h1>
-            <p>The page you're looking for doesn't exist.</p>
-            <a href="/innoledge/" class="btn btn-primary">Go Home</a>
-        </div>
-    </div>
-</body>
-</html>`;
-  
-  await fs.writeFile(path.join(CONFIG.buildDir, '404.html'), error404);
-}
-
-// Run build if this file is executed directly
-if (require.main === module) {
-  build();
-}
-
-module.exports = { build, CONFIG };
+if (require.main === module) build().catch(e => { console.error(e); process.exitCode = 1; });
+module.exports = {build};

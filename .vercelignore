@@ -1,0 +1,10 @@
+node_modules
+dist
+Screenshots
+*.md
+*.backup
+templates
+components
+formspree-test.html
+puppeteer-example.js
+screenshot-service-icons.js
